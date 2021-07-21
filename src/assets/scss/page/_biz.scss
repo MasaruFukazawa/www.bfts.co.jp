@@ -1,0 +1,547 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.page-service {
+    min-height: 100vh;
+
+    .heading-en {
+        @include heading;
+        width: get_vw(600);
+    }
+
+    .service__desc {
+        @include under_desc;
+    }
+
+    .service {
+        position: relative;
+        width: get_vw(800);
+        margin: get_vw(60) auto get_vw(80);
+        background-color: $color-white;
+        padding: $block-size * 2;
+
+        .side-red {
+            @include side-red(left);
+
+            @media #{$media-sm} {
+                height: 105%;
+            }
+        }
+
+        // タイトル
+        &__title {
+            @include heading-h2;
+        }
+
+        &__about {
+            margin: $block-size/1.2 0;
+            font-size: get_vw(14);
+            line-height: 1.9;
+            letter-spacing: get_vw(0.6);
+        }
+
+        // BFT道場の各サービス？
+        .service__menu {
+            display: flex;
+            flex-direction: row;
+            height: get_vw(200);
+            width: 100%;
+            max-width: get_vw(690);
+            margin: 0 0 $block-size * 2;
+
+            &:last-of-type {
+                margin: 0 0 get_vw(10);
+            }
+
+            // サービスイメージ
+            .menu__img {
+                width: get_vw(270);
+                min-width: get_vw(270);
+                height: get_vw(200);
+                background-size: cover;
+            }
+
+            // タイトル、説明、ボタンのラッパークラス
+            .menu__info {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                margin: 0 0 0 get_vw(30);
+                width: 100%;
+
+                // 「チョイトレ」とか
+                .menu__title {
+                    $title_height: get_vw(60);
+                    height: $title_height;
+                    line-height: $title_height;
+                    color: $color-skyblue;
+                    font-size: get_vw(24);
+                    font-weight: 900;
+                    letter-spacing: get_vw(1.4);
+                    padding: 0 0 0 get_vw(80);
+                    background-size: $title_height $title_height;
+                }
+
+                // ざっくり説明文
+                .menu__about {
+                    margin: $block-size/1.2 0 0;
+                    font-size: get_vw(14);
+                    color: $color-black;
+                    line-height: 1.8;
+                    letter-spacing: get_vw(0.8);
+                }
+
+                // more button
+                .menu__link {
+                    width: get_vw(120);
+                    height: get_vw(30);
+                    line-height: get_vw(30);
+                    font-size: get_vw(14);
+                    letter-spacing: get_vw(2);
+                    font-weight: 900;
+                    color: $color-white;
+                    background-color: $color-red;
+                    padding: 0 0 0 get_vw(26);
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-image: url('~assets/img/common/arrow/arrow_right_white.svg');
+                    background-position: 87% 50%;
+                    background-size: get_vw(22) get_vw(10);
+                }
+            }
+
+            // チョイトレ
+            &.tyoitore {
+                // サービスイメージ
+                .menu__img {
+                    background-image: url('~assets/img/service/choitore.jpg');
+                }
+
+                .menu__info {
+                    .menu__title {
+                        background-image: url('~assets/img/top/icon_tyoitore.svg');
+                    }
+                }
+            }
+
+            // トレプラ
+            &.torepura {
+                // サービスイメージ
+                .menu__img {
+                    background-image: url('~assets/img/service/torepura.jpg');
+                }
+
+                .menu__info {
+                    .menu__title {
+                        background-image: url('~assets/img/top/icon_torepura.svg');
+                    }
+                }
+            }
+
+            // ギノトレ
+            &.ginotore {
+                // サービスイメージ
+                .menu__img {
+                    background-image: url('~assets/img/service/ginotore.jpg');
+                }
+
+                .menu__info {
+                    .menu__title {
+                        background-image: url('~assets/img/top/icon_ginotore.svg');
+                    }
+                }
+            }
+        }
+
+        .bg-right {
+            position: absolute;
+            top: 100%;
+            left: calc((100vw - 100%) / -2);
+            width: get_vw(1060);
+
+            > div {
+                position: absolute;
+                height: $block-size;
+                background-color: $color-red;
+            }
+
+            &__1 {
+                top: 0;
+                left: 0;
+                width: calc(100% - #{$block-size * 7});
+            }
+
+            &__2 {
+                top: $block-size;
+                left: $block-size * 2;
+                width: calc(100% - #{$block-size * 6});
+            }
+
+            &__3 {
+                top: $block-size * 2;
+                left: $block-size * 2;
+                width: calc(100% - #{$block-size * 3});
+            }
+
+            &__4 {
+                top: $block-size * 3;
+                left: $block-size * 2;
+                width: calc(100% - #{$block-size * 2});
+            }
+
+            &__5 {
+                top: $block-size * 4;
+                left: $block-size * 3;
+                width: calc(100% - #{$block-size * 6});
+            }
+
+            &__6 {
+                top: $block-size * 5;
+                left: $block-size * 4;
+                width: calc(100% - #{$block-size * 7});
+            }
+
+            &__7 {
+                top: $block-size * 6;
+                left: $block-size * 5;
+                width: calc(100% - #{$block-size * 8});
+            }
+
+            &__8 {
+                top: $block-size * 7;
+                left: $block-size * 5;
+                width: calc(100% - #{$block-size * 8});
+            }
+
+            &__9 {
+                top: $block-size * 8;
+                left: $block-size * 6;
+                width: calc(100% - #{$block-size * 9});
+            }
+
+            &__10 {
+                top: $block-size * 9;
+                left: $block-size * 9;
+                width: calc(100% - #{$block-size * 12});
+            }
+
+            @media #{$media-sm} {
+                width: 100vw;
+
+                > div {
+                    height: $block-size_sm;
+                }
+
+                &__1 {
+                    top: 0;
+                    left: $block-size_sm * 3;
+                    width: calc(100% - #{$block-size_sm * 5});
+                }
+
+                &__2 {
+                    top: $block-size_sm;
+                    left: $block-size_sm;
+                    width: calc(100% - #{$block-size_sm * 2});
+                }
+
+                &__3 {
+                    top: $block-size_sm * 2;
+                    left: 0;
+                    width: 100%;
+                }
+
+                &__4 {
+                    top: $block-size_sm * 3;
+                    left: 0;
+                    width: 100%;
+                }
+
+                &__5 {
+                    top: $block-size_sm * 4;
+                    left: 0;
+                    // width: calc(100% - #{$block-size_sm*3});
+                    width: 100%;
+                }
+
+                &__6 {
+                    top: $block-size_sm * 5;
+                    left: 0;
+                    width: calc(100% - #{$block-size_sm * 3});
+                }
+
+                &__7 {
+                    top: $block-size_sm * 6;
+                    left: $block-size_sm;
+                    width: calc(100% - #{$block-size_sm * 4});
+                }
+
+                &__8 {
+                    top: $block-size_sm * 7;
+                    left: $block-size_sm;
+                    width: calc(100% - #{$block-size_sm * 4});
+                }
+
+                &__9 {
+                    top: $block-size_sm * 8;
+                    left: $block-size_sm * 2;
+                    width: calc(100% - #{$block-size_sm * 5});
+                }
+
+                &__10 {
+                    top: $block-size_sm * 9;
+                    left: $block-size_sm * 2;
+                    width: calc(100% - #{$block-size_sm * 5});
+                }
+            }
+        }
+    }
+
+    .si-zigyou {
+        position: relative;
+        width: get_vw(800);
+        margin: 0 auto get_vw(40);
+        background-color: $color-white;
+        padding: $block-size * 2;
+
+        .side-red {
+            @include side-red(right);
+
+            @media #{$media-sm} {
+                height: 110%;
+            }
+        }
+
+        &__title {
+            @include heading-h2;
+            width: 100%;
+        }
+
+        &__about {
+            margin: $block-size 0 get_vw(30);
+            font-size: get_vw(14);
+            line-height: 2;
+            letter-spacing: get_vw(-0.5);
+        }
+
+        &__menu-wrap {
+            $menu-wd: get_vw(300);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: $menu-wd * 2 + get_vw(40);
+            margin: 0 auto get_vw(40);
+
+            // SI、インフラ構築
+            &__menu {
+                width: $menu-wd;
+                display: flex;
+                flex-direction: column;
+
+                .menu__icon {
+                    width: 100%;
+                    height: get_vw(60);
+                    background-image: url('~assets/img/top/icon_si.svg');
+                    background-size: get_vw(60) get_vw(60);
+                    background-position: 0 0;
+                }
+
+                .menu__title {
+                    color: $color-skyblue;
+                    font-size: get_vw(24);
+                    font-weight: 900;
+                    line-height: 1;
+                    letter-spacing: get_vw(1);
+                    padding: get_vw(16) 0;
+                }
+
+                .menu__img {
+                    width: 100%;
+                    max-height: get_vw(200);
+                }
+
+                .menu__desc {
+                    font-size: get_vw(14);
+                    line-height: 2;
+                    letter-spacing: get_vw(0.6);
+                    padding: get_vw(10) 0 0;
+                }
+
+                &.menu-infra {
+                    .menu__icon {
+                        background-image: url('~assets/img/top/icon_infra.svg');
+                    }
+                }
+            }
+        }
+
+        &__more {
+            $more-height: get_vw(30);
+            background-color: $color-red;
+            color: $color-white;
+            font-size: get_vw(14);
+            font-weight: 900;
+            line-height: $more-height;
+            height: $more-height;
+            letter-spacing: get_vw(2);
+            display: block;
+            width: get_vw(352);
+            padding: 0 0 0 get_vw(142);
+            margin: 0 auto;
+            background-image: url('~assets/img/common/arrow/arrow_right_white.svg');
+            background-position: 60% 50%;
+            background-size: get_vw(22) get_vw(10);
+        }
+    }
+
+    @media #{$media-sm} {
+        .service {
+            width: get_vw_sp(260);
+            margin: get_vw_sp(40) auto;
+            padding: $block-size_sm * 2 $block-size_sm;
+
+            &__about {
+                margin: $block-size_sm * 2 0;
+                font-size: get_vw_sp(12);
+                line-height: 2;
+                letter-spacing: get_vw_sp(0.4);
+            }
+
+            // BFT道場の各サービス？
+            .service__menu {
+                flex-direction: column;
+                height: auto;
+                max-width: initial;
+                margin: 0 0 $block-size_sm * 4;
+
+                &:last-of-type {
+                    margin: 0 0 get_vw_sp(10);
+                }
+
+                // サービスイメージ
+                .menu__img {
+                    width: get_vw_sp(240);
+                    height: get_vw_sp(100);
+                    background-size: cover;
+                }
+
+                // タイトル、説明、ボタンのラッパークラス
+                .menu__info {
+                    display: flex;
+                    flex-direction: column;
+                    margin: get_vw_sp(10) 0 0;
+                    width: 100%;
+
+                    // 「チョイトレ」とか
+                    .menu__title {
+                        $title_height: get_vw_sp(30);
+                        height: $title_height;
+                        line-height: $title_height;
+                        font-size: get_vw_sp(18);
+                        letter-spacing: get_vw_sp(1.1);
+                        padding: 0 0 0 get_vw_sp(45);
+                        background-size: $title_height $title_height;
+                    }
+
+                    // ざっくり説明文
+                    .menu__about {
+                        margin: get_vw_sp(7) 0 0;
+                        font-size: get_vw_sp(13);
+                        line-height: 1.6;
+                        letter-spacing: get_vw_sp(0.8);
+                    }
+
+                    // more button
+                    .menu__link {
+                        width: get_vw_sp(120);
+                        height: get_vw_sp(30);
+                        line-height: get_vw_sp(30);
+                        font-size: get_vw_sp(14);
+                        letter-spacing: get_vw_sp(2);
+                        padding: 0 0 0 get_vw_sp(26);
+                        background-size: get_vw_sp(22) get_vw_sp(10);
+                        bottom: 0;
+                        right: 0;
+                        position: relative;
+                        margin: get_vw_sp(20) 0 0 auto;
+                    }
+                }
+            }
+        }
+
+        .si-zigyou {
+            width: get_vw_sp(260);
+            margin: 0 auto get_vw_sp(40);
+            padding: $block-size_sm * 2 $block-size_sm;
+
+            &__title {
+                @include heading-h2;
+                width: 100%;
+            }
+
+            &__about {
+                margin: 0;
+                font-size: get_vw_sp(12);
+                letter-spacing: get_vw_sp(-0.5);
+            }
+
+            &__menu-wrap {
+                $menu-wd: 100%;
+                display: flex;
+                flex-direction: column;
+                width: $menu-wd;
+                margin: 0 auto get_vw_sp(20);
+
+                // SI、インフラ構築
+                &__menu {
+                    position: relative;
+                    width: $menu-wd;
+                    display: flex;
+                    flex-direction: column;
+
+                    .menu__icon {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: get_vw_sp(30);
+                        width: get_vw_sp(30);
+                        background-size: get_vw_sp(30) get_vw_sp(30);
+                    }
+
+                    .menu__title {
+                        margin: 0 0 get_vw_sp(10) get_vw_sp(45);
+                        font-size: get_vw_sp(18);
+                        letter-spacing: get_vw_sp(1);
+                        padding: get_vw_sp(5) 0;
+                    }
+
+                    .menu__img {
+                        width: 100%;
+                        max-height: get_vw_sp(121);
+                        overflow: hidden;
+                    }
+
+                    .menu__desc {
+                        font-size: get_vw_sp(13);
+                        line-height: 1.7;
+                        letter-spacing: get_vw_sp(0.6);
+                        padding: get_vw_sp(10) 0 0;
+                        margin: 0 0 get_vw_sp(20);
+                    }
+                }
+            }
+
+            &__more {
+                $more-height: get_vw_sp(30);
+                font-size: get_vw_sp(14);
+                line-height: $more-height;
+                height: $more-height;
+                letter-spacing: get_vw_sp(2);
+                width: get_vw_sp(200);
+                padding: 0 0 0 get_vw_sp(66);
+                background-position: 70% 50%;
+                background-size: get_vw_sp(22) get_vw_sp(10);
+            }
+        }
+    }
+}

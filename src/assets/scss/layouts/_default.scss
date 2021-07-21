@@ -1,0 +1,24 @@
+.l-default {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.contents {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-active {
+    opacity: 0;
+}

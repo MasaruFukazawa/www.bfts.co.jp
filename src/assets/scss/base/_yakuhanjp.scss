@@ -1,0 +1,21 @@
+/*! Yaku Han JP v3.2.0 (OFL-1.1 AND MIT) by Qrac */
+/*! Type: YakuHanJPs - Based on Noto Sans CJK JP */
+@font-face {
+    font-family: 'YakuHanJP';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('~assets/fonts/YakuHanJP/YakuHanJP-Medium.eot');
+    src: url('~assets/fonts/YakuHanJP/YakuHanJP-Medium.woff2') format('woff2'),
+        url('~assets/fonts/YakuHanJP/YakuHanJP-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'YakuHanJP';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('~assets/fonts/YakuHanJP/YakuHanJP-Black.eot');
+    src: url('~assets/fonts/YakuHanJP/YakuHanJP-Black.woff2') format('woff2'),
+        url('~assets/fonts/YakuHanJP/YakuHanJP-Black.woff') format('woff');
+}

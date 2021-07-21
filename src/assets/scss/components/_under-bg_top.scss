@@ -1,0 +1,329 @@
+.bg-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+
+    &.recruit {
+        z-index: -1;
+    }
+
+    > div {
+        position: absolute;
+        background-color: $color-red;
+        height: get_vw(21);
+    }
+
+    &__1 {
+        top: get_vw(0);
+        width: get_vw(460);
+        right: get_vw(160);
+    }
+
+    &__2 {
+        top: get_vw(20);
+        width: get_vw(500);
+        right: get_vw(140);
+    }
+
+    &__3 {
+        top: get_vw(40);
+        width: get_vw(640);
+        right: 0;
+    }
+
+    &__4 {
+        top: get_vw(60);
+        width: get_vw(620);
+        right: 0;
+    }
+
+    &__5 {
+        top: get_vw(80);
+        width: get_vw(560);
+        right: get_vw(40);
+    }
+
+    &__6 {
+        top: get_vw(100);
+        width: get_vw(560);
+        right: get_vw(20);
+    }
+
+    &__7 {
+        top: get_vw(120);
+        width: get_vw(560);
+        right: get_vw(20);
+    }
+
+    &__8 {
+        top: get_vw(140);
+        width: get_vw(560);
+        right: 0;
+    }
+
+    &__9 {
+        top: get_vw(160);
+        width: get_vw(520);
+        right: 0;
+    }
+
+    &__10 {
+        top: get_vw(180);
+        width: get_vw(480);
+        right: 0;
+    }
+
+    &__11 {
+        top: get_vw(200);
+        width: get_vw(480);
+        right: 0;
+    }
+
+    &__12 {
+        top: get_vw(220);
+        width: get_vw(320);
+        right: 0;
+    }
+
+    &__13 {
+        top: get_vw(240);
+        width: get_vw(260);
+        right: 0;
+    }
+
+    &__14 {
+        top: get_vw(260);
+        width: get_vw(200);
+        right: 0;
+    }
+
+    &__15 {
+        top: get_vw(280);
+        width: get_vw(180);
+        right: 0;
+    }
+
+    &__16 {
+        top: get_vw(300);
+        width: get_vw(140);
+        right: 0;
+    }
+
+    &__17 {
+        top: get_vw(320);
+        width: get_vw(140);
+        right: 0;
+    }
+
+    &__18 {
+        top: get_vw(340);
+        width: get_vw(120);
+        right: 0;
+    }
+
+    &__19 {
+        top: get_vw(360);
+        width: get_vw(120);
+        right: 0;
+    }
+
+    &__20 {
+        top: get_vw(380);
+        width: get_vw(100);
+        right: 0;
+    }
+
+    &__21 {
+        top: get_vw(400);
+        width: get_vw(100);
+        right: 0;
+    }
+
+    &__22 {
+        top: get_vw(420);
+        width: get_vw(80);
+        right: 0;
+    }
+
+    &__23 {
+        top: get_vw(440);
+        width: get_vw(80);
+        right: 0;
+    }
+
+    &__24 {
+        top: get_vw(460);
+        width: get_vw(60);
+        right: 0;
+    }
+
+    &__25 {
+        top: get_vw(480);
+        width: get_vw(40);
+        right: 0;
+    }
+
+    &__26 {
+        top: get_vw(500);
+        width: get_vw(20);
+        right: 0;
+    }
+
+    &__27 {
+        top: get_vw(520);
+        width: get_vw(20);
+        right: 0;
+    }
+
+    @media #{$media-sm} {
+        > div {
+            height: $block-size_sm;
+        }
+
+        &__1 {
+            top: get_vw_sp(0);
+            width: $block-size_sm * 18;
+            right: $block-size_sm * 13;
+        }
+
+        &__2 {
+            top: get_vw_sp(10);
+            width: $block-size_sm * 20;
+            right: $block-size_sm * 11;
+        }
+
+        &__3 {
+            top: get_vw_sp(20);
+            width: $block-size_sm * 20;
+            right: $block-size_sm * 9;
+        }
+
+        &__4 {
+            top: get_vw_sp(30);
+            width: $block-size_sm * 20;
+            right: $block-size_sm * 7;
+        }
+
+        &__5 {
+            top: get_vw_sp(40);
+            width: $block-size_sm * 20;
+            right: $block-size_sm * 6;
+        }
+
+        &__6 {
+            top: get_vw_sp(50);
+            width: $block-size_sm * 23;
+            right: $block-size_sm * 3;
+        }
+
+        &__7 {
+            top: get_vw_sp(60);
+            width: $block-size_sm * 20;
+            right: get_vw_sp(20);
+        }
+
+        &__8 {
+            top: get_vw_sp(70);
+            width: $block-size_sm * 19;
+            right: 0;
+        }
+
+        &__9 {
+            top: get_vw_sp(80);
+            width: $block-size_sm * 15;
+            right: $block-size_sm;
+        }
+
+        &__10 {
+            top: get_vw_sp(90);
+            width: $block-size_sm * 12;
+            right: $block-size_sm;
+        }
+
+        &__11 {
+            top: get_vw_sp(100);
+            width: $block-size_sm * 9;
+            right: $block-size_sm;
+        }
+
+        &__12 {
+            top: get_vw_sp(110);
+            width: $block-size_sm * 9;
+            right: 0;
+        }
+
+        &__13 {
+            top: get_vw_sp(120);
+            width: $block-size_sm * 5;
+            right: 0;
+        }
+
+        &__14 {
+            top: get_vw_sp(130);
+            width: $block-size_sm * 5;
+            right: 0;
+        }
+
+        &__15 {
+            top: get_vw_sp(140);
+            width: $block-size_sm * 5;
+            right: 0;
+        }
+
+        &__16 {
+            top: get_vw_sp(150);
+            width: $block-size_sm * 5;
+            right: 0;
+        }
+
+        &__17 {
+            top: get_vw_sp(160);
+            width: $block-size_sm * 4;
+            right: 0;
+        }
+
+        &__18 {
+            top: get_vw_sp(170);
+            width: $block-size_sm * 3;
+            right: 0;
+        }
+
+        &__19 {
+            top: get_vw_sp(180);
+            width: $block-size_sm * 3;
+            right: 0;
+        }
+
+        &__20 {
+            top: get_vw_sp(190);
+            width: $block-size_sm * 2;
+            right: 0;
+        }
+
+        &__21 {
+            top: get_vw_sp(200);
+            width: $block-size_sm;
+            right: 0;
+        }
+
+        &__22 {
+            top: get_vw_sp(210);
+            width: $block-size_sm;
+            right: 0;
+        }
+
+        &__23 {
+            top: get_vw_sp(220);
+            width: $block-size_sm;
+            right: 0;
+        }
+
+        &__24,
+        &__25,
+        &__26,
+        &__27 {
+            display: none;
+        }
+    }
+}

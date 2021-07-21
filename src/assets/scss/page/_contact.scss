@@ -1,0 +1,461 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.page-con {
+    min-height: 80vh;
+}
+
+.heading-en {
+    @include heading;
+}
+
+// タイトル
+.con__title {
+    @include heading-h2;
+    margin: get_vw(180) auto $block-size get_vw(240);
+    display: inline-flex;
+
+    $height: get_vw(40);
+    height: $height;
+
+    .ja {
+        line-height: $height;
+    }
+
+    @media #{$media-sm} {
+        margin: get_vw_sp(110) auto $block-size_sm * 2 $block-size_sm;
+        $height: get_vw_sp(20);
+        height: $height;
+
+        .ja {
+            line-height: $height;
+        }
+    }
+}
+
+// 確認メッセージ
+.chk-msg {
+    margin: 0 auto $block-size get_vw(240);
+    padding: $block-size;
+    background-color: $color-white;
+    border: 2px solid $color-black;
+    color: $color-red;
+    max-width: get_vw(400);
+    font-size: get_vw(14);
+
+    @media #{$media-sm} {
+        margin: 0 auto $block-size_sm * 2 $block-size_sm;
+        padding: $block-size_sm;
+        max-width: 80%;
+        line-height: 1.3;
+        letter-spacing: 0;
+        font-size: get_vw_sp(11);
+    }
+}
+
+// 送信完了メッセージ
+.comp-msg {
+    margin: 0 auto $block-size * 9 get_vw(240);
+    padding: $block-size * 2;
+    background-color: $color-white;
+    border: 2px solid $color-black;
+    color: $color-red;
+    max-width: get_vw(720);
+    font-size: get_vw(14);
+    text-align: center;
+
+    @media #{$media-sm} {
+        margin: 0 auto $block-size_sm * 2 $block-size_sm;
+        padding: $block-size_sm * 5 $block-size_sm;
+        max-width: get_vw_sp(300);
+        line-height: 2;
+        letter-spacing: 0;
+        font-size: get_vw_sp(11);
+    }
+}
+
+// フォーム
+.form {
+    width: get_vw(720);
+    margin: 0 auto get_vw(80);
+    display: flex;
+    flex-direction: column;
+    z-index: $z-header - 1;
+
+    $form: &;
+
+    // 一項目
+    &-field {
+        $height: get_vw(40);
+        display: grid;
+        grid-template-columns: get_vw(180) get_vw(500);
+        grid-template-rows: minmax($height, auto);
+        grid-column-gap: get_vw(40);
+        grid-row-gap: get_vw(0);
+        margin: 0 0 get_vw(20);
+
+        $field: &;
+
+        // フィールド名
+        &__name {
+            position: relative;
+            line-height: $height;
+            color: $color-white;
+            font-size: get_vw(18);
+            font-weight: 900;
+            letter-spacing: get_vw(2);
+            padding: 0 0 0 get_vw(20);
+            z-index: 3;
+
+            // 水色背景
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: $color-skyblue;
+                width: 100%;
+                height: $height;
+                z-index: -1;
+            }
+        }
+
+        // フィールド入力欄
+        &__input {
+            position: relative;
+            border: 2px solid $color-black;
+            background-color: $color-white;
+            min-height: $height;
+
+            > input,
+            textarea {
+                min-height: $height;
+                max-height: 100%;
+                height: 100%;
+                width: 100%;
+                overflow-y: scroll;
+                resize: none;
+                outline-color: $color-red;
+                padding: 0 $block-size/2;
+                word-break: break-all;
+                font-size: get_vw(15);
+            }
+
+            &::placeholder {
+                line-height: $height;
+            }
+
+            // バリデーションエラーポップアップ
+            .validate-error {
+                line-height: calc(#{$height} - #{get_vw(2)});
+                color: $color-red;
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: auto;
+                font-size: get_vw(12);
+            }
+        }
+
+        // お問い合わせ内容
+        &#{$form}-content {
+            #{$field}__input {
+                height: get_vw(240);
+                line-height: 1.9;
+            }
+        }
+
+        // 必須フィールド 赤マーク
+        &.required {
+            #{$field}__name {
+                // 赤の※
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: '※';
+                    color: $color-white;
+                    background-color: $color-red;
+                    font-weight: 900;
+                    font-size: get_vw(10);
+                    line-height: 1;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    width: get_vw(10);
+                    height: get_vw(10);
+                }
+            }
+        }
+    }
+
+    // 確認・同意エリア
+    &-confirm {
+        width: 100%;
+        background-color: $color-white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        // 個人情報保護方針に同意エリア
+        &__policy {
+            text-align: center;
+
+            .agree-input {
+                display: none;
+
+                // チェックされた時
+                &:checked {
+                    + label.agree-label::after {
+                        transition: transform 0.1s ease;
+                        transform: scale(1);
+                    }
+                }
+            }
+
+            .agree-label {
+                $box-wd: get_vw(14);
+                padding: 0 0 0 calc(#{$box-wd} + #{get_vw(2)});
+                position: relative;
+                font-size: get_vw(12);
+                line-height: 1.3;
+                cursor: pointer;
+
+                .policy-link {
+                    color: $color-red;
+                }
+
+                // 四角の枠
+                &::before {
+                    position: absolute;
+                    left: 0;
+                    top: get_vw(2);
+                    content: '';
+                    width: $box-wd;
+                    height: $box-wd;
+                    border: get_vw(2) solid $color-black;
+                }
+
+                // チェック
+                &::after {
+                    position: absolute;
+                    left: 0;
+                    top: get_vw(0);
+                    content: '\2713\0020';
+                    font-size: get_vw(20);
+                    font-weight: 900;
+                    color: $color-red;
+                    width: $box-wd;
+                    height: $box-wd;
+                    line-height: $box-wd;
+                    transform: scale(0);
+                }
+            }
+
+            .notice {
+                font-size: get_vw(10);
+                line-height: 1.5;
+            }
+        }
+
+        // 内容確認ボタン
+        &__chk-btn {
+            pointer-events: none;
+            color: $color-white;
+            font-size: get_vw(18);
+            letter-spacing: get_vw(2.5);
+            font-weight: 900;
+            width: get_vw(280);
+            $height: get_vw(40);
+            height: $height;
+            line-height: $height;
+            background-color: $color-red;
+            filter: grayscale(100%);
+            text-align: center;
+            margin: get_vw(20) auto;
+
+            &.is-checked {
+                pointer-events: all;
+                cursor: pointer;
+                filter: none;
+                transition: filter 0.1s ease;
+            }
+        }
+
+        // 確認後出現するエリア
+        &__checked {
+            display: flex;
+            flex-direction: row;
+            margin: $block-size auto;
+            justify-content: center;
+
+            > input {
+                display: none;
+            }
+
+            &__submit,
+            &__goback {
+                cursor: pointer;
+                $height: get_vw(40);
+                height: $height;
+                width: get_vw(180);
+                background-color: $color-red;
+                color: $color-white;
+                font-size: get_vw(19);
+                line-height: $height;
+                text-align: center;
+                margin: $block-size;
+            }
+        }
+    }
+
+    // 確認後
+    &.is-checked {
+        #{$form}-field {
+            &__input {
+                > input,
+                textarea {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    @media #{$media-sm} {
+        width: calc(100% - #{$block-size_sm * 2});
+        margin: 0 auto get_vw_sp(40);
+
+        // 一項目
+        &-field {
+            $height: get_vw_sp(60);
+            grid-template-columns: 1fr;
+            grid-template-rows: minmax(get_vw_sp(20), auto);
+            grid-column-gap: 0;
+            grid-row-gap: get_vw_sp(10);
+            margin: 0 0 get_vw_sp(20);
+
+            $field: &;
+
+            // フィールド名
+            &__name {
+                line-height: get_vw_sp(20);
+                font-size: get_vw_sp(11);
+                letter-spacing: get_vw_sp(1.8);
+                padding: 0 0 0 get_vw_sp(20);
+
+                // 水色背景
+                &::before {
+                    height: get_vw_sp(20);
+                    width: 50%;
+                }
+            }
+
+            // フィールド入力欄
+            &__input {
+                min-height: $height/2;
+
+                > input,
+                textarea {
+                    min-height: $height/2;
+                    padding: 0 $block-size_sm/2;
+                    font-size: 16px;
+                }
+
+                &::placeholder {
+                    line-height: $height/2;
+                }
+
+                // バリデーションエラーポップアップ
+                .validate-error {
+                    line-height: calc(#{$height}/ 2 - #{get_vw_sp(2)});
+                    font-size: get_vw_sp(8);
+                }
+            }
+
+            // お問い合わせ内容
+            &#{$form}-content {
+                #{$field}__input {
+                    height: get_vw_sp(220);
+                    line-height: 1.7;
+                }
+            }
+
+            // 必須フィールド 赤マーク
+            &.required {
+                #{$field}__name {
+                    // 赤の※
+                    &::after {
+                        font-size: get_vw_sp(10);
+                        width: get_vw_sp(10);
+                        height: get_vw_sp(10);
+                    }
+                }
+            }
+        }
+
+        // 確認・同意エリア
+        &-confirm {
+            // 個人情報保護方針に同意エリア
+            &__policy {
+                .agree-label {
+                    $box-wd: get_vw_sp(14);
+                    padding: 0 0 0 calc(#{$box-wd} + #{get_vw_sp(2)});
+                    font-size: get_vw_sp(12);
+
+                    // 四角の枠
+                    &::before {
+                        top: get_vw_sp(2);
+                        content: '';
+                        width: $box-wd;
+                        height: $box-wd;
+                        border: get_vw_sp(2) solid $color-black;
+                    }
+
+                    // チェック
+                    &::after {
+                        font-size: get_vw_sp(20);
+                        width: $box-wd;
+                        height: $box-wd;
+                        line-height: $box-wd;
+                    }
+                }
+
+                .notice {
+                    font-size: get_vw_sp(10);
+                    line-height: 1.5;
+                }
+            }
+
+            // 内容確認ボタン
+            &__chk-btn {
+                font-size: get_vw_sp(18);
+                letter-spacing: get_vw_sp(2.5);
+                width: get_vw_sp(260);
+                $height: get_vw_sp(40);
+                height: $height;
+                line-height: $height;
+                margin: get_vw_sp(20) auto;
+            }
+
+            // 確認後出現するエリア
+            &__checked {
+                margin: $block-size_sm auto;
+
+                > input {
+                    display: none;
+                }
+
+                &__submit,
+                &__goback {
+                    $height: get_vw_sp(30);
+                    height: $height;
+                    width: get_vw_sp(100);
+                    font-size: get_vw_sp(12);
+                    line-height: $height;
+                    margin: $block-size_sm;
+                }
+            }
+        }
+    }
+}

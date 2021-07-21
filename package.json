@@ -1,0 +1,52 @@
+{
+  "name": "bft",
+  "version": "1.0.0",
+  "description": "BFT corporate website",
+  "author": "TakahashiNaoki",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nuxt-ts",
+    "build": "nuxt-ts build --modern=client",
+    "build:stg": "cross-env NODE_ENV=\"staging\" nuxt-ts build --modern=client",
+    "build:prod": "cross-env NODE_ENV=\"production\" nuxt-ts build --modern=client",
+    "start": "HOST=127.0.0.1 nuxt-ts start",
+    "start:stg": "cross-env NODE_ENV=\"staging\" nuxt-ts start",
+    "start:prod": "cross-env NODE_ENV=\"production\" nuxt-ts start",
+    "generate": "cross-env NODE_ENV=\"development\" nuxt-ts generate --modern=client",
+    "generate:stg": "cross-env NODE_ENV=\"staging\" nuxt-ts generate --modern=client",
+    "generate:prod": "cross-env NODE_ENV=\"production\" nuxt-ts generate --modern=client",
+    "lint:js": "prettier src/**/*{.js,.vue}",
+    "lint": "yarn lint:js",
+    "lint:fix": "yarn lint:js --write"
+  },
+  "browserslist": [
+    "last 2 version",
+    "IE 11"
+  ],
+  "dependencies": {
+    "@nuxt/typescript-runtime": "2.0.1",
+    "@nuxtjs/axios": "5.3.6",
+    "@nuxtjs/google-analytics": "2.2.0",
+    "@nuxtjs/sitemap": "2.4.0",
+    "@nuxtjs/style-resources": "1.0.0",
+    "core-js": "3.8.3",
+    "cross-env": "7.0.3",
+    "element-closest-polyfill": "1.0.2",
+    "normalize-wheel": "1.0.1",
+    "nuxt": "2.14.12",
+    "nuxt-user-agent": "1.2.1",
+    "ress": "3.0.0",
+    "sass-loader": "^10.1.1",
+    "vee-validate": "<3.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.12.17",
+    "@nuxt/types": "2.14.12",
+    "@nuxt/typescript-build": "2.0.4",
+    "@types/fibers": "3.1.0",
+    "@types/sass": "1.16.0",
+    "fibers": "5.0.0",
+    "prettier": "2.2.1",
+    "sass": "1.32.5"
+  }
+}

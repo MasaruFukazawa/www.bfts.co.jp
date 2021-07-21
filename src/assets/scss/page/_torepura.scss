@@ -1,0 +1,57 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+@import '~assets/scss/page/biz/biz-service-sec';
+
+.page-torepura {
+    min-height: 100vh;
+
+    .heading-en {
+        @include heading;
+
+        .heading__img {
+            background-image: url('~assets/img/service/torepura.jpg');
+            background-position: 100% 40%;
+            background-size: get_vw(340) auto;
+        }
+
+        &.under-en-title {
+            height: get_vw(80);
+            text-align: right;
+            padding: 0 get_vw(20) 0 get_vw(70);
+        }
+
+        @media #{$media-sm} {
+            .heading__img {
+                background-size: get_vw_sp(150) auto;
+            }
+
+            &.under-en-title {
+                height: get_vw_sp(40);
+                padding: 0 get_vw_sp(7) 0 get_vw_sp(46);
+            }
+        }
+    }
+
+    .torepura__desc {
+        @include under_desc(true);
+
+        .desc__txt {
+            > h3 {
+                font-size: get_vw(16);
+                letter-spacing: 0;
+            }
+        }
+
+        @media #{$media-sm} {
+            margin-top: get_vw_sp(150);
+
+            .desc__txt {
+                > h3 {
+                    font-size: get_vw_sp(16);
+                    line-height: 1.66;
+                    letter-spacing: get_vw_sp(1);
+                }
+            }
+        }
+    }
+}

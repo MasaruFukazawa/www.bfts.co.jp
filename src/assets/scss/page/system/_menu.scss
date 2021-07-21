@@ -1,0 +1,145 @@
+// side は赤背景の方向
+@mixin system_menu($side: right, $img-url: url('~assets/img/service/si.jpg')) {
+    position: relative;
+    width: get_vw(880);
+
+    // サイドスペースの幅
+    $space: get_vw(120);
+    $bg-width: get_vw(200);
+
+    @if $side==right {
+        margin: 0 auto 0 $space;
+    } @else {
+        margin: 0 $space 0 auto;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    &:not(:last-of-type) {
+        margin-bottom: get_vw(80);
+    }
+
+    // 赤背景
+    .side-red {
+        @include side-red($side);
+        $width: $bg-width;
+        width: $width;
+        #{$side}: calc(#{$width} * -1);
+    }
+
+    // 「システム開発」
+    &__title {
+        @include heading-h2($color-white, $color-skyblue);
+
+        @if $side==right {
+            margin: 0 0 0 auto;
+        } @else {
+            margin: 0 auto 0 0;
+        }
+    }
+
+    &__desc {
+        background-color: $color-white;
+        padding: $block-size;
+
+        &__first {
+            font-size: get_vw(14);
+            line-height: 1.8;
+            letter-spacing: get_vw(0.5);
+            margin: 0 0 get_vw(20);
+        }
+
+        // サブタイトル
+        &__about {
+            line-height: 1;
+            font-size: get_vw(18);
+            font-weight: 900;
+            letter-spacing: get_vw(0.5);
+            text-align: $side;
+            margin: get_vw(8) 0 0;
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: get_vw(30) 0 0;
+
+            &__img {
+                width: get_vw(450);
+                height: get_vw(200);
+                background-image: $img-url;
+                background-size: cover;
+            }
+
+            // 説明分
+            &__txt {
+                font-size: get_vw(14);
+                line-height: 2;
+                letter-spacing: get_vw(0.5);
+                max-width: get_vw(350);
+            }
+        }
+    }
+
+    @media #{$media-sm} {
+        width: get_vw_sp(280);
+        // サイドスペースの幅
+        $space: get_vw_sp(10);
+
+        @if $side==right {
+            margin: 0 auto 0 $space;
+        } @else {
+            margin: 0 $space 0 auto;
+        }
+
+        &:not(:last-of-type) {
+            margin-bottom: get_vw_sp(40);
+        }
+
+        // 赤背景
+        .side-red {
+            $width: calc(100vw - (100% + #{$space}));
+            width: $width;
+            #{$side}: calc(#{$width} * -1);
+        }
+
+        &__desc {
+            padding: $block-size_sm;
+
+            &__first {
+                margin: get_vw_sp(5) 0 0;
+                font-size: get_vw_sp(12);
+                letter-spacing: get_vw_sp(0.5);
+            }
+
+            // サブタイトル
+            &__about {
+                line-height: 1.6;
+                font-size: get_vw_sp(14);
+                letter-spacing: get_vw_sp(0.5);
+                margin: get_vw_sp(15) 0 0;
+            }
+
+            &__info {
+                flex-direction: column;
+                margin: get_vw_sp(15) 0 0;
+
+                &__img {
+                    width: get_vw_sp(260);
+                    height: get_vw_sp(130);
+                }
+
+                // 説明分
+                &__txt {
+                    margin: get_vw_sp(15) 0 0;
+                    font-size: get_vw_sp(12);
+                    letter-spacing: get_vw_sp(0.5);
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}

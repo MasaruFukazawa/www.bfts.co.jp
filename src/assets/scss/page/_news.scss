@@ -1,0 +1,246 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.page-news {
+    min-height: 100vh;
+    z-index: 2;
+}
+
+.heading-en {
+    @include heading;
+}
+
+.news-list {
+    width: get_vw(700);
+    margin: get_vw(160) auto 0;
+    display: flex;
+    flex-direction: column;
+
+    // ニュース単体
+    .news {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: $color-white;
+        padding: 0 0 $block-size * 1.2;
+        margin: 0 0 $block-size * 2;
+
+        &.has-img {
+            min-height: get_vw(160);
+        }
+
+        // 日付&カテゴリタグ
+        &__info {
+            $info-height: get_vw(20);
+            width: 100%;
+            height: $info-height;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin: 0 0 get_vw(15);
+
+            &__day {
+                width: $block-size * 5;
+                color: $color-white;
+                font-size: get_vw(14);
+                font-weight: 900;
+                line-height: $info-height;
+                background-color: $color-skyblue;
+                text-align: center;
+                margin: 0 $block-size 0 0;
+            }
+
+            &__tag {
+                color: $color-white;
+                font-size: get_vw(10);
+                line-height: $info-height;
+                background-color: $color-black;
+                text-align: center;
+                padding: 0 get_vw(11);
+            }
+        }
+
+        // タイトル
+        &__title {
+            font-size: get_vw(16);
+            font-weight: 900;
+            line-height: 1.4;
+            color: $color-black;
+            margin: 0 0 get_vw(13);
+            padding: 0 0 0 $block-size;
+            letter-spacing: 0;
+            max-width: get_vw(475);
+        }
+
+        // 本文
+        &__text {
+            max-width: get_vw(440);
+            font-size: get_vw(14);
+            color: $color-black;
+            padding: 0 0 0 $block-size;
+            letter-spacing: 0;
+            line-height: 1.46;
+            // max-height: get_vw(60);
+            overflow: hidden;
+
+            // v-htmlでレンダリングされる要素
+			&::v-deep {
+				.disnone {
+					display: none;
+				}
+				a {
+					color: $color-red;
+				}
+			}
+        }
+
+        &__more {
+            cursor: pointer;
+            width: $block-size * 4;
+            height: $block-size;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: $color-red;
+            color: $color-white;
+            text-align: center;
+            font-size: get_vw(12);
+            font-weight: 900;
+            letter-spacing: get_vw(1);
+        }
+
+        &__img {
+            width: get_vw(220);
+            height: get_vw(160);
+            position: absolute;
+            top: 0;
+            right: 0;
+            overflow: hidden;
+        }
+    }
+
+    @media #{$media-sm} {
+        width: calc(100% - #{$block-size_sm * 2});
+        margin: get_vw_sp(90) auto 0;
+        // max-height: 56.3%;
+        max-height: 59%;
+
+        .news {
+            padding: 0 0 get_vw_sp(20);
+            margin: 0 0 $block-size * 2;
+
+            &.has-img {
+                min-height: initial;
+                padding: 0 0 get_vw_sp(170);
+            }
+
+            // 日付&カテゴリタグ
+            &__info {
+                $info-height: get_vw_sp(20);
+                height: $info-height;
+                margin: 0 0 get_vw_sp(10);
+
+                &__day {
+                    width: $block-size_sm * 12;
+                    font-size: get_vw_sp(14);
+                    line-height: $info-height;
+                    margin: 0 $block-size_sm 0 0;
+                }
+
+                &__tag {
+                    font-size: get_vw_sp(10);
+                    line-height: $info-height;
+                    padding: 0 get_vw_sp(10);
+                }
+            }
+
+            // タイトル
+            &__title {
+                font-size: get_vw_sp(16);
+                margin: 0 0 get_vw_sp(10);
+                padding: 0 0 0 $block-size_sm;
+                max-width: initial;
+            }
+
+            // 本文
+            &__text {
+                font-size: get_vw_sp(12);
+                padding: 0 0 0 $block-size_sm;
+                line-height: 1.6;
+                max-width: initial;
+                word-break: break-all;
+            }
+
+            &__more {
+                right: get_vw_sp(0);
+                width: get_vw_sp(80);
+                height: get_vw_sp(20);
+                font-size: get_vw_sp(12);
+                letter-spacing: get_vw_sp(1);
+            }
+
+            &__img {
+                width: 100%;
+                height: get_vw_sp(150);
+                bottom: 0;
+                top: initial;
+                right: 0;
+            }
+        }
+    }
+}
+
+// ページャー
+.pager {
+    display: flex;
+    flex-direction: row;
+    margin: get_vw(20) auto get_vw(80);
+    width: get_vw(700);
+    justify-content: center;
+
+    &__btn {
+        //
+        cursor: pointer;
+        $height: get_vw(40);
+        height: $height;
+        width: $height;
+        border: 2px solid $color-red;
+        background-color: $color-white;
+        text-align: center;
+        line-height: $height;
+        font-size: get_vw(14);
+        letter-spacing: 0;
+        color: $color-red;
+        font-weight: 900;
+
+        &:not(:last-of-type) {
+            margin: 0 $block-size 0 0;
+        }
+
+        &.current,
+        &:hover {
+            transition: all 0.1s ease;
+            background-color: $color-red;
+            color: $color-white;
+        }
+    }
+
+    @media #{$media-sm} {
+        margin: get_vw_sp(20) auto get_vw_sp(60);
+        width: get_vw_sp(270);
+
+        &__btn {
+            //
+            $height: get_vw_sp(30);
+            height: $height;
+            width: $height;
+            line-height: $height;
+            font-size: get_vw_sp(10);
+
+            &:not(:last-of-type) {
+                margin: 0 $block-size_sm 0 0;
+            }
+        }
+    }
+}

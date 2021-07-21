@@ -1,0 +1,176 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.access {
+    $this: &;
+    width: 100%;
+    background-color: $color-black;
+    margin: 0 0 get_vw(75);
+
+    h3 {
+        color: $color-white;
+        font-weight: 900;
+        font-size: get_vw(14);
+        margin: get_vw(60) 0 0;
+    }
+
+    &__in {
+        position: relative;
+        width: get_vw(800);
+        margin: 0 auto;
+        padding: get_vw(60) 0 get_vw(170);
+    }
+
+    &__title {
+        @include heading-h2($color-black, $color-white);
+    }
+
+    &__info {
+        margin: get_vw(60) 0 0;
+        display: grid;
+        grid-template-columns: get_vw(68) 1fr;
+        grid-template-rows: repeat(auto);
+        gap: get_vw(20) get_vw(8);
+        // grid-column-gap: get_vw(8);
+        // grid-row-gap: get_vw(20);
+
+        @include ie-only {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+
+            #{$this} {
+                &__info__txt {
+                    &:nth-of-type(2n + 1),
+                    &:nth-of-type(2n) {
+                        margin: 0 0 get_vw(20);
+                    }
+                    &:nth-of-type(2n + 1) {
+                        width: get_vw(68);
+                        margin-right: get_vw(8);
+                    }
+                    &:nth-of-type(2n) {
+                        width: calc(100% - #{get_vw(68 + 8)});
+                    }
+                }
+            }
+        }
+
+        &__txt {
+            position: relative;
+            font-size: get_vw(14);
+            font-weight: 900;
+            color: $color-white;
+            letter-spacing: get_vw(0.5);
+            line-height: 1.7;
+
+            &.multi-line {
+                line-height: 2;
+            }
+
+            &:nth-of-type(2n + 1) {
+                &::after {
+                    content: '：';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+    }
+
+	&__other {
+		margin: 30px 0;
+	}
+
+    &__map {
+        width: get_vw(500);
+        height: get_vw(230);
+        position: absolute;
+        top: get_vw(227);
+        right: 0;
+    }
+
+    $parent: &;
+
+    &.company {
+        #{$parent}__info {
+            margin: get_vw(20) 0 0;
+        }
+        #{$parent}__map {
+            height: get_vw(270);
+            top: get_vw(295);
+            right: calc(#{$block-size * 4} * -1);
+
+            &-2 {
+                top: get_vw(800);
+            }
+        }
+
+        #{$parent}__in {
+            padding-bottom: get_vw(250);
+        }
+    }
+
+    @media #{$media-sm} {
+        margin: 0 0 get_vw_sp(55);
+
+        h3 {
+            font-size: get_vw_sp(14);
+            margin: get_vw_sp(20) 0 0;
+            &.heading_2 {
+                margin: get_vw_sp(150) 0 0;
+            }
+        }
+
+        &__in {
+            width: 100%;
+            padding: get_vw_sp(30) 0 get_vw_sp(180) get_vw_sp(30);
+        }
+
+        //
+        &__info {
+            margin: get_vw_sp(20) 0 0;
+            grid-template-columns: get_vw_sp(58) 1fr;
+            grid-template-rows: minmax(get_vw_sp(15), auto);
+            grid-column-gap: get_vw_sp(8);
+            grid-row-gap: get_vw_sp(20);
+            max-width: get_vw_sp(453);
+            padding: 0 get_vw_sp(30) 0 0;
+
+            &__txt {
+                font-size: get_vw_sp(12);
+                letter-spacing: get_vw_sp(0.5);
+            }
+        }
+
+        &__map {
+            top: unset;
+			bottom: get_vw_sp(20);
+            width: get_vw_sp(280);
+            height: get_vw_sp(150);
+            left: get_vw_sp(30);
+        }
+
+        &.company {
+            #{$parent}__info {
+                margin: get_vw__sp(20) 0 0;
+            }
+            #{$parent}__map {
+                width: calc(100% - #{$block-size_sm * 6});
+                // height: get_vw_sp(140);
+                top: get_vw_sp(740);
+                right: $block-size_sm * 3;
+                left: initial;
+                &-2 {
+                    top: initial;
+                    bottom: get_vw_sp(10);
+                }
+            }
+
+            #{$parent}__in {
+                padding-bottom: get_vw_sp(100);
+            }
+        }
+    }
+}

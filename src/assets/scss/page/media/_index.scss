@@ -1,0 +1,35 @@
+@import '../../components/module/heading';
+@import '../../components/module/under_common';
+
+.page-media {
+    min-height: 100vh;
+
+    .heading-en {
+        @include heading;
+
+        .heading__img {
+            background-image: url('~assets/img/service/choitore.jpg');
+            background-position: 100% 40%;
+            background-size: get_vw(340) auto;
+        }
+
+        @media #{$media-sm} {
+            .heading__img {
+                background-size: get_vw_sp(150) auto;
+            }
+        }
+    }
+
+    .description {
+        @include under_desc(false);
+
+        &:not(:first-of-type) {
+            margin-top: get_vw(80);
+        }
+        .desc__txt {
+            > h3 {
+                line-height: 2;
+            }
+        }
+    }
+}

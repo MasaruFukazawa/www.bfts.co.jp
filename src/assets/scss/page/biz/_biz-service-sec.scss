@@ -1,0 +1,912 @@
+// なぜやるのか
+.sec-why {
+    $left-space: get_vw(200);
+    position: relative;
+    width: get_vw(760);
+    margin: 0 auto get_vw(80) $left-space;
+    display: flex;
+    flex-direction: column;
+
+    .side-red {
+        @include side-red(left);
+        width: $left-space;
+        left: calc(#{$left-space} * -1);
+    }
+
+    &__title {
+        @include heading-h2($color-white, $color-skyblue);
+        margin: 0 auto 0 0;
+    }
+
+    // インナー
+    &__in {
+        width: 100%;
+        background-color: $color-white;
+        padding: $block-size;
+    }
+
+    // h3
+    &__about {
+        font-size: get_vw(14);
+        font-weight: 900;
+        letter-spacing: get_vw(2);
+        line-height: 2;
+    }
+
+    // 説明文
+    &__desc {
+        margin: $block-size 0;
+        font-size: get_vw(14);
+        line-height: 1.8;
+        letter-spacing: get_vw(0.6);
+    }
+
+    &__points {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        &__img {
+            width: get_vw(280);
+            height: get_vw(160);
+            background-image: url('~assets/img/service/choitore.jpg');
+            background-size: cover;
+            background-position: 0 0;
+        }
+
+        // チョイトレの場合
+        &.choitore {
+            .sec-why__points__img {
+                background-image: url('~assets/img/service/choitore.jpg');
+            }
+        }
+
+        &.torepura {
+            .sec-why__points__img {
+                background-image: url('~assets/img/service/torepura.jpg');
+            }
+        }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+
+            // 各ポイント
+            &__point {
+                color: $color-red;
+                font-size: get_vw(14);
+                font-weight: 900;
+                line-height: 2;
+                letter-spacing: get_vw(2.2);
+            }
+        }
+    }
+
+    &__img {
+        width: 100%;
+        overflow: hidden;
+        height: get_vw(160);
+        background-image: url('~assets/img/service/ginotore.jpg');
+        background-position: 0 55%;
+        background-size: 100% auto;
+
+        &.choitore {
+            background-image: url('~assets/img/service/choitore.jpg');
+        }
+        &.torepura {
+            background-image: url('~assets/img/service/torepura.jpg');
+        }
+    }
+
+    // 赤背景
+    .red-bg {
+        position: absolute;
+        $width: get_vw(640);
+        width: $width;
+        top: 100%;
+        right: calc((100vw - (#{$left-space} + 100%)) * -1);
+
+        > div {
+            position: absolute;
+            height: $block-size;
+            background-color: $color-red;
+        }
+
+        &__1 {
+            width: calc(100% - #{$block-size * 9});
+            top: 0;
+            right: $block-size * 9;
+        }
+
+        &__2 {
+            width: calc(100% - #{$block-size * 5});
+            top: $block-size * 1;
+            right: $block-size * 4;
+        }
+
+        &__3 {
+            width: calc(100% - #{$block-size * 4});
+            top: $block-size * 2;
+            right: $block-size * 2;
+        }
+
+        &__4 {
+            width: calc(100% - #{$block-size * 3});
+            top: $block-size * 3;
+            right: 0;
+        }
+
+        @media #{$media-sm} {
+            $width: get_vw_sp(250);
+            width: $width;
+            right: calc(#{$block-size_sm} * -3);
+
+            > div {
+                height: $block-size_sm;
+            }
+
+            &__1 {
+                width: calc(100% - #{$block-size_sm * 5});
+                top: 0;
+                right: $block-size_sm * 5;
+            }
+
+            &__2 {
+                width: calc(100% - #{$block-size_sm * 5});
+                top: $block-size_sm * 1;
+                right: $block-size_sm * 4;
+            }
+
+            &__3 {
+                width: calc(100% - #{$block-size_sm * 4});
+                top: $block-size_sm * 2;
+                right: $block-size_sm * 2;
+            }
+
+            &__4 {
+                width: calc(100% - #{$block-size_sm * 3});
+                top: $block-size_sm * 3;
+                right: 0;
+            }
+        }
+    }
+
+    @media #{$media-sm} {
+        $left-space: get_vw_sp(30);
+        width: calc(100% - #{$left-space * 2});
+        margin: 0 auto $block-size_sm * 4;
+
+        .side-red {
+            width: $left-space;
+            left: calc(#{$left-space} * -1);
+        }
+
+        &__title {
+            margin: 0 auto 0 0;
+        }
+
+        // インナー
+        &__in {
+            padding: $block-size_sm;
+        }
+
+        // h3
+        &__about {
+            font-size: get_vw_sp(14);
+            letter-spacing: get_vw_sp(2);
+            line-height: 1.6;
+        }
+
+        // 説明文
+        &__desc {
+            margin: $block-size_sm * 2 0;
+            font-size: get_vw_sp(12);
+            letter-spacing: get_vw_sp(0.4);
+            line-height: 2;
+        }
+
+        &__points {
+            flex-direction: column;
+
+            &__img {
+                width: 100%;
+                height: get_vw_sp(120);
+            }
+
+            &__list {
+                margin: get_vw_sp(20) 0;
+
+                // 各ポイント
+                &__point {
+                    font-size: get_vw_sp(12);
+                    line-height: 1.54;
+                    letter-spacing: get_vw_sp(1.9);
+                }
+            }
+        }
+    }
+}
+
+// カリキュラム
+.sec-cur {
+    $right-space: get_vw(200);
+    position: relative;
+    width: get_vw(760);
+    margin: 0 $right-space get_vw(80) auto;
+    display: flex;
+    flex-direction: column;
+
+    .side-red {
+        @include side-red(right);
+        width: $right-space;
+        right: calc(#{$right-space} * -1);
+    }
+
+    &__title {
+        @include heading-h2($color-white, $color-skyblue);
+        margin: 0 0 0 auto;
+    }
+
+    // インナー
+    &__in {
+        width: 100%;
+        background-color: $color-white;
+        padding: $block-size;
+    }
+
+    // 赤文字サブタイトル
+    &__subtitle {
+        color: $color-red;
+        font-size: get_vw(14);
+        font-weight: 900;
+        letter-spacing: get_vw(2);
+        line-height: 1;
+        margin: $block-size 0;
+    }
+
+    &__indent {
+        padding: 0 0 0 $block-size;
+    }
+
+    &__txt14 {
+        font-size: get_vw(14);
+        letter-spacing: get_vw(0.5);
+        line-height: 1.9;
+    }
+
+    &__txt12 {
+        margin: $block-size/2 0 $block-size;
+        font-size: get_vw(12);
+        letter-spacing: get_vw(0.5);
+        line-height: 1.7;
+    }
+
+    &__txt12,
+    &__txt14 {
+        &.fw900 {
+            font-weight: 900;
+        }
+        > .under {
+            text-decoration: underline;
+        }
+    }
+
+    &__points {
+        list-style: none;
+        display: grid;
+        grid-template-columns: get_vw(390) 1fr;
+        grid-template-rows: get_vw(15) get_vw(15) get_vw(15) get_vw(15);
+        grid-column-gap: get_vw(40);
+        grid-row-gap: get_vw(12);
+        margin: get_vw(35) 0;
+
+        &__point {
+            position: relative;
+            font-weight: 900;
+            font-size: get_vw(14);
+            letter-spacing: get_vw(2);
+            line-height: 1;
+            padding: 0 0 0 get_vw(30);
+
+            .sm {
+                font-size: get_vw(12);
+                letter-spacing: get_vw(1);
+                line-height: 2;
+            }
+
+            &::before {
+                position: absolute;
+                left: 0;
+            }
+
+            // 番号割当
+            @for $n from 1 to 8 {
+                &:nth-child(#{$n}) {
+                    &::before {
+                        content: '#{$n}.';
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                grid-area: 1 / 1 / 2 / 2;
+            }
+
+            &:nth-child(2) {
+                grid-area: 2 / 1 / 4 / 2;
+            }
+
+            &:nth-child(3) {
+                grid-area: 4 / 1 / 5 / 2;
+            }
+
+            &:nth-child(4) {
+                grid-area: 1 / 2 / 2 / 3;
+            }
+
+            &:nth-child(5) {
+                grid-area: 2 / 2 / 3 / 3;
+            }
+
+            &:nth-child(6) {
+                grid-area: 3 / 2 / 4 / 3;
+            }
+
+            &:nth-child(7) {
+                grid-area: 4 / 2 / 5 / 3;
+            }
+        }
+    }
+
+    &__menus {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: $block-size * 2 $block-size;
+        background-color: $color-white;
+
+        &__menu {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+
+            &__title {
+                color: $color-red;
+                font-size: get_vw(14);
+                line-height: 1;
+                letter-spacing: get_vw(1.2);
+
+                .notice {
+                    font-size: get_vw(12);
+                    letter-spacing: get_vw(0.2);
+                }
+            }
+
+            &__name {
+                margin: get_vw(15) 0 0;
+                font-size: get_vw(14);
+                line-height: 2;
+                letter-spacing: get_vw(0.6);
+
+                .notice {
+                    font-size: get_vw(10);
+                    line-height: 1.2;
+                }
+            }
+        }
+    }
+
+    // 赤背景
+    .red-bg {
+        position: absolute;
+        $width: get_vw(640);
+        width: $width;
+        top: 100%;
+        left: calc((100vw - (#{$right-space} + 100%)) * -1);
+
+        > div {
+            position: absolute;
+            height: $block-size;
+            background-color: $color-red;
+        }
+
+        &__1 {
+            width: calc(100% - #{$block-size * 10});
+            top: 0;
+            left: $block-size * 10;
+        }
+
+        &__2 {
+            width: calc(100% - #{$block-size * 6});
+            top: $block-size * 1;
+            left: $block-size * 4;
+        }
+
+        &__3 {
+            width: calc(100% - #{$block-size * 3});
+            top: $block-size * 2;
+            left: $block-size * 1;
+        }
+
+        &__4 {
+            width: calc(100% - #{$block-size * 4});
+            top: $block-size * 3;
+            left: 0;
+        }
+
+        @media #{$media-sm} {
+            $width: get_vw_sp(270);
+            width: $width;
+            left: calc(#{$block-size_sm} * -3);
+
+            > div {
+                height: $block-size_sm;
+            }
+
+            &__1 {
+                width: calc(100% - #{$block-size_sm * 7});
+                top: 0;
+                left: $block-size_sm * 7;
+            }
+
+            &__2 {
+                width: calc(100% - #{$block-size_sm * 6});
+                top: $block-size_sm * 1;
+                left: $block-size_sm * 4;
+            }
+
+            &__3 {
+                width: calc(100% - #{$block-size_sm * 3});
+                top: $block-size_sm * 2;
+                left: $block-size_sm * 1;
+            }
+
+            &__4 {
+                width: calc(100% - #{$block-size_sm * 4});
+                top: $block-size_sm * 3;
+                left: 0;
+            }
+        }
+    }
+
+    @media #{$media-sm} {
+        $right-space: get_vw_sp(30);
+        width: calc(100% - #{$right-space * 2});
+        margin: 0 auto $block-size_sm * 4;
+
+        .side-red {
+            width: $right-space;
+            right: calc(#{$right-space} * -1);
+        }
+
+        // インナー
+        &__in {
+            padding: $block-size_sm;
+        }
+
+        // 赤文字サブタイトル
+        &__subtitle {
+            font-size: get_vw_sp(12);
+            letter-spacing: get_vw_sp(1.9);
+            margin: $block-size_sm 0;
+        }
+
+        &__txt14 {
+            font-size: get_vw_sp(12);
+            letter-spacing: get_vw_sp(0.5);
+            line-height: 1.9;
+
+            &.fw900 {
+                font-size: get_vw_sp(14);
+                line-height: 1.7;
+            }
+        }
+
+        &__txt12 {
+            margin: $block-size_sm 0;
+            font-size: get_vw_sp(12);
+            letter-spacing: get_vw_sp(0.5);
+        }
+
+        &__points {
+            display: flex;
+            flex-direction: column;
+            margin: get_vw_sp(20) 0;
+
+            &__point {
+                font-size: get_vw_sp(14);
+                letter-spacing: get_vw_sp(2);
+                padding: 0 0 0 get_vw_sp(30);
+
+                .sm {
+                    font-size: get_vw_sp(12);
+                    letter-spacing: get_vw_sp(1);
+                    line-height: 1.75;
+                }
+
+                &:not(:last-child) {
+                    margin: 0 0 get_vw_sp(10);
+                }
+            }
+        }
+
+        &__menus {
+            flex-direction: column;
+            padding: $block-size_sm * 2 $block-size_sm;
+
+            &__menu {
+                width: 100%;
+
+                &:not(:last-of-type) {
+                    margin: 0 0 get_vw_sp(20);
+                }
+
+                &__title {
+                    font-size: get_vw_sp(12);
+                    line-height: 1;
+                    letter-spacing: get_vw_sp(1.2);
+
+                    .notice {
+                        font-size: get_vw_sp(10);
+                        letter-spacing: get_vw_sp(0.2);
+                    }
+                }
+
+                &__name {
+                    margin: get_vw_sp(8) 0 0;
+                    font-size: get_vw_sp(12);
+                    letter-spacing: get_vw_sp(0.6);
+
+                    .notice {
+                        font-size: get_vw_sp(10);
+                        line-height: 1.2;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 受講者の声
+.sec-stu {
+    $left-space: get_vw(200);
+    position: relative;
+    width: get_vw(760);
+    margin: 0 auto get_vw(80) $left-space;
+    display: flex;
+    flex-direction: column;
+
+    .side-red {
+        @include side-red(left);
+        width: $left-space;
+        left: calc(#{$left-space} * -1);
+    }
+
+    &__title {
+        @include heading-h2($color-white, $color-skyblue);
+        margin: 0 auto 0 0;
+    }
+
+    // 受講者の声
+    &__voices {
+        width: 100%;
+        background-color: $color-white;
+        padding: $block-size;
+        display: flex;
+        flex-direction: column;
+        max-height: get_vw(320);
+
+        &__voice {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .voice__img {
+                min-width: get_vw(320);
+                max-width: get_vw(360);
+            }
+
+            .voice__txt {
+                max-width: get_vw(340);
+                font-size: get_vw(14);
+                font-weight: 900;
+                line-height: 1.3;
+                letter-spacing: get_vw(2);
+            }
+        }
+
+        // 声が二つある場合
+        &.two {
+            .sec-stu__voices__voice {
+                .voice__img {
+                    max-width: get_vw(320);
+                    max-height: get_vw(100);
+                    overflow: hidden;
+
+                    > img {
+                        margin: get_vw(-90) 0 0;
+                    }
+                }
+
+                .voice__txt {
+                    position: relative;
+                    padding: 0 0 0 get_vw(30);
+
+                    &::before {
+                        content: '1';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+
+                &:nth-child(1) {
+                    margin: 0 0 get_vw(20);
+
+                    .voice__txt {
+                        &::before {
+                            content: '1.';
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+                    .voice__txt {
+                        &::before {
+                            content: '2.';
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media #{$media-sm} {
+        $left-space: get_vw_sp(30);
+        width: calc(100% - #{$left-space * 2});
+        margin: 0 auto get_vw_sp(40);
+
+        .side-red {
+            width: $left-space;
+            left: calc(#{$left-space} * -1);
+        }
+
+        // 受講者の声
+        &__voices {
+            width: 100%;
+            padding: $block-size_sm;
+            max-height: initial;
+
+            &__voice {
+                flex-direction: column;
+
+                .voice__img {
+                    min-width: initial;
+                    max-width: initial;
+                    width: 100%;
+                }
+
+                .voice__txt {
+                    max-width: initial;
+                    font-size: get_vw_sp(12);
+                    line-height: 1.6;
+                    margin: $block-size_sm 0 0;
+                    letter-spacing: get_vw_sp(1.4);
+                }
+            }
+
+            // 声が二つある場合
+            &.two {
+                .sec-stu__voices__voice {
+                    .voice__img {
+                        max-width: initial;
+                        max-height: get_vw_sp(76);
+
+                        > img {
+                            margin: get_vw_sp(-60) 0 0;
+                        }
+                    }
+
+                    .voice__txt {
+                        padding: 0 0 0 get_vw_sp(30);
+                    }
+
+                    &:nth-child(1) {
+                        margin: 0 0 get_vw_sp(15);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 費用
+.sec-price {
+    position: relative;
+    width: get_vw(640);
+    margin: 0 auto get_vw(100);
+    display: flex;
+    flex-direction: column;
+    background-color: $color-black;
+    padding: $block-size $block-size * 2 $block-size * 2;
+
+    &__title {
+        @include heading-h2($color-skyblue, transparent);
+        margin: 0 auto $block-size 0;
+    }
+
+    &__in {
+        background-color: $color-white;
+        padding: $block-size * 1.2 $block-size * 2;
+
+        .line-white {
+            font-size: get_vw(18);
+            font-weight: 900;
+            line-height: 3;
+
+            &.fs12 {
+                font-size: get_vw(12);
+                line-height: 1.6;
+                font-weight: 500;
+            }
+        }
+
+        .line-black {
+            background-color: $color-black;
+            color: $color-white;
+            font-weight: 900;
+            letter-spacing: get_vw(2);
+            font-size: get_vw(14);
+            $height: get_vw(27);
+            height: $height;
+            line-height: $height;
+            margin: 0 0 get_vw(13);
+
+            //
+            // カラム数により分ける
+            //
+            &.three {
+                padding: 0 get_vw(35) 0 get_vw(9);
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr;
+                grid-column-gap: 0;
+                grid-row-gap: 0;
+            }
+
+            &.two {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+
+                > p {
+                    &:nth-child(1) {
+                        padding: 0 0 0 get_vw(10);
+                    }
+
+                    &:nth-child(2) {
+                        text-align: right;
+                        padding: 0 get_vw(40) 0 0;
+                    }
+                }
+            }
+
+            &.one {
+                padding: 0 0 0 get_vw(10);
+            }
+        }
+    }
+
+    .notice {
+        position: absolute;
+        font-size: get_vw(12);
+        line-height: 1;
+        color: $color-white;
+        letter-spacing: get_vw(1);
+        bottom: get_vw(9);
+        right: get_vw(9);
+        > a {
+            text-decoration: underline;
+        }
+    }
+
+    @media #{$media-sm} {
+        width: calc(100% - #{$block-size_sm * 2});
+        margin: 0 auto get_vw_sp(40);
+        padding: $block-size_sm * 2 $block-size_sm * 2 $block-size_sm * 3;
+
+        &__title {
+            margin: 0 auto 0 0;
+            height: auto;
+            padding: 0 0 get_vw_sp(7);
+
+            .ja {
+                font-size: get_vw_sp(27);
+            }
+
+            .en {
+                font-size: get_vw_sp(14);
+            }
+        }
+
+        &__in {
+            padding: $block-size_sm * 2 $block-size_sm * 1;
+
+            .line-white {
+                font-size: get_vw_sp(14);
+                line-height: 1.5;
+                letter-spacing: get_vw_sp(2);
+
+                &.fs12 {
+                    font-size: get_vw_sp(12);
+                    letter-spacing: get_vw_sp(1);
+                }
+            }
+
+            .line-black {
+                letter-spacing: get_vw_sp(1);
+                font-size: get_vw_sp(14);
+                $height: get_vw_sp(51);
+                height: $height;
+                line-height: $height/2;
+                margin: 0 0 get_vw_sp(9);
+
+                //
+                // カラム数により分ける
+                //
+                &.three {
+                    grid-template-columns: 57% 1fr;
+                    grid-template-rows: $height/2 $height/2;
+
+                    > p {
+                        &:nth-of-type(1) {
+                            padding: 0 0 0 get_vw_sp(7);
+                            grid-area: 1 / 1 / 2 / 2;
+                        }
+
+                        &:nth-of-type(2) {
+                            text-align: right;
+                            grid-area: 1 / 2 / 2 / 3;
+                        }
+
+                        &:nth-of-type(3) {
+                            text-align: right;
+                            grid-area: 2 / 1 / 3 / 3;
+                        }
+                    }
+                }
+
+                &.two {
+                    display: flex;
+                    flex-direction: column;
+
+                    > p {
+                        &:nth-child(1) {
+                            padding: 0 0 0 get_vw_sp(8);
+                        }
+
+                        &:nth-child(2) {
+                            text-align: right;
+                            padding: 0 get_vw_sp(12) 0 0;
+                        }
+                    }
+                }
+
+                &.one {
+                    padding: 0 get_vw_sp(8);
+                }
+            }
+        }
+
+        .notice {
+            font-size: get_vw_sp(10);
+            right: $block-size_sm * 2;
+            bottom: $block-size_sm;
+        }
+    }
+}

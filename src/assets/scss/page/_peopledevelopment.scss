@@ -1,0 +1,212 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.page-pd {
+    min-height: 100vh;
+}
+
+.heading-en {
+    @include heading;
+}
+
+.pd__desc {
+    @include under_desc;
+    margin-bottom: get_vw(100);
+}
+
+.pd__heading-h2 {
+    @include heading-h2;
+    margin: 0 auto get_vw(40) get_vw(200);
+}
+
+// プログラム
+.pd__curs {
+    margin: 0 0 get_vw(80);
+
+    // 各プログラム
+    &__cur {
+        position: relative;
+        background-color: $color-white;
+        padding: $block-size;
+        width: get_vw(720);
+
+        .cur__title {
+            font-size: get_vw(18);
+            font-weight: 900;
+            line-height: 1;
+            color: $color-black;
+            letter-spacing: get_vw(1);
+
+            > span {
+                color: $color-skyblue;
+            }
+        }
+
+        .cur__list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            margin: get_vw(12) 0 0;
+
+            &__item {
+                font-size: get_vw(14);
+                letter-spacing: get_vw(0.8);
+                line-height: 1.8;
+            }
+        }
+
+        //
+        // 赤背景
+        //
+        &:not(:last-of-type) {
+            // 1段目
+            &::before {
+                position: absolute;
+                content: '';
+                width: get_vw(900);
+                height: $block-size;
+                background-color: $color-red;
+                top: 100%;
+            }
+
+            // 2段目
+            &::after {
+                position: absolute;
+                content: '';
+                width: get_vw(940);
+                height: $block-size;
+                background-color: $color-red;
+                top: calc(100% + #{$block-size});
+            }
+        }
+
+        // 左
+        &:nth-of-type(2n + 1) {
+            margin: 0 auto 0 get_vw(200);
+
+            .side-red {
+                @include side-red(left);
+            }
+
+            &::before {
+                left: calc(#{$block-size} * -4);
+            }
+
+            &::after {
+                left: calc(#{$block-size} * -3);
+            }
+        }
+
+        // 右
+        &:nth-of-type(2n) {
+            margin: 0 get_vw(200) 0 auto;
+
+            .side-red {
+                @include side-red(right);
+            }
+
+            &::before {
+                left: calc(#{$block-size} * -5);
+            }
+
+            &::after {
+                left: calc(#{$block-size} * -8);
+            }
+        }
+
+        // カリキュラム間のマージン
+        &:not(:last-of-type) {
+            margin-bottom: $block-size * 2;
+        }
+    }
+}
+
+@media #{$media-sm} {
+    .pd__desc {
+        margin-bottom: get_vw_sp(60);
+    }
+
+    .pd__heading-h2 {
+        margin: 0 auto get_vw_sp(20) get_vw_sp(30);
+    }
+
+    // プログラム
+    .pd__curs {
+        margin: 0 0 get_vw_sp(40);
+
+        // 各プログラム
+        &__cur {
+            width: get_vw_sp(260);
+            padding: $block-size_sm;
+
+            .cur__title {
+                font-size: get_vw_sp(14);
+                line-height: 1.2;
+                letter-spacing: get_vw_sp(1);
+
+                > span {
+                    font-size: get_vw_sp(16);
+                }
+            }
+
+            .cur__list {
+                margin: get_vw_sp(12) 0 0;
+
+                &__item {
+                    font-size: get_vw_sp(14);
+                    letter-spacing: get_vw_sp(0.8);
+                    line-height: 1.7;
+                }
+            }
+
+            //
+            // 赤背景
+            //
+            &:not(:last-of-type) {
+                // 1段目
+                &::before {
+                    width: get_vw_sp(290);
+                    height: $block-size_sm;
+                }
+
+                // 2段目
+                &::after {
+                    width: get_vw_sp(300);
+                    height: calc(#{$block-size_sm} + #{get_vw_sp(0.5)});
+                    top: calc(100% + #{$block-size_sm});
+                }
+            }
+
+            // 左
+            &:nth-of-type(2n + 1) {
+                margin: 0 auto;
+
+                &::before {
+                    left: calc(#{$block-size_sm} * -3);
+                }
+
+                &::after {
+                    left: calc(#{$block-size_sm} * -1);
+                }
+            }
+
+            // 右
+            &:nth-of-type(2n) {
+                margin: 0 auto;
+
+                &::before {
+                    left: 0;
+                }
+
+                &::after {
+                    left: calc(#{$block-size_sm} * -3);
+                }
+            }
+
+            // カリキュラム間のマージン
+            &:not(:last-of-type) {
+                margin-bottom: $block-size_sm * 2;
+            }
+        }
+    }
+}

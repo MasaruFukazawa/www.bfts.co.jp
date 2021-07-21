@@ -1,0 +1,42 @@
+.sns {
+    width: 100%;
+
+    &__list {
+        width: 100%;
+        display: flex;
+    }
+
+    &__item {
+        width: get_vw(40);
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include mq-mobile {
+            width: get_vw_sp(35);
+        }
+
+        &:not(:last-of-type) {
+            margin-right: get_vw(10);
+
+            @include mq-mobile {
+                margin-right: get_vw_sp(10);
+            }
+        }
+    }
+
+    &__link {
+        width: 100%;
+        display: block;
+    }
+
+    &__icon {
+        width: 100%;
+
+        > img {
+            width: 100%;
+        }
+    }
+}

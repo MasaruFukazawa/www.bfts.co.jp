@@ -1,0 +1,3184 @@
+@import '~assets/scss/page/index/link-button';
+@import '~assets/scss/components/module/heading';
+
+.page-index {
+    width: 100vw;
+    height: 100vh;
+    overflow: visible;
+    display: flex;
+    flex-direction: column; //見えない範囲は右側に並んでる
+    flex-wrap: wrap;
+
+    // ローディング開始1秒後まで
+    &.is_loading {
+        // ローディングと白背景以外を消す。
+        > :not(.comp-loading, .white-bg) {
+            display: none;
+        }
+
+        .white-bg {
+            width: 100%;
+            height: 100%;
+            z-index: $z-header * 3;
+            position: absolute;
+            background-color: $color-white;
+        }
+    }
+
+    // 各セクション
+    .index-section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        pointer-events: none;
+        // padding: 0 $block-size*6;
+
+        // 初期表示固定用（fullscreen-slider内で、初めて遷移が生じた際にクラス削除）
+        &.initial {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        //
+        // Interaction
+        //
+        &.is-shown {
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        &.is-shown,
+        &.is-hidden {
+            animation-duration: 1.4s;
+            animation-fill-mode: both;
+            animation-timing-function: ease;
+        }
+
+        &.is-shown-asc {
+            animation-name: showAsc;
+        }
+
+        &.is-shown-desc {
+            animation-name: showDesc;
+        }
+
+        &.is-hidden-asc {
+            animation-name: hideAsc;
+        }
+
+        &.is-hidden-desc {
+            animation-name: hideDesc;
+        }
+
+        // プラス方向進行
+        @keyframes showAsc {
+            0% {
+                transform: translate3d(100vw, 0, 0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+
+        // マイナス方向進行
+        @keyframes showDesc {
+            0% {
+                transform: translate3d(-100vw, 0, 0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+
+        // プラス方向進行時
+        @keyframes hideAsc {
+            0% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate3d(-100vw, 0, 0);
+            }
+        }
+
+        // マイナス方向進行
+        @keyframes hideDesc {
+            0% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate3d(100vw, 0, 0);
+            }
+        }
+
+        .inside-link {
+            @include link-button();
+            position: absolute;
+            z-index: $z-header - 1;
+        }
+
+        // 戻る
+        .inside-link-left {
+            bottom: $block-size * 3;
+            left: $block-size;
+            padding: 0 0 0 $block-size/2;
+
+            &::v-deep > svg {
+                margin: 0 $block-size 0 0;
+            }
+        }
+
+        // 進む
+        .inside-link-right {
+            top: $block-size * 6;
+            right: $block-size;
+            padding: 0 0 0 $block-size;
+
+            &::v-deep > svg {
+                margin: 0 0 0 $block-size;
+            }
+        }
+    }
+
+    @media #{$media-sm} {
+        // 各セクション
+        .index-section {
+            width: 100%;
+            height: 100%;
+
+            .inside-link {
+                bottom: $block-size_sm * 4;
+            }
+
+            .inside-link-left {
+                left: $block-size_sm * 3;
+                padding: 0 0 0 $block-size_sm;
+
+                &::v-deep > svg {
+                    margin: 0 $block-size_sm 0 0;
+                }
+            }
+
+            .inside-link-right {
+                top: initial;
+                bottom: $block-size_sm * 7;
+                right: $block-size_sm * 3;
+                padding: 0 0 0 $block-size_sm;
+
+                &::v-deep > svg {
+                    margin: 0 0 0 $block-size_sm;
+                }
+            }
+
+            &.is-shown-asc {
+                animation-name: showAsc;
+            }
+
+            &.is-shown-desc {
+                animation-name: showDesc;
+            }
+
+            &.is-hidden-asc {
+                animation-name: hideAsc;
+            }
+
+            &.is-hidden-desc {
+                animation-name: hideDesc;
+            }
+
+            // プラス方向進行
+            @keyframes showAsc {
+                0% {
+                    transform: translate3d(0, 100vh, 0);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+
+            // マイナス方向進行
+            @keyframes showDesc {
+                0% {
+                    transform: translate3d(0, -100vh, 0);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+
+            // プラス方向進行時
+            @keyframes hideAsc {
+                0% {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+
+                100% {
+                    opacity: 0;
+                    transform: translate3d(0, -100vh, 0);
+                }
+            }
+
+            // マイナス方向進行
+            @keyframes hideDesc {
+                0% {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+
+                100% {
+                    opacity: 0;
+                    transform: translate3d(0, 100vh, 0);
+                }
+            }
+        }
+    }
+}
+
+.index-pager {
+    position: absolute;
+    right: 0;
+    bottom: get_vw(40);
+    width: get_vw(220);
+    height: get_vw(40);
+    display: flex;
+    z-index: $z-header - 1;
+    pointer-events: none;
+    align-items: center;
+    background-color: $color-white;
+
+    &__in {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 0 get_vw(10) 0 0;
+    }
+
+    &__pointer {
+        position: relative;
+        cursor: pointer;
+        pointer-events: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: get_vw(55);
+        height: get_vw(40);
+
+        transition-property: transform;
+        transition-duration: 2s;
+        transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        // 赤の点線 3つめまで
+        &:not(:nth-child(4))::before {
+            content: '';
+            position: absolute;
+            top: get_vw(20);
+            left: get_vw(39);
+            margin: 0 auto;
+            height: get_vw(2);
+            width: get_vw(40);
+            overflow: hidden;
+            background-image: linear-gradient(
+                90deg,
+                $color-red,
+                $color-red 25%,
+                transparent 25%,
+                transparent 100%
+            );
+            background-size: get_vw(8) get_vw(2);
+            background-position: bottom;
+            background-repeat: repeat-x;
+        }
+
+        // ■
+        &::after {
+            content: '';
+            position: absolute;
+            top: get_vw(17);
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            width: get_vw(8);
+            height: get_vw(8);
+            border: solid get_vw(1) $color-red;
+        }
+
+        // 現在のページ,hover時
+        &.is-current,
+        &.is-over {
+            &::after {
+                background-color: $color-red;
+            }
+        }
+
+        // 現在のページ
+        &.is-current {
+            &::after {
+                transform: scale(1.5);
+            }
+        }
+
+        // hover時
+        &.is-over {
+            &::after {
+                transition-delay: 0.1s;
+                transform: scale(1.5);
+            }
+        }
+
+        // 離れる時
+        &.is-leave {
+            &::after {
+                transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+        }
+    }
+
+    &__bar {
+        display: none;
+    }
+
+    @media #{$media-sm} {
+        top: get_vw_sp(180);
+        width: get_vw_sp(10);
+        height: get_vw_sp(200);
+
+        &__in {
+            padding: 0;
+            display: block;
+        }
+
+        &__pointer {
+            width: 100%;
+            height: get_vw_sp(60);
+            padding: get_vw_sp(10) 0 0;
+
+            // 赤の点線 3つめまで
+            &:not(:nth-child(4))::before {
+                top: get_vw_sp(35);
+                right: 0;
+                left: 0;
+                width: get_vw_sp(2);
+                margin: 0 0 0 get_vw_sp(2);
+                height: get_vw_sp(40);
+                background-image: linear-gradient(
+                    180deg,
+                    $color-red,
+                    $color-red 25%,
+                    transparent 25%,
+                    transparent 100%
+                );
+                background-size: get_vw_sp(2) get_vw_sp(8);
+                background-repeat: repeat-y;
+            }
+
+            // ■
+            &::after {
+                top: get_vw_sp(20);
+                width: get_vw_sp(6);
+                height: get_vw_sp(6);
+                border: solid get_vw_sp(1) $color-red;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------
+// bg
+//--------------------------------------------------
+.js-bg-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @media #{$media-mh} {
+        margin: -10vh 0 0;
+    }
+
+    .js-section-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+
+        // 全てのブロック
+        > div {
+            position: absolute;
+            background-color: $color-red;
+            border: 1px solid $color-red;
+        }
+
+        //
+        // Interaction
+        //
+        &.is-shown {
+            opacity: 1;
+
+            // 全てのブロック
+            &.on > div {
+                // animation-name: slidex;
+                animation-duration: 6s;
+                animation-fill-mode: both;
+                animation-iteration-count: infinite;
+                animation-timing-function: step-start;
+
+                $idou: get_vw(10);
+
+                @keyframes scaleTop {
+                    0% {
+                        transform: translateY(0);
+                    }
+
+                    50% {
+                        transform: translateY(-#{$idou});
+                        // transform: translateY(-#{$block-size});
+                    }
+
+                    100% {
+                        transform: translateY(0);
+                    }
+                }
+
+                @keyframes scaleUnder {
+                    0% {
+                        transform: translateY(0);
+                    }
+
+                    50% {
+                        transform: translateY(-#{$idou});
+                    }
+
+                    100% {
+                        transform: translateY(0);
+                    }
+                }
+
+                @keyframes scaleLeft {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    50% {
+                        transform: translateX(-#{$block-size});
+                    }
+
+                    100% {
+                        transform: translateX(0);
+                    }
+                }
+
+                @keyframes scaleRight {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    50% {
+                        transform: translateX(#{$block-size});
+                    }
+
+                    100% {
+                        transform: translateX(0);
+                    }
+                }
+
+                &.top {
+                    animation-name: scaleTop;
+                    // transform-origin: top;
+                }
+
+                &.under {
+                    animation-delay: 0.5s;
+                    animation-name: scaleUnder;
+                }
+
+                &.left {
+                    animation-delay: 0.5s;
+                    animation-name: scaleLeft;
+                    transform-origin: right;
+                }
+
+                &.right {
+                    animation-delay: 0.25s;
+                    animation-name: scaleRight;
+                    transform-origin: left;
+                }
+
+                @for $delay_sec from 1 to 30 {
+                    &.delay#{$delay_sec} {
+                        animation-delay: #{$delay_sec/10}s;
+                    }
+                }
+            }
+
+            > div {
+                transition: transform 0.5s ease;
+            }
+        }
+
+        &.is-shown,
+        &.is-hidden {
+            animation-duration: 1.4s;
+            animation-fill-mode: both;
+            animation-timing-function: ease;
+        }
+
+        &.is-shown-asc {
+            animation-name: showAsc;
+        }
+
+        &.is-shown-desc {
+            animation-name: showDesc;
+        }
+
+        &.is-hidden-asc {
+            animation-name: hideAsc;
+        }
+
+        &.is-hidden-desc {
+            animation-name: hideDesc;
+        }
+
+        // TOP
+        &.bg-section-01 {
+            .left {
+                // 文字を覆う部分
+                &-main {
+                    top: get_vw(260);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(240);
+                }
+
+                &-underside1 {
+                    top: get_vw(499);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(22);
+                }
+
+                &-underside2 {
+                    top: get_vw(520);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(21);
+                }
+
+                &-underside3 {
+                    top: get_vw(540);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(22);
+                }
+
+                &-underside4 {
+                    top: get_vw(560);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(21);
+                }
+
+                &-underside5 {
+                    top: get_vw(580);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(23);
+                }
+
+                &-underside6 {
+                    top: get_vw(600);
+                    left: get_vw(140);
+                    width: get_vw(200);
+                    height: get_vw(20);
+                }
+
+                &-underside6__right {
+                    top: get_vw(600);
+                    left: get_vw(380);
+                    width: get_vw(180);
+                    height: get_vw(21);
+                }
+
+                &-underside7 {
+                    top: get_vw(620);
+                    left: get_vw(180);
+                    width: get_vw(60);
+                    height: get_vw(20);
+                }
+
+                &-underside7__right {
+                    top: get_vw(620);
+                    left: get_vw(420);
+                    width: get_vw(140);
+                    height: get_vw(20);
+                }
+
+                &-underside8 {
+                    top: get_vw(640);
+                    left: get_vw(460);
+                    width: get_vw(100);
+                    height: get_vw(20);
+                }
+
+                &-underside9 {
+                    top: get_vw(660);
+                    left: get_vw(480);
+                    width: get_vw(60);
+                    height: get_vw(20);
+                }
+
+                &-rightside1 {
+                    top: get_vw(280);
+                    left: get_vw(560);
+                    width: get_vw(20);
+                    height: get_vw(360);
+                }
+
+                &-rightside2 {
+                    top: get_vw(300);
+                    left: get_vw(580);
+                    width: get_vw(20);
+                    height: get_vw(320);
+                }
+
+                &-rightside3 {
+                    top: get_vw(340);
+                    left: get_vw(599);
+                    width: get_vw(20);
+                    height: get_vw(260);
+                }
+
+                &-topside1 {
+                    top: get_vw(240);
+                    left: get_vw(120);
+                    width: get_vw(420);
+                    height: get_vw(20);
+                }
+
+                &-topside2 {
+                    top: get_vw(220);
+                    left: get_vw(120);
+                    width: get_vw(380);
+                    height: get_vw(20);
+                }
+
+                &-topside3 {
+                    top: get_vw(199);
+                    left: get_vw(120);
+                    width: get_vw(100);
+                    height: get_vw(22);
+                }
+
+                &-topside3__right {
+                    top: get_vw(199);
+                    left: get_vw(260);
+                    width: get_vw(180);
+                    height: get_vw(22);
+                }
+
+                &-topside4 {
+                    top: get_vw(180);
+                    left: get_vw(120);
+                    width: get_vw(60);
+                    height: get_vw(20);
+                }
+
+                &-topside4__right {
+                    top: get_vw(180);
+                    left: get_vw(320);
+                    width: get_vw(60);
+                    height: get_vw(20);
+                }
+
+                &-topside5 {
+                    top: get_vw(160);
+                    left: get_vw(120);
+                    width: get_vw(21);
+                    height: get_vw(21);
+                }
+
+                &-topside6 {
+                    top: get_vw(240);
+                    left: get_vw(120);
+                    width: get_vw(420);
+                    height: get_vw(20);
+                }
+
+                &-leftside1 {
+                    top: get_vw(160);
+                    left: get_vw(101);
+                    width: get_vw(21);
+                    height: get_vw(280);
+                }
+
+                &-leftside1__under {
+                    top: get_vw(500);
+                    left: get_vw(101);
+                    width: get_vw(21);
+                    height: get_vw(80);
+                }
+
+                &-leftside2 {
+                    top: get_vw(200);
+                    left: get_vw(81);
+                    width: get_vw(22);
+                    height: get_vw(220);
+                }
+
+                &-leftside3 {
+                    top: get_vw(200);
+                    left: get_vw(60);
+                    width: get_vw(23);
+                    height: get_vw(180);
+                }
+
+                &-leftside4 {
+                    top: get_vw(220);
+                    left: get_vw(39);
+                    width: get_vw(22);
+                    height: get_vw(140);
+                }
+
+                &-leftside5 {
+                    top: get_vw(240);
+                    left: get_vw(20);
+                    width: get_vw(20);
+                    height: get_vw(80);
+                }
+
+                &-leftside6 {
+                    top: get_vw(260);
+                    left: 0;
+                    width: get_vw(20);
+                    height: get_vw(40);
+                }
+            }
+
+            .right {
+                // ボタン覆うとこメイン
+                &-main {
+                    top: 0;
+                    right: get_vw(180);
+                    width: get_vw(400);
+                    height: get_vw(400);
+                }
+
+                &-leftside1 {
+                    top: 0;
+                    right: get_vw(580);
+                    width: get_vw(20);
+                    height: get_vw(80);
+                }
+
+                &-leftside2 {
+                    top: 0;
+                    right: get_vw(600);
+                    width: get_vw(20);
+                    height: get_vw(60);
+                }
+
+                &-leftside3 {
+                    top: get_vw(20);
+                    right: get_vw(620);
+                    width: get_vw(20);
+                    height: get_vw(20);
+                }
+
+                &-rightside {
+                    top: get_vw(20);
+                    right: get_vw(160);
+                    width: get_vw(20);
+                    height: get_vw(140);
+                }
+
+                &-rightside2 {
+                    top: get_vw(40);
+                    right: get_vw(140);
+                    width: get_vw(20);
+                    height: get_vw(140);
+                }
+
+                &-rightside3 {
+                    top: get_vw(60);
+                    right: get_vw(120);
+                    width: get_vw(20);
+                    height: get_vw(140);
+                }
+
+                &-rightside4 {
+                    top: get_vw(60);
+                    right: get_vw(100);
+                    width: get_vw(20);
+                    height: get_vw(320);
+                }
+
+                &-rightside5 {
+                    top: get_vw(80);
+                    right: get_vw(80);
+                    width: get_vw(20);
+                    height: get_vw(340);
+                }
+
+                &-rightside6 {
+                    top: get_vw(80);
+                    right: get_vw(60);
+                    width: get_vw(20);
+                    height: get_vw(340);
+                }
+
+                &-rightside7 {
+                    top: get_vw(100);
+                    right: get_vw(40);
+                    width: get_vw(20);
+                    height: get_vw(380);
+                }
+
+                &-rightside8 {
+                    top: get_vw(120);
+                    right: get_vw(20);
+                    width: get_vw(20);
+                    height: get_vw(400);
+                }
+
+                &-rightside9 {
+                    top: get_vw(160);
+                    right: 0;
+                    width: get_vw(20);
+                    height: get_vw(440);
+                }
+            }
+        }
+
+        // aboutus
+        &.bg-section-02 {
+            .main {
+                top: get_vw(120);
+                left: get_vw(120);
+                width: get_vw(640);
+                height: get_vw(360);
+            }
+
+            .main-topside1 {
+                top: get_vw(100);
+                left: get_vw(120);
+                width: get_vw(100);
+                height: get_vw(20);
+            }
+
+            .main-topside1__middle {
+                top: get_vw(100);
+                left: get_vw(300);
+                width: get_vw(240);
+                height: get_vw(20);
+            }
+
+            .main-topside1__right {
+                top: get_vw(100);
+                left: get_vw(620);
+                width: get_vw(60);
+                height: get_vw(20);
+            }
+
+            .main-topside2 {
+                top: get_vw(80);
+                left: get_vw(400);
+                width: get_vw(80);
+                height: get_vw(20);
+            }
+
+            .main-topside3 {
+                top: get_vw(60);
+                left: get_vw(400);
+                width: get_vw(40);
+                height: get_vw(20);
+            }
+
+            .main-topside4 {
+                top: get_vw(40);
+                left: get_vw(400);
+                width: get_vw(40);
+                height: get_vw(20);
+            }
+
+            .main-rightside1 {
+                top: get_vw(160);
+                left: get_vw(760);
+                width: get_vw(20);
+                height: get_vw(400);
+            }
+
+            .main-rightside2 {
+                top: get_vw(180);
+                left: get_vw(780);
+                width: get_vw(20);
+                height: get_vw(360);
+            }
+
+            .main-rightside3 {
+                top: get_vw(240);
+                left: get_vw(800);
+                width: get_vw(20);
+                height: get_vw(300);
+            }
+
+            .main-rightside4 {
+                top: get_vw(260);
+                left: get_vw(820);
+                width: get_vw(20);
+                height: get_vw(200);
+            }
+
+            .main-rightside5 {
+                top: get_vw(280);
+                left: get_vw(840);
+                width: get_vw(20);
+                height: get_vw(200);
+            }
+
+            .main-rightside6 {
+                top: get_vw(300);
+                left: get_vw(860);
+                width: get_vw(20);
+                height: get_vw(260);
+            }
+
+            .main-rightside7 {
+                top: get_vw(300);
+                left: get_vw(880);
+                width: get_vw(20);
+                height: get_vw(260);
+            }
+
+            .main-rightside8 {
+                top: get_vw(320);
+                left: get_vw(900);
+                width: get_vw(20);
+                height: get_vw(240);
+            }
+
+            .main-rightside9 {
+                top: get_vw(340);
+                left: get_vw(920);
+                width: get_vw(20);
+                height: get_vw(220);
+            }
+
+            .main-underside1 {
+                top: get_vw(480);
+                left: get_vw(120);
+                width: get_vw(640);
+                height: get_vw(20);
+            }
+
+            .main-underside2 {
+                top: get_vw(500);
+                left: get_vw(180);
+                width: get_vw(600);
+                height: get_vw(20);
+            }
+
+            .main-underside3 {
+                top: get_vw(520);
+                left: get_vw(220);
+                width: get_vw(640);
+                height: get_vw(20);
+            }
+
+            .main-underside4 {
+                top: get_vw(540);
+                left: get_vw(260);
+                width: get_vw(100);
+                height: get_vw(20);
+            }
+
+            .main-underside4__right {
+                top: get_vw(540);
+                left: get_vw(540);
+                width: get_vw(80);
+                height: get_vw(20);
+            }
+
+            .main-leftside1 {
+                top: get_vw(60);
+                left: get_vw(100);
+                width: get_vw(20);
+                height: get_vw(420);
+            }
+
+            .main-leftside2 {
+                top: get_vw(60);
+                left: get_vw(80);
+                width: get_vw(20);
+                height: get_vw(380);
+            }
+
+            .main-leftside3 {
+                top: get_vw(80);
+                left: get_vw(60);
+                width: get_vw(20);
+                height: get_vw(340);
+            }
+
+            .main-leftside4 {
+                top: get_vw(100);
+                left: get_vw(39);
+                width: get_vw(22);
+                height: get_vw(300);
+            }
+
+            .main-leftside5 {
+                top: get_vw(120);
+                left: get_vw(20);
+                width: get_vw(20);
+                height: get_vw(160);
+            }
+
+            .main-leftside6 {
+                top: get_vw(160);
+                left: 0;
+                width: get_vw(20);
+                height: get_vw(80);
+            }
+        }
+
+        // service
+        &.bg-section-03 {
+            .left {
+                &-main {
+                    top: get_vw(200);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(260);
+                }
+
+                &-topside1 {
+                    top: get_vw(180);
+                    left: 0;
+                    width: get_vw(580);
+                    height: get_vw(22);
+                }
+
+                &-topside2 {
+                    top: get_vw(160);
+                    left: 0;
+                    width: get_vw(360);
+                    height: get_vw(20);
+                }
+
+                &-topside2__right {
+                    top: get_vw(160);
+                    left: get_vw(380);
+                    width: get_vw(160);
+                    height: get_vw(20);
+                }
+
+                &-topside3 {
+                    top: get_vw(140);
+                    left: get_vw(20);
+                    width: get_vw(320);
+                    height: get_vw(20);
+                }
+
+                &-topside3__right {
+                    top: get_vw(140);
+                    left: get_vw(420);
+                    width: get_vw(80);
+                    height: get_vw(20);
+                }
+
+                &-topside4 {
+                    top: get_vw(120);
+                    left: get_vw(40);
+                    width: get_vw(120);
+                    height: get_vw(20);
+                }
+
+                &-topside5 {
+                    top: get_vw(100);
+                    left: get_vw(60);
+                    width: get_vw(120);
+                    height: get_vw(20);
+                }
+
+                &-rightside1 {
+                    top: get_vw(200);
+                    left: get_vw(560);
+                    width: get_vw(20);
+                    height: get_vw(120);
+                }
+
+                &-rightside1__under {
+                    top: get_vw(380);
+                    left: get_vw(560);
+                    width: get_vw(20);
+                    height: get_vw(140);
+                }
+
+                &-rightside2 {
+                    top: get_vw(240);
+                    left: get_vw(580);
+                    width: get_vw(20);
+                    height: get_vw(80);
+                }
+
+                &-rightside2__under {
+                    top: get_vw(400);
+                    left: get_vw(579);
+                    width: get_vw(22);
+                    height: get_vw(100);
+                }
+
+                &-underside1 {
+                    top: get_vw(460);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(20);
+                }
+
+                &-underside2 {
+                    top: get_vw(480);
+                    left: get_vw(120);
+                    width: get_vw(440);
+                    height: get_vw(20);
+                }
+
+                &-underside3 {
+                    top: get_vw(500);
+                    left: get_vw(120);
+                    width: get_vw(80);
+                    height: get_vw(20);
+                }
+
+                &-underside3__middle {
+                    top: get_vw(500);
+                    left: get_vw(240);
+                    width: get_vw(100);
+                    height: get_vw(20);
+                }
+
+                &-underside3__right {
+                    top: get_vw(500);
+                    left: get_vw(400);
+                    width: get_vw(140);
+                    height: get_vw(20);
+                }
+
+                &-underside4 {
+                    top: get_vw(520);
+                    left: get_vw(140);
+                    width: get_vw(40);
+                    height: get_vw(20);
+                }
+
+                &-underside4__right {
+                    top: get_vw(520);
+                    left: get_vw(460);
+                    width: get_vw(60);
+                    height: get_vw(20);
+                }
+
+                &-leftside1 {
+                    top: get_vw(200);
+                    left: get_vw(100);
+                    width: get_vw(20);
+                    height: get_vw(300);
+                }
+
+                &-leftside2 {
+                    top: get_vw(200);
+                    left: get_vw(80);
+                    width: get_vw(20);
+                    height: get_vw(280);
+                }
+
+                &-leftside3 {
+                    top: get_vw(200);
+                    left: get_vw(60);
+                    width: get_vw(20);
+                    height: get_vw(100);
+                }
+
+                &-leftside3__under {
+                    top: get_vw(360);
+                    left: get_vw(60);
+                    width: get_vw(20);
+                    height: get_vw(100);
+                }
+
+                &-leftside4 {
+                    top: get_vw(200);
+                    left: get_vw(40);
+                    width: get_vw(20);
+                    height: get_vw(60);
+                }
+
+                &-leftside4__under {
+                    top: get_vw(380);
+                    left: get_vw(40);
+                    width: get_vw(20);
+                    height: get_vw(60);
+                }
+
+                &-leftside5 {
+                    top: get_vw(200);
+                    left: get_vw(20);
+                    width: get_vw(20);
+                    height: get_vw(20);
+                }
+            }
+
+            .right {
+                &-main {
+                    top: get_vw(180);
+                    right: get_vw(80);
+                    width: get_vw(300);
+                    height: get_vw(300);
+                }
+
+                &-topside1 {
+                    top: get_vw(180);
+                    right: get_vw(80);
+                    width: get_vw(400);
+                    height: get_vw(20);
+                }
+
+                &-topside2 {
+                    top: get_vw(160);
+                    right: get_vw(80);
+                    width: get_vw(380);
+                    height: get_vw(20);
+                }
+
+                &-topside3 {
+                    top: get_vw(140);
+                    right: get_vw(80);
+                    width: get_vw(180);
+                    height: get_vw(20);
+                }
+
+                &-topside3__left {
+                    top: get_vw(140);
+                    right: get_vw(340);
+                    width: get_vw(80);
+                    height: get_vw(20);
+                }
+
+                &-topside4 {
+                    top: get_vw(120);
+                    right: get_vw(80);
+                    width: get_vw(100);
+                    height: get_vw(20);
+                }
+
+                &-topside5 {
+                    top: get_vw(100);
+                    right: get_vw(80);
+                    width: get_vw(80);
+                    height: get_vw(20);
+                }
+
+                &-rightside1 {
+                    top: get_vw(120);
+                    right: get_vw(60);
+                    width: get_vw(20);
+                    height: get_vw(380);
+                }
+
+                &-rightside2 {
+                    top: get_vw(140);
+                    right: get_vw(40);
+                    width: get_vw(20);
+                    height: get_vw(340);
+                }
+
+                &-underside1 {
+                    top: get_vw(480);
+                    right: get_vw(80);
+                    width: get_vw(300);
+                    height: get_vw(20);
+                }
+
+                &-underside2 {
+                    top: get_vw(500);
+                    right: get_vw(120);
+                    width: get_vw(240);
+                    height: get_vw(20);
+                }
+
+                &-underside3 {
+                    top: get_vw(520);
+                    right: get_vw(200);
+                    width: get_vw(140);
+                    height: get_vw(20);
+                }
+
+                &-underside4 {
+                    top: get_vw(540);
+                    right: get_vw(240);
+                    width: get_vw(60);
+                    height: get_vw(20);
+                }
+
+                &-leftside1 {
+                    top: get_vw(180);
+                    right: get_vw(380);
+                    width: get_vw(20);
+                    height: get_vw(260);
+                }
+
+                &-leftside2 {
+                    top: get_vw(180);
+                    right: get_vw(400);
+                    width: get_vw(20);
+                    height: get_vw(260);
+                }
+            }
+        }
+
+        // news
+        &.bg-section-04 {
+            .main {
+                top: get_vw(160);
+                left: get_vw(260);
+                width: get_vw(540);
+                height: get_vw(460);
+            }
+
+            .topside1_big {
+                top: get_vw(60);
+                left: get_vw(240);
+                width: get_vw(560);
+                height: get_vw(100);
+            }
+
+            .topside2 {
+                top: get_vw(40);
+                left: get_vw(240);
+                width: get_vw(480);
+                height: get_vw(20);
+            }
+
+            .topside3 {
+                top: get_vw(20);
+                left: get_vw(240);
+                width: get_vw(420);
+                height: get_vw(20);
+            }
+
+            .topside4 {
+                top: 0;
+                left: get_vw(240);
+                width: get_vw(300);
+                height: get_vw(20);
+            }
+
+            .rightside1 {
+                top: get_vw(60);
+                right: get_vw(380);
+                width: get_vw(20);
+                height: get_vw(640);
+            }
+
+            .rightside2 {
+                top: get_vw(80);
+                right: get_vw(360);
+                width: get_vw(20);
+                height: get_vw(620);
+            }
+
+            .rightside3 {
+                top: get_vw(120);
+                right: get_vw(340);
+                width: get_vw(20);
+                height: get_vw(580);
+            }
+
+            .rightside4 {
+                top: get_vw(140);
+                right: get_vw(320);
+                width: get_vw(20);
+                height: get_vw(560);
+            }
+
+            .rightside5 {
+                top: get_vw(180);
+                right: get_vw(300);
+                width: get_vw(20);
+                height: get_vw(500);
+            }
+
+            .rightside6 {
+                top: get_vw(220);
+                right: get_vw(280);
+                width: get_vw(20);
+                height: get_vw(440);
+            }
+
+            .rightside7 {
+                top: get_vw(280);
+                right: get_vw(260);
+                width: get_vw(20);
+                height: get_vw(380);
+            }
+
+            .rightside8 {
+                top: get_vw(360);
+                right: get_vw(240);
+                width: get_vw(20);
+                height: get_vw(300);
+            }
+
+            .rightside9 {
+                top: get_vw(420);
+                right: get_vw(220);
+                width: get_vw(20);
+                height: get_vw(220);
+            }
+
+            .rightside10 {
+                top: get_vw(480);
+                right: get_vw(200);
+                width: get_vw(20);
+                height: get_vw(140);
+            }
+
+            .underside1 {
+                top: get_vw(620);
+                left: get_vw(260);
+                width: get_vw(340);
+                height: get_vw(20);
+            }
+
+            .underside1__right {
+                top: get_vw(620);
+                left: get_vw(660);
+                width: get_vw(140);
+                height: get_vw(20);
+            }
+
+            .underside2 {
+                top: get_vw(640);
+                left: get_vw(260);
+                width: get_vw(300);
+                height: get_vw(20);
+            }
+
+            .underside2__right {
+                top: get_vw(640);
+                left: get_vw(700);
+                width: get_vw(100);
+                height: get_vw(20);
+            }
+
+            .underside3 {
+                top: get_vw(660);
+                left: get_vw(260);
+                width: get_vw(200);
+                height: get_vw(20);
+            }
+
+            .underside3__right {
+                top: get_vw(660);
+                left: get_vw(740);
+                width: get_vw(60);
+                height: get_vw(20);
+            }
+
+            .underside4 {
+                top: get_vw(680);
+                left: get_vw(280);
+                width: get_vw(160);
+                height: get_vw(20);
+            }
+
+            .underside4__right {
+                top: get_vw(680);
+                left: get_vw(760);
+                width: get_vw(40);
+                height: get_vw(20);
+            }
+
+            .underside5 {
+                top: get_vw(700);
+                left: get_vw(300);
+                width: get_vw(120);
+                height: get_vw(20);
+            }
+
+            .underside5__right {
+                top: get_vw(700);
+                left: get_vw(780);
+                width: get_vw(20);
+                height: get_vw(20);
+            }
+
+            .leftside1 {
+                top: 0;
+                left: get_vw(240);
+                width: get_vw(20);
+                height: get_vw(340);
+            }
+
+            .leftside1__under {
+                top: get_vw(500);
+                left: get_vw(240);
+                width: get_vw(20);
+                height: get_vw(100);
+            }
+
+            .leftside2 {
+                top: 0;
+                left: get_vw(220);
+                width: get_vw(20);
+                height: get_vw(280);
+            }
+
+            .leftside2__under {
+                top: get_vw(500);
+                left: get_vw(220);
+                width: get_vw(20);
+                height: get_vw(100);
+            }
+
+            .leftside3 {
+                top: get_vw(20);
+                left: get_vw(200);
+                width: get_vw(20);
+                height: get_vw(220);
+            }
+
+            .leftside4 {
+                top: get_vw(20);
+                left: get_vw(180);
+                width: get_vw(22);
+                height: get_vw(180);
+            }
+
+            .leftside5 {
+                top: get_vw(20);
+                left: get_vw(160);
+                width: get_vw(20);
+                height: get_vw(160);
+            }
+
+            .leftside6 {
+                top: get_vw(20);
+                left: get_vw(140);
+                width: get_vw(20);
+                height: get_vw(100);
+            }
+        }
+    }
+}
+
+//--------------------------------------------------
+// TOP
+//--------------------------------------------------
+.index__top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0 $block-size * 6;
+
+    @media #{$media-sm} {
+        flex-direction: column;
+        padding: 0 $block-size_sm;
+    }
+
+    // top左側要素
+    &__left {
+        display: flex;
+        flex-direction: column;
+        width: get_vw(480);
+        height: get_vw(340);
+        margin: get_vw(260) 0 0;
+
+        @media #{$media-sm} {
+            width: 100%;
+            height: auto;
+            margin: get_vw_sp(70) 0 0;
+
+            .sp-line1 {
+                display: flex;
+                flex-direction: row;
+                margin: 0 0 $block-size_sm;
+            }
+        }
+
+        &__line {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: get_vw(40);
+
+            &.line-1 {
+                height: get_vw(60);
+                margin: 0 0 get_vw(20);
+            }
+
+            &.line-2 {
+                height: get_vw(60);
+                margin: 0 0 get_vw(20);
+            }
+
+            &.line-3 {
+                margin: 0 0 get_vw(20);
+            }
+
+            .line__block {
+                background-color: $color-white;
+                color: $color-black;
+                line-height: get_vw(40);
+                font-weight: 900;
+
+                &__hito {
+                    width: get_vw(80);
+                    height: get_vw(60);
+                    font-size: get_vw(38);
+                    line-height: get_vw(60);
+                    text-align: center;
+                }
+
+                &__to {
+                    width: get_vw(60);
+                    height: get_vw(60);
+                    font-size: get_vw(38);
+                    line-height: get_vw(60);
+                    text-align: center;
+                    margin: 0 $block-size;
+                }
+
+                &__system {
+                    width: get_vw(220);
+                    height: get_vw(60);
+                    font-size: get_vw(38);
+                    line-height: get_vw(60);
+                    text-align: center;
+                }
+
+                &__wo {
+                    width: get_vw(60);
+                    height: get_vw(60);
+                    font-size: get_vw(38);
+                    line-height: get_vw(60);
+                    text-align: center;
+                    margin: 0 $block-size 0 get_vw(140);
+                }
+
+                &__tukuru {
+                    width: get_vw(240);
+                    height: get_vw(60);
+                    font-size: get_vw(38);
+                    line-height: get_vw(60);
+                    text-align: center;
+                }
+
+                &__jouho {
+                    font-size: get_vw(14);
+                    letter-spacing: get_vw(3);
+                    text-align: center;
+                    width: get_vw(240);
+                    margin: 0 $block-size 0 auto;
+                }
+
+                // 各ページ内リンク
+                &.line__abotus,
+                &.line__news {
+                    @include link-button;
+                }
+
+                &.line__abotus {
+                    margin: 0 0 0 auto;
+                    width: get_vw(260);
+                    padding: 0 0 0 $block-size;
+
+                    &::v-deep > svg {
+                        margin: 0 0 0 get_vw(10);
+                    }
+                }
+
+                &.line__news {
+                    width: get_vw(180);
+                    padding: 0 get_vw(15) 0 0;
+                    text-align: right;
+
+                    &::v-deep > svg {
+                        margin: 0 get_vw(10) 0 0;
+                    }
+                }
+            }
+
+            @media #{$media-sm} {
+                min-height: get_vw_sp(40);
+
+                &.line-1,
+                &.line-2,
+                &.line-3 {
+                    margin: initial;
+                    height: initial;
+                }
+
+                .line__block {
+                    line-height: get_vw_sp(40);
+
+                    &__hito {
+                        width: get_vw_sp(40);
+                        height: get_vw_sp(40);
+                        font-size: get_vw_sp(24);
+                        line-height: get_vw_sp(40);
+                    }
+
+                    &__to {
+                        width: get_vw_sp(20);
+                        height: get_vw_sp(40);
+                        font-size: get_vw_sp(16);
+                        line-height: get_vw_sp(40);
+                        margin: 0 $block-size_sm;
+                    }
+
+                    &__system {
+                        width: get_vw_sp(110);
+                        height: get_vw_sp(40);
+                        font-size: get_vw_sp(24);
+                        line-height: get_vw_sp(40);
+                        margin: 0 $block-size_sm 0 0;
+                    }
+
+                    &__wotukuru {
+                        width: get_vw_sp(100);
+                        font-size: get_vw_sp(24);
+                        text-align: center;
+                    }
+
+                    &__jouho {
+                        font-size: get_vw_sp(14);
+                        letter-spacing: get_vw_sp(3);
+                        width: get_vw_sp(230);
+                        margin: $block-size_sm * 2 $block-size_sm $block-size_sm * 3 auto;
+                        height: get_vw_sp(20);
+                        line-height: get_vw_sp(20);
+                    }
+
+                    &.desc-line2 {
+                        padding: $block-size_sm $block-size_sm/2 $block-size_sm $block-size_sm/2;
+                        margin: 0 0 0 auto;
+                    }
+
+                    // 各ページ内リンク
+                    &.line__abotus,
+                    &.line__news {
+                        position: absolute;
+                    }
+
+                    &.line__abotus {
+                        right: get_vw_sp(30);
+                        bottom: get_vw_sp(40);
+                        margin: 0 0 0 auto;
+                        width: get_vw_sp(230);
+                        padding: 0 0 0 get_vw_sp(13);
+
+                        &::v-deep > svg {
+                            margin: 0 0 0 get_vw_sp(10);
+                        }
+                    }
+
+                    &.line__news {
+                        bottom: get_vw_sp(70);
+                        left: get_vw_sp(30);
+                        width: get_vw_sp(160);
+                        padding: 0 get_vw_sp(15) 0 0;
+
+                        &::v-deep > svg {
+                            margin: 0 get_vw_sp(10) 0 0;
+                        }
+                    }
+
+                    &.kaisya {
+                        font-size: get_vw_sp(16);
+                        font-weight: 900;
+                        text-align: center;
+                        width: get_vw_sp(100);
+                        letter-spacing: 0;
+                    }
+                }
+
+                &.link {
+                    min-height: initial;
+                    height: 0;
+                }
+
+                &.long-txt {
+                    height: get_vw_sp(50);
+
+                    &.mb-20 {
+                        margin: 0 0 $block-size_sm;
+                    }
+                }
+            }
+        }
+
+        @media #{$media-mh} {
+            margin: auto 0 0;
+
+            &__line {
+                height: 6vh;
+
+                &.line-1 {
+                    height: get_vw(60);
+                    margin: 0 0 get_vw(20);
+                }
+
+                &.line-2 {
+                    height: get_vw(60);
+                    margin: 0 0 get_vw(20);
+                }
+
+                &.line-3 {
+                    margin: 0 0 get_vw(20);
+                }
+
+                .line__block {
+                    line-height: get_vw(40);
+
+                    &__hito {
+                        width: get_vw(80);
+                        height: get_vw(60);
+                        font-size: get_vw(38);
+                        line-height: get_vw(60);
+                    }
+
+                    &__to {
+                        width: get_vw(60);
+                        height: get_vw(60);
+                        font-size: get_vw(38);
+                        line-height: get_vw(60);
+                        margin: 0 $block-size;
+                    }
+
+                    &__system {
+                        width: get_vw(220);
+                        height: get_vw(60);
+                        font-size: get_vw(38);
+                        line-height: get_vw(60);
+                    }
+
+                    &__wo {
+                        width: get_vw(60);
+                        height: get_vw(60);
+                        font-size: get_vw(38);
+                        line-height: get_vw(60);
+                        margin: 0 $block-size 0 get_vw(140);
+                    }
+
+                    &__tukuru {
+                        width: get_vw(240);
+                        height: get_vw(60);
+                        font-size: get_vw(38);
+                        line-height: get_vw(60);
+                    }
+
+                    &__jouho {
+                        font-size: get_vw(14);
+                        letter-spacing: get_vw(3);
+                        width: get_vw(240);
+                        margin: 0 $block-size 0 auto;
+                    }
+
+                    &.line__abotus {
+                        margin: 0 0 0 auto;
+                        width: get_vw(260);
+                        padding: 0 0 0 $block-size;
+
+                        &::v-deep > svg {
+                            margin: 0 0 0 get_vw(10);
+                        }
+                    }
+
+                    &.line__news {
+                        width: get_vw(180);
+                        padding: 0 get_vw(15) 0 0;
+                        text-align: right;
+
+                        &::v-deep > svg {
+                            margin: 0 get_vw(10) 0 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // top右側要素
+    &__right {
+        width: get_vw(461);
+        height: get_vw(640);
+        overflow: hidden;
+        margin: $block-size * 2 0 0 $block-size;
+
+        display: flex;
+        flex-direction: column;
+
+        .service-link {
+            @include link-button;
+            width: get_vw(240);
+            padding: 0 0 0 get_vw(20);
+
+            @include ie-only {
+                height: auto;
+            }
+
+            &::v-deep > svg {
+                margin: 0 0 0 get_vw(20);
+            }
+        }
+
+        .service-wrapper {
+            width: 100%;
+            margin: $block-size 0 0;
+            padding: $block-size $block-size 0;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: $color-white;
+
+            &::-webkit-scrollbar {
+                display: none;
+                -ms-overflow-style: none;
+            }
+
+            // 各サービス
+            .service {
+                display: block;
+                position: relative;
+                width: get_vw(200);
+                height: get_vw(200);
+                background-color: $color-white;
+                background-size: cover;
+                margin: 0 0 $block-size;
+                z-index: 1;
+
+                &:hover {
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: -1;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba($color-skyblue, 0.4);
+                    }
+                }
+
+                h3 {
+                    position: absolute;
+                    top: $block-size;
+                    left: 0;
+                    display: inline-block;
+                    color: $color-skyblue;
+                    -webkit-text-fill-color: transparent;
+                    background-image: $mizutama_url;
+                    background-size: get_vw(2) get_vw(2);
+                    background-repeat: repeat;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    background-color: $color-white;
+                    height: get_vw(20);
+                    line-height: get_vw(20);
+                    font-size: get_vw(19);
+                    font-weight: 900;
+
+                    @include ie-only {
+						background-image: none;
+						background-color: transparent;
+                    }
+                }
+
+                .bg-white {
+                    position: absolute;
+                    top: $block-size;
+                    left: 0;
+                    background-color: $color-white;
+                    width: 50%;
+                    height: get_vw(20);
+                }
+
+                .service__icon {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: get_vw(40);
+                    height: get_vw(40);
+
+                    .cls-1 {
+                        fill: $color-skyblue;
+                    }
+
+                    .cls-2 {
+                        fill: $color-white;
+                    }
+					.cls-3 {
+						fill: none;
+						stroke: $color-white;
+						stroke-width: 2;
+						stroke-linecap: round;
+						stroke-miterlimit: 10;
+					}
+                }
+
+                .service__more {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-image: $mizutama_url;
+                    background-size: get_vw(2) get_vw(2);
+                    background-repeat: repeat;
+                    background-color: transparent;
+                    color: $color-white;
+                    font-size: get_vw(12);
+                    font-weight: 900;
+                    height: $block-size;
+                    width: $block-size * 3;
+                    line-height: $block-size;
+                    text-align: center;
+                }
+
+                // 左列
+                &:nth-child(2n + 1) {
+                    margin-right: $block-size;
+                }
+
+                // 右列
+                &:nth-child(2n) {
+                    margin-top: -$block-size * 5;
+                }
+
+                // チョイトレ
+                &.tyoitore {
+                    background-image: url('~assets/img/service/choitore.jpg');
+                    background-position: 27% 50%;
+
+                    .bg-white {
+                        width: get_vw(100);
+                    }
+                }
+
+                // SI技術
+                &.si {
+                    background-image: url(~assets/img/service/si.jpg);
+                    background-position: 27% 50%;
+
+                    h3 {
+                        height: get_vw(40);
+                        line-height: get_vw(20);
+                        // font-size: get_vw(12);
+                    }
+
+                    .bg-white {
+                        width: get_vw(170);
+                        height: get_vw(40);
+                    }
+                }
+
+                // トレプラ
+                &.torepura {
+                    background-image: url(~assets/img/service/torepura.jpg);
+                    background-position: 27% 50%;
+
+                    .bg-white {
+                        width: get_vw(83);
+                    }
+                }
+
+                // 名古屋
+                &.nagoya {
+                    background-image: url(~assets/img/service/nagoya.jpg);
+                    background-position: 27% 50%;
+
+                    h3 {
+                        padding: 0 0 0 get_vw(5);
+                    }
+
+                    .bg-white {
+                        width: get_vw(110);
+                    }
+                }
+
+                // ギノトレ
+                &.ginotore {
+                    background-image: url(~assets/img/service/ginotore.jpg);
+                    background-position: 27% 50%;
+
+                    .bg-white {
+                        width: get_vw(83);
+                    }
+                }
+
+                // 人材育成制度
+                &.zinzai {
+                    background-image: url(~assets/img/service/zinzai.jpg);
+                    background-position: 27% 50%;
+
+                    .bg-white {
+                        width: get_vw(120);
+                    }
+                }
+                &.media {
+                    background-image: url(~assets/img/service/top_media.jpg);
+                    background-position: 0% 0%;
+
+                    .bg-white {
+                        width: get_vw(120);
+                    }
+                }
+
+                &:hover {
+                    h3 {
+                        transition: all 0.1s ease;
+                        background-image: none;
+                        color: $color-white;
+                    }
+
+                    .bg-white {
+                        transition: all 0.1s ease;
+                        background-color: $color-skyblue;
+                    }
+
+                    .service__icon {
+                        transition: all 0.1s ease;
+
+                        .cls-1 {
+                            fill: $color-white;
+                        }
+                        .cls-2 {
+                            fill: $color-skyblue;
+                        }
+						.cls-3 {
+							stroke: $color-skyblue;
+						}
+                    }
+                }
+
+				&.dummy-block {
+                    background-image: $mizutama_url;
+					background-position: 0% 0%;
+                    background-size: get_vw(2) get_vw(2);
+                    background-repeat: repeat;
+
+                    &--bottom {
+                        // margin-left: auto;
+                    }
+                    &--bottom-right {
+                        margin-left: auto;
+                    }
+                    &--bottom-left {
+                        margin-right: auto;
+                    }
+                }
+            }
+        }
+
+        @media #{$media-sm} {
+            width: 100%;
+            height: auto;
+            margin: $block-size_sm * 2 0 0;
+
+            .service-link {
+                width: get_vw_sp(210);
+                padding: 0 0 0 get_vw_sp(18);
+
+                &::v-deep > svg {
+                    margin: 0 0 0 get_vw_sp(13);
+                }
+            }
+
+            .service-wrapper {
+                $service-size: get_vw_sp(140);
+                margin: $block-size_sm 0 0;
+                padding: $block-size_sm;
+                overflow-y: hidden;
+                overflow-x: scroll;
+                height: get_vw_sp(160);
+                flex-direction: column;
+                width: 100%;
+                -webkit-overflow-scrolling: touch;
+
+                // 各サービス
+                .service {
+                    // 左列
+                    &:nth-of-type(2n + 1) {
+                        margin-right: $block-size_sm;
+                    }
+
+                    // 右列
+                    &:nth-of-type(2n) {
+                        margin-top: 0;
+                        margin-right: $block-size_sm;
+                    }
+
+                    width: $service-size;
+                    height: get_vw_sp(140);
+
+                    h3 {
+                        top: $block-size_sm;
+                        height: get_vw_sp(20);
+                        line-height: get_vw_sp(20);
+                        font-size: get_vw_sp(14);
+                        background-size: get_vw_sp(2) get_vw_sp(2);
+                    }
+
+                    .bg-white {
+                        top: $block-size_sm;
+                        height: get_vw_sp(20);
+                    }
+
+                    .service__icon {
+                        width: get_vw_sp(30);
+                        height: get_vw_sp(30);
+                    }
+
+                    .service__more {
+                        font-size: get_vw_sp(12);
+                        height: $block-size_sm * 2;
+                        background-size: get_vw_sp(2) get_vw_sp(2);
+                        width: get_vw_sp(60);
+                        line-height: $block-size_sm * 2;
+                    }
+
+                    &.dummy-block {
+                        display: none;
+                    }
+
+                    // チョイトレ
+                    &.tyoitore {
+                        order: 3;
+
+                        .bg-white {
+                            width: get_vw_sp(74);
+                        }
+                    }
+
+                    // SI技術
+                    &.si {
+                        order: 2;
+
+                        h3 {
+                            height: get_vw_sp(40);
+                            line-height: 1.2;
+                        }
+
+                        .bg-white {
+                            width: get_vw_sp(120);
+                            height: get_vw_sp(35);
+                        }
+                    }
+
+                    // トレプラ
+                    &.torepura {
+                        order: 4;
+
+                        .bg-white {
+                            width: get_vw_sp(59);
+                        }
+                    }
+
+                    // 名古屋
+                    &.nagoya {
+                        order: 1;
+
+                        h3 {
+                            padding: 0 0 0 get_vw_sp(5);
+                        }
+
+                        .bg-white {
+                            width: get_vw_sp(83);
+                        }
+                    }
+
+                    // ギノトレ
+                    &.ginotore {
+                        order: 5;
+
+                        .bg-white {
+                            width: get_vw_sp(58);
+                        }
+                    }
+
+                    // 人材育成制度
+                    &.zinzai {
+                        order: 6;
+
+                        .bg-white {
+                            width: get_vw_sp(90);
+                        }
+                    }
+                    // media
+                    &.media {
+                        order: 7;
+
+                        .bg-white {
+                            width: get_vw_sp(90);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------
+// ABOUT US
+//--------------------------------------------------
+.index__aboutus {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .aboutus-img {
+        position: absolute;
+        top: $block-size * 6;
+        left: $block-size * 6;
+        width: get_vw(640);
+        height: get_vw(360);
+        background-color: $color-white;
+
+        > h2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include heading($color-red, $color-white);
+        }
+
+        &__img {
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+            background-image: url('~assets/img/top/30546531_dot_alph.png');
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        //
+        &__mottos {
+            position: absolute;
+            right: get_vw(-100);
+            top: get_vw(40);
+            height: get_vw(140);
+            width: get_vw(400);
+            z-index: 2;
+
+            &__motto {
+                width: 100%;
+                height: 100%;
+                background-color: $color-white;
+                font-size: get_vw(14);
+                line-height: 2.1;
+                letter-spacing: get_vw(-0.7);
+                padding: $block-size/2 $block-size/2 0 $block-size;
+            }
+
+            &__bg {
+                background-image: $mizutama_url;
+                background-repeat: repeat;
+                background-size: get_vw(2) get_vw(2);
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: $block-size;
+                left: $block-size;
+                // opacity: 0.1;
+                z-index: -1;
+            }
+        }
+    }
+
+    .aboutus-desc {
+        position: absolute;
+        top: get_vw(340);
+        right: $block-size * 5;
+        width: get_vw(600);
+        height: get_vw(200);
+        z-index: 2;
+
+        &__txt {
+            width: 100%;
+            height: 100%;
+            background-color: $color-white;
+            color: $color-black;
+            font-size: get_vw(14);
+            font-weight: 500;
+            line-height: 2.1;
+            letter-spacing: get_vw(-0.7);
+            padding: $block-size;
+        }
+
+        &__bg {
+            background-image: $mizutama_url;
+            background-repeat: repeat;
+            background-size: get_vw(2) get_vw(2);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: $block-size;
+            left: $block-size;
+            // opacity: 0.1;
+            z-index: -1;
+        }
+    }
+
+    .link-top {
+        width: get_vw(200);
+    }
+
+    .link-service {
+        width: get_vw(240);
+    }
+
+    @media #{$media-sm} {
+        .aboutus-img {
+            top: $block-size_sm * 6;
+            left: $block-size_sm;
+            width: calc(100% - #{$block-size_sm * 2});
+            height: get_vw_sp(170);
+
+            > h2 {
+                @include heading($color-red, $color-white);
+            }
+
+            &__mottos {
+                right: initial;
+                left: 0;
+                top: get_vw_sp(50);
+                display: none;
+
+                &__motto {
+                    font-size: get_vw_sp(11);
+                    height: get_vw_sp(30);
+                    line-height: get_vw_sp(15);
+                    padding: 0 $block-size_sm/2 0 $block-size_sm;
+
+                    &:nth-child(1) {
+                        margin: 0 0 $block-size_sm;
+                        width: get_vw_sp(250);
+                    }
+
+                    &:nth-child(2) {
+                        margin: 0 0 0 $block-size_sm;
+                        width: get_vw_sp(250);
+                    }
+                }
+            }
+        }
+
+        .aboutus-desc {
+            top: initial;
+            bottom: get_vw_sp(110);
+            right: calc(#{$block-size_sm * 2} + #{get_vw_sp(2)});
+            width: get_vw_sp(270);
+            height: get_vw_sp(270);
+
+            &__txt {
+                font-size: get_vw_sp(12);
+                line-height: 2.1;
+                letter-spacing: get_vw_sp(-0.7);
+                padding: $block-size_sm;
+            }
+
+            &__bg {
+                background-size: get_vw_sp(2) get_vw_sp(2);
+                top: $block-size_sm;
+                left: $block-size_sm;
+            }
+        }
+
+        .link-top {
+            width: get_vw_sp(170);
+        }
+
+        .link-service {
+            width: get_vw_sp(210);
+        }
+    }
+
+    @media #{$media-mh} {
+        .aboutus-img {
+            width: get_vw(640);
+            height: get_vw(260);
+
+            &__mottos {
+                top: get_vw(40);
+                height: get_vw(100);
+
+                &__motto {
+                    font-size: get_vw(12);
+                    line-height: 1.8;
+                }
+            }
+        }
+
+        .aboutus-desc {
+            top: initial;
+            bottom: get_vw(100);
+            height: get_vw(140);
+
+            &__txt {
+                font-size: get_vw(12);
+                line-height: 2;
+                letter-spacing: get_vw(-0.7);
+                padding: $block-size/2;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------
+// SERVICE
+//--------------------------------------------------
+.index__service {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    > h2 {
+        @include heading;
+        position: absolute;
+        top: $block-size * 6;
+        left: $block-size * 6;
+    }
+
+    .services {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        max-width: get_vw(960);
+        height: fit-content;
+        margin: get_vw(200) auto 0;
+
+        &__service {
+            width: get_vw(460);
+
+            .service__img {
+                position: relative;
+                width: get_vw(420);
+                height: get_vw(180);
+                overflow: hidden;
+
+                &__bg {
+                    background-color: $color-white;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                &__img {
+                    opacity: 0.6;
+                    width: 100%;
+                    height: 100%;
+
+                    > img {
+                        margin: get_vw(-48) 0 0;
+                    }
+                }
+
+                > h3 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: $color-white;
+                    color: $color-red;
+                    font-size: get_vw(18);
+                    padding: 0 0.5em;
+                    height: get_vw(20);
+                    display: flex;
+                    align-items: center;
+                    line-height: 1;
+                }
+            }
+
+            .service__desc {
+                position: relative;
+                width: get_vw(420);
+                z-index: 2;
+                margin: $block-size $block-size 0;
+                padding: 0 0 $block-size;
+
+                &__bg {
+                    position: absolute;
+                    top: 0;
+                    left: $block-size;
+                    width: 100%;
+                    height: $block-size * 4;
+                    z-index: -1;
+                    background-image: $mizutama_url;
+                    background-repeat: repeat;
+                    background-size: get_vw(2) get_vw(2);
+                }
+
+                &__txt {
+                    background-color: $color-white;
+                    color: $color-black;
+                    font-size: get_vw(14);
+                    line-height: 1.75;
+                    letter-spacing: get_vw(-0.2);
+                    height: $block-size * 3;
+
+                    padding: get_vw(7) get_vw(22) get_vw(10);
+                }
+            }
+
+            // MOREボタン
+            .service__button {
+                position: relative;
+                display: block;
+                width: get_vw(140);
+                height: get_vw(40);
+                margin: 0 0 0 auto;
+                color: $color-white;
+                background-color: $color-red;
+                font-size: get_vw(18);
+                line-height: get_vw(40);
+                letter-spacing: get_vw(1.04);
+                font-weight: 900;
+                padding: 0 0 0 get_vw(31);
+                transition: all 0.1s ease;
+
+                &::v-deep > svg {
+                    width: get_vw(22);
+                    height: get_vw(10);
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: get_vw(15);
+                    transition: all 0.1s ease;
+
+                    .cls-1 {
+                        fill: currentColor;
+                    }
+                }
+
+                &:hover {
+                    color: $color-red;
+                    background-color: $color-white;
+                }
+            }
+        }
+    }
+
+    .link-aboutus {
+        width: get_vw(281);
+    }
+
+    .link-news {
+        width: get_vw(187);
+    }
+
+    @media #{$media-sm} {
+        > h2 {
+            top: $block-size_sm * 6;
+            left: $block-size_sm;
+        }
+
+        .services {
+            flex-direction: column;
+            max-width: initial;
+            width: calc(100% - #{$block-size_sm * 2});
+            margin: get_vw_sp(90) auto 0;
+            max-height: 67%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+            &__service {
+                width: get_vw_sp(260);
+                margin: 0 0 $block-size_sm;
+
+                .service__img {
+                    position: relative;
+                    width: calc(100% - #{$block-size_sm});
+                    height: get_vw_sp(80);
+
+                    &__img {
+                        > img {
+                            margin: get_vw_sp(-28) 0 0;
+                        }
+                    }
+
+                    > h3 {
+                        font-size: get_vw_sp(12);
+                        padding: 0 0.5em;
+                        height: get_vw_sp(10);
+                    }
+                }
+
+                .service__desc {
+                    width: calc(100% - #{$block-size_sm * 2});
+                    margin: $block-size_sm $block-size_sm 0;
+                    padding: 0 0 $block-size_sm;
+
+                    &__bg {
+                        left: $block-size_sm;
+                        height: $block-size_sm * 6;
+                        background-size: get_vw_sp(2) get_vw_sp(2);
+                    }
+
+                    &__txt {
+                        font-size: get_vw_sp(11);
+                        line-height: 1.3;
+                        letter-spacing: get_vw_sp(-0.2);
+                        height: $block-size_sm * 5;
+                        padding: get_vw_sp(7) get_vw_sp(7) get_vw_sp(10);
+                    }
+                }
+
+                // MOREボタン
+                .service__button {
+                    width: get_vw_sp(120);
+                    height: get_vw_sp(20);
+                    font-size: get_vw_sp(14);
+                    line-height: get_vw_sp(20);
+                    letter-spacing: get_vw_sp(2);
+                    padding: 0 0 0 get_vw_sp(25);
+
+                    &::v-deep > svg {
+                        width: get_vw_sp(22);
+                        height: get_vw_sp(10);
+                        right: get_vw_sp(15);
+                    }
+
+                    &:hover {
+                        &::v-deep > svg {
+                            right: get_vw_sp(10);
+                        }
+                    }
+                }
+
+                // 偶数番目
+                &:nth-of-type(2n) {
+                    margin: 0 get_vw_sp(13) 0 auto;
+
+                    .service__img {
+                        margin: 0 0 0 auto;
+                    }
+
+                    .service__desc {
+                        &__bg {
+                            left: initial;
+                            right: $block-size_sm;
+                        }
+                    }
+
+                    .service__button {
+                        margin: 0 auto 0 0;
+                    }
+                }
+            }
+        }
+
+        .link-aboutus {
+            width: get_vw_sp(230);
+        }
+
+        .link-news {
+            width: get_vw_sp(160);
+        }
+    }
+
+    @media #{$media-mm} {
+        .services {
+            // margin: get_vw_sp(90) auto 0;
+
+            &__service {
+                .service__img {
+                    height: get_vw_sp(60);
+
+                    &__img {
+                        > img {
+                            margin: get_vw_sp(-48) 0 0;
+                        }
+                    }
+                }
+
+                .service__desc {
+                    &__bg {
+                        height: $block-size_sm * 5;
+                    }
+
+                    &__txt {
+                        font-size: get_vw_sp(10);
+                        line-height: 1.1;
+                        height: $block-size_sm * 4;
+                        padding: get_vw_sp(3) get_vw_sp(7);
+                    }
+                }
+
+                // MOREボタン
+                .service__button {
+                    width: get_vw_sp(80);
+                    height: get_vw_sp(10);
+                    font-size: get_vw_sp(10);
+                    line-height: get_vw_sp(10);
+                    letter-spacing: get_vw_sp(2);
+                    padding: 0 0 0 get_vw_sp(15);
+
+                    &::v-deep > svg {
+                        width: get_vw_sp(11);
+                        height: get_vw_sp(5);
+                        right: get_vw_sp(5);
+                    }
+
+                    &:hover {
+                        &::v-deep > svg {
+                            right: get_vw_sp(10);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media #{$media-mh} {
+        .services {
+            margin: auto auto 14vh;
+
+            &__service {
+                width: get_vw(460);
+
+                .service__img {
+                    width: get_vw(420);
+                    height: get_vw(180);
+
+                    > h3 {
+                        font-size: get_vw(18);
+                        padding: 0 0.5em;
+                        height: get_vw(20);
+                    }
+                }
+
+                .service__desc {
+                    width: get_vw(420);
+                    margin: $block-size $block-size 0;
+                    padding: 0 0 $block-size;
+
+                    &__txt {
+                        font-size: get_vw(14);
+                        line-height: 1.75;
+                        letter-spacing: get_vw(-0.2);
+                        height: $block-size * 3;
+                        padding: get_vw(7) get_vw(22) get_vw(10);
+                    }
+                }
+
+                // MOREボタン
+                .service__button {
+                    width: get_vw(140);
+                    height: get_vw(40);
+                    font-size: get_vw(18);
+                    line-height: get_vw(40);
+                    letter-spacing: get_vw(1.04);
+                    padding: 0 0 0 get_vw(31);
+
+                    &::v-deep > svg {
+                        width: get_vw(22);
+                        height: get_vw(10);
+                        right: get_vw(15);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------
+// NEWS
+//--------------------------------------------------
+.index__news {
+    position: relative;
+
+    > h2 {
+        @include heading;
+        position: absolute;
+        top: $block-size * 6;
+        left: $block-size * 6;
+    }
+
+    .news-list {
+        width: get_vw(560);
+        margin: get_vw(160) 0 0 get_vw(240);
+        max-height: get_vw(420);
+        overflow-y: scroll;
+        padding: 0 0 get_vw(100);
+
+        // &::-webkit-scrollbar-thumb {
+        // 	background-color: $color-black;
+        // 	border-radius: get_vw(10);
+        // }
+
+        // &::-webkit-scrollbar {
+        // 	width: get_vw(10);
+        // 	border-radius: get_vw(10);
+        // }
+
+        .news {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: $color-white;
+            padding: 0 0 $block-size * 1.2;
+            margin: 0 0 $block-size * 2;
+
+            // 日付&カテゴリタグ
+            &__info {
+                $info-height: get_vw(20);
+                width: 100%;
+                height: $info-height;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                margin: 0 0 get_vw(15);
+
+                &__day {
+                    width: $block-size * 5;
+                    color: $color-white;
+                    font-size: get_vw(14);
+                    font-weight: 900;
+                    line-height: $info-height;
+                    background-color: $color-skyblue;
+                    text-align: center;
+                    margin: 0 $block-size 0 0;
+                }
+
+                &__tag {
+                    color: $color-white;
+                    font-size: get_vw(10);
+                    line-height: $info-height;
+                    background-color: $color-black;
+                    text-align: center;
+                    padding: 0 get_vw(11);
+                }
+            }
+
+            // タイトル
+            &__title {
+                font-size: get_vw(16);
+                font-weight: 900;
+                line-height: 1.4;
+                color: $color-black;
+                margin: 0 0 get_vw(13);
+                padding: 0 0 0 $block-size;
+            }
+
+            // 本文
+            &__text {
+                font-size: get_vw(14);
+                color: $color-black;
+                padding: 0 0 0 $block-size;
+                letter-spacing: 0;
+                line-height: 1.46;
+            }
+
+            &__more {
+                width: $block-size * 4;
+                height: $block-size;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background-color: $color-red;
+                color: $color-white;
+                text-align: center;
+                font-size: get_vw(12);
+                font-weight: 900;
+                letter-spacing: get_vw(1);
+                transition: all 0.1s ease;
+
+                &:hover {
+                    border: 2px solid $color-red;
+                    background-color: $color-white;
+                    color: $color-red;
+                }
+            }
+        }
+    }
+
+    .link-news-page {
+        position: absolute;
+        bottom: $block-size * 6;
+        right: $block-size * 6;
+        display: block;
+        background-color: $color-white;
+        color: $color-red;
+        width: get_vw(200);
+        height: get_vw(40);
+        font-size: get_vw(18);
+        font-weight: 900;
+        line-height: get_vw(40);
+        letter-spacing: get_vw_sp(0.2);
+        padding: 0 0 0 get_vw(19);
+        transition: all 0.1s ease;
+
+        &::v-deep > svg {
+            width: get_vw(22);
+            height: get_vw(10);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: get_vw(15);
+            transition: all 0.1s ease;
+
+            .cls-1 {
+                fill: currentColor;
+            }
+        }
+
+        &:hover {
+            background-color: $color-red;
+            color: $color-white;
+        }
+    }
+
+    .link-service {
+        width: get_vw(240);
+    }
+
+    .link-top {
+        width: get_vw(200);
+    }
+
+    @media #{$media-sm} {
+        > h2 {
+            top: $block-size_sm * 6;
+            left: $block-size_sm;
+        }
+
+        .news-list {
+            width: calc(100% - #{$block-size_sm * 2});
+            margin: get_vw_sp(90) auto 0;
+            // max-height: 56.3%;
+            max-height: 59%;
+
+            .news {
+                padding: 0 0 get_vw_sp(25);
+                margin: 0 0 $block-size * 2;
+
+                // 日付&カテゴリタグ
+                &__info {
+                    $info-height: get_vw_sp(20);
+                    height: $info-height;
+                    margin: 0 0 get_vw_sp(10);
+
+                    &__day {
+                        width: $block-size_sm * 12;
+                        font-size: get_vw_sp(14);
+                        line-height: $info-height;
+                        margin: 0 $block-size_sm 0 0;
+                    }
+
+                    &__tag {
+                        font-size: get_vw_sp(10);
+                        line-height: $info-height;
+                        padding: 0 get_vw_sp(10);
+                    }
+                }
+
+                // タイトル
+                &__title {
+                    font-size: get_vw_sp(16);
+                    margin: 0 0 get_vw_sp(10);
+                    padding: 0 0 0 $block-size_sm;
+                }
+
+                // 本文
+                &__text {
+                    font-size: get_vw_sp(12);
+                    padding: 0 0 0 $block-size_sm;
+                    line-height: 1.6;
+                }
+
+                &__more {
+                    right: get_vw_sp(3);
+                    width: get_vw_sp(80);
+                    height: get_vw_sp(20);
+                    font-size: get_vw_sp(12);
+                    letter-spacing: get_vw_sp(1);
+                }
+            }
+        }
+
+        .link-news-page {
+            bottom: get_vw_sp(100);
+            right: $block-size_sm;
+            width: get_vw_sp(170);
+            height: get_vw_sp(30);
+            font-size: get_vw_sp(14);
+            line-height: get_vw_sp(30);
+            letter-spacing: get_vw_sp(1.2);
+            padding: 0 0 0 get_vw_sp(14);
+
+            &::v-deep > svg {
+                width: get_vw_sp(22);
+                height: get_vw_sp(10);
+                right: get_vw_sp(15);
+            }
+
+            &:hover {
+                &::v-deep > svg {
+                    right: get_vw_sp(10);
+                }
+            }
+        }
+
+        .link-service {
+            width: get_vw_sp(210);
+        }
+
+        .privacy-links {
+            position: absolute;
+            bottom: get_vw_sp(70);
+            left: get_vw_sp(30);
+            width: calc(100% - #{get_vw_sp(30) * 2});
+            $height: get_vw_sp(20);
+            height: $height;
+            display: flex;
+            justify-content: space-between;
+
+            > a {
+                background-color: $color-white;
+                color: $color-red;
+                font-size: get_vw_sp(10);
+                font-weight: 900;
+                line-height: $height;
+                height: 100%;
+                display: inline-block;
+                padding: 0 $block-size_sm;
+            }
+        }
+    }
+}

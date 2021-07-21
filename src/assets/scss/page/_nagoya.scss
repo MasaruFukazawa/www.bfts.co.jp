@@ -1,0 +1,205 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.page-nagoya {
+    min-height: 100vh;
+
+    .heading-en {
+        @include heading;
+
+        .heading__img {
+            background-image: url('~assets/img/service/nagoya.jpg');
+            background-position: 0 80%;
+        }
+    }
+
+    .nagoya__desc {
+        @include under_desc(true);
+    }
+
+    .nagoya__about {
+        position: relative;
+        width: get_vw(800);
+        margin: 0 auto get_vw(80);
+        background-color: $color-white;
+        padding: $block-size * 2;
+        display: flex;
+        flex-direction: column;
+
+        .side-red {
+            @include side-red(right);
+        }
+
+        // サービス内容
+        &__service {
+            display: flex;
+            flex-direction: column;
+
+            &__title {
+                @include heading-h2;
+                margin: 0 0 0 auto;
+            }
+
+            &__txt {
+                font-size: get_vw(14);
+                margin: get_vw(35) 0 0;
+                line-height: 2;
+                letter-spacing: 0;
+            }
+        }
+
+        // 名古屋採用
+        &__recruit {
+            $img-height: get_vw(210);
+            display: flex;
+            flex-direction: column;
+            margin: get_vw(55) 0 0;
+            position: relative;
+            min-height: $img-height;
+
+            &__title {
+                @include heading-h2;
+                margin: 0 auto 0 0;
+                padding: 0 get_vw(40) 0 get_vw(48);
+            }
+
+            &__txt {
+                font-size: get_vw(14);
+                margin: get_vw(35) 0 0;
+                line-height: 2;
+                letter-spacing: 0;
+                max-width: get_vw(459);
+            }
+
+            &__img {
+                position: absolute;
+                top: 0%;
+                right: 0;
+                width: get_vw(210);
+                height: $img-height;
+
+                background-image: url('~assets/img/nagoya/nagoya.jpeg');
+                background-size: cover;
+                background-position: 37% 0;
+            }
+        }
+
+        @media #{$media-sm} {
+            width: get_vw_sp(260);
+            margin: 0 auto get_vw_sp(40);
+            padding: $block-size_sm * 2 $block-size_sm;
+
+            // サービス内容
+            &__service {
+                &__txt {
+                    font-size: get_vw_sp(12);
+                    margin: get_vw_sp(20) 0 0;
+                    line-height: 2;
+                }
+            }
+
+            // 名古屋採用
+            &__recruit {
+                $img-height: get_vw_sp(120);
+                margin: get_vw_sp(50) 0 0;
+                padding: 0 0 $img-height;
+                min-height: $img-height;
+
+                &__title {
+                    padding: 0 get_vw_sp(17) 0 get_vw_sp(14);
+                }
+
+                &__txt {
+                    font-size: get_vw_sp(12);
+                    margin: get_vw_sp(20) 0 0;
+                    max-width: initial;
+                }
+
+                &__img {
+                    top: initial;
+                    bottom: 0;
+                    right: 0;
+                    width: 100%;
+                    height: $img-height;
+
+                    background-size: cover;
+                    background-position: 37% 0;
+                }
+            }
+        }
+
+        .bg-left {
+            position: absolute;
+            top: 100%;
+            right: calc((100vw - 100%) / 2 * -1);
+            width: get_vw(1040);
+
+            > div {
+                position: absolute;
+                height: $block-size;
+                background-color: $color-red;
+            }
+
+            &__1 {
+                top: 0;
+                right: 0;
+                width: calc(100% - #{$block-size * 7});
+            }
+
+            &__2 {
+                top: $block-size;
+                right: $block-size;
+                width: calc(100% - #{$block-size * 5});
+            }
+
+            &__3 {
+                top: $block-size * 2;
+                right: $block-size;
+                width: calc(100% - #{$block-size * 2});
+            }
+
+            &__4 {
+                top: $block-size * 3;
+                right: $block-size * 2;
+                width: calc(100% - #{$block-size * 2});
+            }
+
+            @media #{$media-sm} {
+                width: 100vw;
+
+                > div {
+                    height: $block-size_sm;
+                }
+
+                &__1 {
+                    top: 0;
+                    right: 0;
+                    width: calc(100% - #{$block-size_sm * 3});
+                }
+
+                &__2 {
+                    top: $block-size_sm;
+                    right: $block-size_sm;
+                    width: calc(100% - #{$block-size_sm * 2});
+                }
+
+                &__3 {
+                    top: $block-size_sm * 2;
+                    right: $block-size_sm;
+                    width: calc(100% - #{$block-size_sm});
+                }
+
+                &__4 {
+                    top: $block-size_sm * 3;
+                    right: $block-size_sm * 2;
+                    width: calc(100% - #{$block-size_sm * 2});
+                }
+            }
+        }
+    }
+
+    .nagoya__access {
+        margin-bottom: get_vw(35);
+        padding-bottom: get_vw(40);
+    }
+}

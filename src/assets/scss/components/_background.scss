@@ -1,0 +1,40 @@
+//
+.component-background {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    overflow-y: hidden;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+	z-index: -1;
+	pointer-events: none;
+
+    &:not(.index) {
+        position: fixed;
+    }
+
+    // 背景一文字
+    .back-string {
+        display: inline-block;
+        width: $block-size;
+        height: $block-size;
+        font-size: get_vw(8);
+        text-align: center;
+        line-height: $block-size;
+		color: rgba($color-red, 0.6);
+		user-select: none;
+    }
+
+    @media #{$media-sm} {
+        background-image: url(~assets/img/top/sp/bg_img_sp@2x.png);
+        background-repeat: repeat;
+        background-size: get_vw_sp(30) get_vw_sp(30);
+
+        .back-string {
+            display: none;
+        }
+    }
+}

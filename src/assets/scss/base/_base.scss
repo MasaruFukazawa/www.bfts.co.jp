@@ -1,0 +1,66 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $font-family-default;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-print-color-adjust: exact; // 印刷時の調整
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+    color: $color-black;
+    // font-size: 1.6em;
+    font-size: get_vw(16);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    background-repeat: no-repeat;
+    background-color: $color-white;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a,
+a:hover,
+a:visited {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    // width: 100%;
+    height: auto;
+    vertical-align: middle;
+    object-fit: cover; //IEは効かない
+}
+
+html::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+}
+
+::selection {
+    background-color: $color-red;
+    color: $color-white;
+}
+
+.sp {
+    display: none;
+}
+
+@media #{$media-sm} {
+    .sp {
+        display: block;
+    }
+
+    .pc {
+        display: none;
+    }
+}

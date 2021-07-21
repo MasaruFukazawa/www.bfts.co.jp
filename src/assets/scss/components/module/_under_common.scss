@@ -1,0 +1,221 @@
+// 右上タイトルが写真の場合trueを引数に渡すと、その分top値を調整する
+@mixin under_desc($is-head-img: false) {
+    position: relative;
+    width: get_vw(720);
+    margin: get_vw(180) auto get_vw(60) get_vw(120);
+
+    > h1 {
+        background-color: $color-red;
+        color: $color-white;
+        $height: get_vw(40);
+        height: $height;
+        padding: 0 get_vw(15) 0;
+        display: inline-flex;
+
+        &.large-en {
+            .ja {
+                font-size: get_vw(10);
+                line-height: calc(#{$height} + #{get_vw(10)});
+                font-weight: 900;
+                letter-spacing: get_vw(0.4);
+                padding: 0 0 0 get_vw(6);
+            }
+
+            .en {
+                font-size: get_vw(27);
+                line-height: $height;
+                font-weight: 900;
+                letter-spacing: get_vw(4);
+            }
+        }
+
+        &.large-ja {
+            .ja {
+                font-size: get_vw(22);
+                line-height: $height;
+                font-weight: 900;
+                letter-spacing: get_vw(4);
+            }
+
+            .en {
+                font-size: get_vw(10);
+                line-height: calc(#{$height} + #{get_vw(10)});
+                font-weight: 900;
+                letter-spacing: get_vw(0.4);
+                padding: 0 0 0 get_vw(14);
+            }
+        }
+    }
+
+    .desc__txt {
+        position: relative;
+        line-height: 1.8;
+        background-color: $color-white;
+        z-index: 2;
+
+        > h3 {
+            font-size: get_vw(22);
+            color: $color-skyblue;
+            letter-spacing: get_vw(3);
+            font-weight: 900;
+            line-height: 1;
+            padding: $block-size 0 0 $block-size;
+            background-color: $color-white;
+        }
+
+        &__txt {
+            background-color: $color-white;
+            color: $color-black;
+            font-size: get_vw(14);
+            letter-spacing: get_vw(0.6);
+            padding: $block-size;
+
+            > a {
+                color: $color-red;
+            }
+        }
+
+        .txt-bg {
+            position: absolute;
+            top: $block-size;
+            left: $block-size;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+
+            background-image: $mizutama_url;
+            background-size: get_vw(2) get_vw(2);
+            background-repeat: repeat;
+        }
+    }
+
+    @media #{$media-sm} {
+        width: get_vw_sp(260);
+
+        @if $is-head-img==true {
+            margin: get_vw_sp(130) auto get_vw_sp(30) get_vw_sp(10);
+        } @else {
+            margin: get_vw_sp(110) auto get_vw_sp(30) get_vw_sp(10);
+        }
+
+        > h1 {
+            $sp-height: get_vw_sp(20);
+            height: $sp-height;
+            padding: 0 get_vw_sp(15) 0;
+
+            &.large-en {
+                .ja {
+                    font-size: get_vw_sp(14);
+                    line-height: $sp-height;
+                    letter-spacing: get_vw_sp(0.4);
+                    padding: 0 0 0 get_vw_sp(6);
+                }
+
+                .en {
+                    font-size: get_vw_sp(14);
+                    line-height: $sp-height;
+                    letter-spacing: get_vw_sp(2);
+                }
+            }
+
+            &.large-ja {
+                .ja {
+                    font-size: get_vw_sp(14);
+                    line-height: $sp-height;
+                    letter-spacing: get_vw_sp(2);
+                }
+
+                .en {
+                    font-size: get_vw_sp(14);
+                    line-height: $sp-height;
+                    letter-spacing: get_vw_sp(0.4);
+                    padding: 0 0 0 get_vw_sp(10);
+                }
+            }
+        }
+
+        .desc__txt {
+            line-height: 1.8;
+
+            > h3 {
+                font-size: get_vw_sp(16);
+                letter-spacing: get_vw_sp(2);
+                padding: $block-size_sm 0 0 $block-size_sm;
+            }
+
+            &__txt {
+                font-size: get_vw_sp(14);
+                letter-spacing: get_vw_sp(0.6);
+                padding: $block-size_sm;
+            }
+
+            .txt-bg {
+                top: $block-size_sm;
+                left: $block-size_sm;
+                background-size: get_vw_sp(2) get_vw_sp(2);
+            }
+        }
+    }
+}
+
+// 下層のコンテンツサイドの赤背景
+@mixin side-red($side: left) {
+    position: absolute;
+    width: calc((100vw - 100%) / 2);
+    height: 100%;
+    top: 0;
+    #{$side}: calc((100vw - 100%) / 2 * -1);
+    background-color: $color-palered;
+    opacity: 0.92;
+
+    @include ie-only {
+        $reverse-side: right;
+        @if $side==right {
+            $reverse-side: left;
+        } @else {
+            $reverse-side: right;
+        }
+        #{$reverse-side}: 100%;
+    }
+}
+
+// 下層の各コンテンツタイトル ex)「BFT道場 education」
+@mixin heading-h2($color: $color-white, $background-color: $color-red) {
+    $title_height: get_vw(40);
+    height: $title_height;
+    font-weight: 900;
+    background-color: $background-color;
+    color: $color;
+    display: inline-block;
+    padding: 0 get_vw(10) 0 get_vw(20);
+
+    .ja {
+        font-size: get_vw(27);
+        letter-spacing: get_vw(4.9);
+        line-height: $title_height;
+        margin: 0 get_vw(10) 0 0;
+    }
+
+    .en {
+        font-size: get_vw(14);
+        letter-spacing: get_vw(2);
+    }
+
+    @media #{$media-sm} {
+        $title_height: get_vw_sp(20);
+        height: $title_height;
+        padding: 0 get_vw_sp(10) 0 get_vw_sp(11);
+
+        .ja {
+            font-size: get_vw_sp(14);
+            letter-spacing: get_vw_sp(2.5);
+            line-height: $title_height;
+            margin: 0 get_vw_sp(8) 0 0;
+        }
+
+        .en {
+            font-size: get_vw_sp(10);
+            letter-spacing: get_vw_sp(1.8);
+        }
+    }
+}

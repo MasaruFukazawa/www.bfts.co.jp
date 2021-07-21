@@ -1,0 +1,138 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+@import '~assets/scss/page/system/menu';
+
+.page-system {
+    min-height: 100vh;
+
+    .heading-en {
+        @include heading;
+
+        .heading__img {
+            background-image: url('~assets/img/service/si.jpg');
+            background-position: 100% 54%;
+            background-size: get_vw(340) auto;
+        }
+
+        &.under-en-title {
+            height: get_vw(80);
+            text-align: right;
+            padding: 0 get_vw(20) 0 get_vw(70);
+        }
+
+        @media #{$media-sm} {
+            .heading__img {
+                background-size: get_vw_sp(150) auto;
+            }
+
+            &.under-en-title {
+                height: get_vw_sp(40);
+                padding: 0 get_vw_sp(4) 0 get_vw_sp(7);
+            }
+        }
+    }
+
+    .system__desc {
+        @include under_desc(true);
+
+        .desc__txt {
+            > h3 {
+                font-size: get_vw(16);
+                letter-spacing: 0;
+            }
+        }
+
+        @media #{$media-sm} {
+            margin-top: get_vw_sp(150);
+
+            .desc__txt {
+                > h3 {
+                    font-size: get_vw_sp(16);
+                    line-height: 1.66;
+                    letter-spacing: get_vw_sp(1);
+                }
+            }
+        }
+    }
+
+    .system__sysdev {
+        // 赤背景の方向
+        @include system_menu(right, url('~assets/img/service/si.jpg'));
+
+        .red-bg {
+            position: absolute;
+            $width: get_vw(1040);
+            width: $width;
+            top: 100%;
+            left: get_vw(-120);
+
+            > div {
+                position: absolute;
+                height: $block-size;
+                background-color: $color-red;
+            }
+
+            &__1 {
+                width: calc(100% - #{$block-size * 7});
+                top: 0;
+                left: $block-size * 7;
+            }
+
+            &__2 {
+                width: calc(100% - #{$block-size * 5});
+                top: $block-size * 1;
+                left: $block-size * 4;
+            }
+
+            &__3 {
+                width: calc(100% - #{$block-size * 2});
+                top: $block-size * 2;
+                left: $block-size * 1;
+            }
+
+            &__4 {
+                width: calc(100% - #{$block-size * 2});
+                top: $block-size * 3;
+                left: 0;
+            }
+
+            @media #{$media-sm} {
+                $width: 100vw;
+                width: $width;
+                left: calc(#{$block-size_sm} * -1);
+
+                > div {
+                    height: $block-size_sm;
+                }
+
+                &__1 {
+                    width: calc(100% - #{$block-size_sm * 5});
+                    top: 0;
+                    left: $block-size_sm * 5;
+                }
+
+                &__2 {
+                    width: calc(100% - #{$block-size_sm * 5});
+                    top: $block-size_sm * 1;
+                    left: $block-size_sm * 4;
+                }
+
+                &__3 {
+                    width: calc(100% - #{$block-size_sm * 2});
+                    top: $block-size_sm * 2;
+                    left: $block-size_sm * 1;
+                }
+
+                &__4 {
+                    width: calc(100% - #{$block-size_sm * 2});
+                    top: $block-size_sm * 3;
+                    left: 0;
+                }
+            }
+        }
+    }
+
+    .system__infra {
+        @include system_menu(left, url('~assets/img/service/infra.jpg'));
+    }
+}

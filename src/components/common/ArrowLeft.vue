@@ -1,0 +1,26 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 8.18">
+        <defs></defs>
+        <title>arrow_left</title>
+        <g id="レイヤー_2" data-name="レイヤー 2">
+            <g id="design">
+                <polygon
+                    class="cls-1"
+                    points="4.4 8.18 5.08 7.45 2.01 4.59 22 4.59 22 3.59 2 3.59 5.08 0.73 4.4 0 0 4.09 4.4 8.18"
+                ></polygon>
+            </g>
+        </g>
+    </svg>
+</template>
+
+<script>
+import Vue from 'vue';
+
+export default Vue.extend({});
+</script>
+
+<style>
+.cls-1 {
+    fill: #f03329;
+}
+</style>

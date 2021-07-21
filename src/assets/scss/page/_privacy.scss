@@ -1,0 +1,87 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.page-privacy {
+    min-height: 100vh;
+}
+
+.heading-en {
+    @include heading;
+}
+
+.privacy__desc {
+    @include under_desc(true);
+
+    > h1.large-ja {
+        $height: get_vw(40);
+        height: $height;
+
+        .ja {
+            line-height: $height;
+        }
+    }
+
+    @media #{$media-sm} {
+        > h1.large-ja {
+            $height: get_vw_sp(20);
+            height: $height;
+
+            .ja {
+                line-height: $height;
+            }
+        }
+    }
+}
+
+.privacy__h2 {
+    @include heading-h2;
+    margin: $block-size * 2 auto $block-size get_vw(120);
+
+    .ja {
+        font-size: get_vw(23);
+    }
+
+    @media #{$media-sm} {
+        margin: $block-size_sm * 2 auto $block-size_sm $block-size_sm;
+
+        .ja {
+            font-size: get_vw_sp(13);
+        }
+    }
+}
+
+.privacy__txt {
+    background-color: $color-white;
+    font-size: get_vw(14);
+    padding: $block-size;
+    width: get_vw(900);
+    margin: 0 auto $block-size get_vw(120);
+    line-height: 1.9;
+
+    .right {
+        text-align: right;
+    }
+
+    // 一段下げたい部分
+    > p {
+        padding: 0 0 0 $block-size;
+        line-height: 1.7;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    @media #{$media-sm} {
+        font-size: get_vw_sp(12);
+        padding: $block-size_sm;
+        width: calc(100% - #{$block-size_sm * 2});
+        margin: 0 auto $block-size_sm;
+
+        // 一段下げたい部分
+        > p {
+            padding: 0 0 0 $block-size;
+            line-height: 1.7;
+        }
+    }
+}

@@ -1,0 +1,352 @@
+$logo-size: get_vw(180);
+
+.header {
+    position: absolute;
+    top: $block-size;
+    left: 0;
+    width: get_vw(300);
+    margin: 0 auto 0 $block-size * 6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: $z-header;
+
+    &:not(.index) {
+        position: fixed;
+    }
+
+    // 企業ロゴ
+    &__logo {
+        width: $logo-size;
+        margin: 0 $block-size 0 0;
+    }
+
+    @mixin btn-txt($font: 14) {
+        font-size: get_vw($font);
+        font-weight: 700;
+        letter-spacing: 0.08rem;
+
+        @media #{$media-sm} {
+            font-size: get_vw_sp(12);
+        }
+    }
+
+    // MENUボタン
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: get_vw(100);
+        height: get_vw(40);
+        padding: 0 get_vw(10);
+        cursor: pointer;
+        color: $color-white;
+        background-color: $color-red;
+
+        &__txt {
+            @include btn-txt(14);
+        }
+
+        // ブロックラッパークラス
+        &__white-blocks {
+            $white-block-size: get_vw(6);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: calc(#{$white-block-size} * 5);
+            height: calc(#{$white-block-size} * 3);
+
+            // 白のブロック
+            span {
+                // display: block;
+                width: $white-block-size;
+                height: $white-block-size;
+                background-color: $color-white;
+
+                // 右側マージン
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(4),
+                &:nth-child(5) {
+                    margin-right: $white-block-size;
+                }
+
+                // 下側マージン
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3) {
+                    margin-bottom: $white-block-size;
+                }
+            }
+        }
+    }
+
+    // ボタン押して開くメニュー
+    &__menu-wrapper {
+        $menu-btn-width: get_vw(120);
+        width: calc(#{$menu-btn-width}* 3 + #{$block-size} * 2 + #{get_vw(10)});
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: absolute;
+        left: $logo-size + $block-size;
+        top: $block-size;
+
+        .header__menu-btn {
+            @include btn-txt(11);
+            position: relative;
+            cursor: pointer;
+            width: $menu-btn-width;
+            height: get_vw(40);
+            text-align: center;
+            color: $color-white;
+            line-height: get_vw(40);
+            padding: 0 3% 0 0;
+            background-color: $color-black;
+            margin: 0 0 $block-size;
+
+            // 右側マージン
+            @include mq-more-than-mobile {
+                &:not(:nth-child(3n)) {
+                    margin-right: $block-size;
+                }
+            }
+
+            &:hover {
+                transition: background-color 0.1s ease;
+                background-color: $color-red;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: get_vw(6);
+                transform: translateY(-50%);
+                background-image: url('~assets/img/common/header/arrow-right.svg');
+                background-size: get_vw(5) get_vw(6);
+                width: get_vw(5);
+                height: get_vw(6);
+            }
+
+            &.header__close-btn {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                padding: 0 get_vw(30) 0 get_vw(10);
+
+                &::after {
+                    content: none;
+                }
+
+                .close-btn__white-blocks {
+                    $white-block-size: get_vw(6);
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    width: calc(#{$white-block-size} * 3);
+                    height: calc(#{$white-block-size} * 3);
+                    margin: 0 0 0 get_vw(18);
+
+                    // 白のブロック
+                    span {
+                        // display: block;
+                        width: $white-block-size;
+                        height: $white-block-size;
+                        background-color: $color-white;
+
+                        // 右側マージン
+                        &:nth-child(1),
+                        &:nth-child(4) {
+                            margin-right: $white-block-size;
+                        }
+
+                        // 左右マージン
+                        &:nth-child(3) {
+                            margin: 0 $white-block-size;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @keyframes header_btn {
+        0% {
+            //
+        }
+
+        100% {
+            //
+        }
+    }
+
+    .header_btn {
+        &-enter {
+            opacity: 0;
+
+            &-active {
+                // animation-name: header_btn;
+                // animation-duration: 0.5s;
+                // animation-timing-function: ease;
+                // animation-fill-mode: both;
+                transition: all 1s ease;
+            }
+
+            &-to {
+                opacity: 1;
+            }
+        }
+
+        &-leave {
+            opacity: 1;
+
+            &-active {
+                transition: all 0.1s ease;
+            }
+
+            &-to {
+                opacity: 0;
+                // transform: translateX(-100px);
+            }
+        }
+    }
+
+    // // アニメーション開始時の状態
+    // .header-enter {
+    // 	opacity: 0;
+    // }
+
+    // // 各アニメーションの設定
+    // .header-enter-active {
+    // 	transition: all 1s ease;
+    // }
+
+    // // アニメーションは開始後の状態
+    // .header-enter-to {
+    // 	opacity: 1;
+    // }
+
+    // // 以下閉じる時処理
+    // .header-leave {
+    // 	opacity: 1;
+    // }
+
+    // .header-leave-active {
+    // 	transition: all 0.1s ease;
+    // }
+
+    // .header-leave-to {
+    // 	opacity: 0;
+    // }
+
+    @media #{$media-sm} {
+        $logo-size: get_vw_sp(90);
+
+        width: 100%;
+        margin: 0;
+        top: 0;
+        align-items: flex-start;
+
+        &__logo {
+            width: $logo-size;
+            margin: $block-size_sm 0 0 $block-size_sm;
+        }
+
+        &__btn {
+            width: get_vw_sp(100);
+            height: get_vw_sp(40);
+            padding: 0 $block-size_sm;
+            margin: 0 0 0 auto;
+
+            // ブロックラッパークラス
+            &__white-blocks {
+                $white-block-size: get_vw_sp(6);
+                width: calc(#{$white-block-size} * 5);
+                height: calc(#{$white-block-size} * 3);
+
+                // 白のブロック
+                span {
+                    width: $white-block-size;
+                    height: $white-block-size;
+
+                    // 右側マージン
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(4),
+                    &:nth-child(5) {
+                        margin-right: $white-block-size;
+                    }
+
+                    // 下側マージン
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        margin-bottom: $white-block-size;
+                    }
+                }
+            }
+        }
+
+        // ボタン押して開くメニュー
+        &__menu-wrapper {
+            $menu-btn-width: get_vw_sp(120);
+            width: calc(#{$menu-btn-width}* 2 + #{$block-size_sm});
+            left: auto;
+            right: 0;
+            top: 0;
+            justify-content: flex-end;
+
+            .header__menu-btn {
+                width: $menu-btn-width;
+                height: get_vw_sp(40);
+                line-height: get_vw_sp(40);
+                padding: 0 3% 0 0;
+                margin: 0 0 $block-size_sm;
+
+                // 右側マージン
+                &:nth-child(2n + 1) {
+                    margin-left: $block-size_sm;
+                }
+
+                &::after {
+                    right: get_vw_sp(6);
+                    background-size: get_vw_sp(4) get_vw_sp(6);
+                    width: get_vw_sp(4);
+                    height: get_vw_sp(6);
+                }
+
+                &.header__close-btn {
+                    margin-left: 50%;
+                    padding: 0 get_vw_sp(25) 0 get_vw_sp(10);
+
+                    .close-btn__white-blocks {
+                        $white-block-size: get_vw_sp(6);
+                        width: calc(#{$white-block-size} * 3);
+                        height: calc(#{$white-block-size} * 3);
+                        margin: 0 0 0 get_vw_sp(25);
+
+                        // 白のブロック
+                        span {
+                            // display: block;
+                            width: $white-block-size;
+                            height: $white-block-size;
+
+                            // 右側マージン
+                            &:nth-child(1),
+                            &:nth-child(4) {
+                                margin-right: $white-block-size;
+                            }
+
+                            // 左右マージン
+                            &:nth-child(3) {
+                                margin: 0 $white-block-size;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

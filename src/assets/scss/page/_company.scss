@@ -1,0 +1,295 @@
+@import '~assets/scss/components/module/heading';
+@import '~assets/scss/components/module/under_common';
+
+.page-com {
+    min-height: 100vh;
+}
+
+.heading-en {
+    @include heading;
+}
+
+// 会社概要
+.com__title {
+    @include heading-h2;
+    margin: get_vw(180) auto $block-size get_vw(120);
+    display: inline-flex;
+
+    .ja {
+        font-size: get_vw(23);
+    }
+}
+
+// 概要
+.com__info-table {
+    width: get_vw(840);
+    margin: 0 auto get_vw(80) get_vw(120);
+    display: grid;
+    grid-template-columns: get_vw(260) get_vw(540);
+    grid-template-rows: minmax(get_vw(40), auto);
+    grid-column-gap: $block-size * 2;
+    grid-row-gap: $block-size;
+
+    @include ie-only {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    // 左列
+    .info-name {
+        position: relative;
+        color: $color-white;
+        display: inline-flex;
+        z-index: 3;
+        font-size: get_vw(18);
+        font-weight: 900;
+        letter-spacing: get_vw(2);
+        line-height: get_vw(40);
+        padding: 0 0 0 get_vw(20);
+
+        @include ie-only {
+            width: get_vw(260);
+            margin: 0 ($block-size * 2) $block-size 0;
+        }
+
+        // 背景
+        &::before {
+            content: '';
+            position: absolute;
+            width: get_vw(260);
+            height: get_vw(40);
+            background-color: $color-skyblue;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    }
+
+    .info-value {
+        font-size: get_vw(18);
+        font-weight: 900;
+        letter-spacing: get_vw(2);
+        background-color: $color-white;
+        line-height: 1.6;
+        padding: get_vw(10) 0 get_vw(10) get_vw(20);
+
+        // 複数行でない場合 //念の為firstline
+        &:not(.multi-line):first-line {
+            line-height: 1;
+        }
+
+        @include ie-only {
+            width: get_vw(540);
+            margin: 0 0 $block-size;
+        }
+    }
+}
+
+// 沿革
+.com__his-title {
+    @include heading-h2;
+    margin: 0 auto 0 get_vw(200);
+}
+
+.com__his-table {
+    position: relative;
+    margin: 0 auto get_vw(80);
+    width: get_vw(800);
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    padding: $block-size $block-size * 2;
+
+    // 1row
+    .history {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 2px solid $color-skyblue;
+
+        $min-height: get_vw(60);
+        min-height: $min-height;
+        line-height: $min-height;
+
+        // 年
+        &__year {
+            margin: 0 get_vw(40) 0 0;
+            font-size: get_vw(18);
+            font-weight: 900;
+            letter-spacing: get_vw(2);
+        }
+
+        // 内容
+        &__txt {
+            font-size: get_vw(16);
+            letter-spacing: get_vw(2);
+
+            &.multi-line {
+                padding: calc((#{$min-height} - 1em) / 2.5) 0;
+                line-height: 1.7;
+            }
+        }
+    }
+
+    .bg-red {
+        width: get_vw(1120);
+        position: absolute;
+        top: 100%;
+        left: calc((100vw - 100%) / 2 * -1);
+
+        > div {
+            position: absolute;
+            height: $block-size;
+            background-color: $color-red;
+        }
+
+        &__1 {
+            top: 0;
+            left: 0;
+            width: calc(100% - #{$block-size * 7});
+        }
+
+        &__2 {
+            top: $block-size;
+            left: $block-size * 2;
+            width: calc(100% - #{$block-size * 6});
+        }
+
+        &__3 {
+            top: $block-size * 2;
+            left: $block-size * 4;
+            width: calc(100% - #{$block-size * 5});
+        }
+
+        &__4 {
+            top: $block-size * 3;
+            left: $block-size * 6;
+            width: calc(100% - #{$block-size * 6});
+        }
+
+        @media #{$media-sm} {
+            width: 100vw;
+
+            > div {
+                height: $block-size_sm;
+            }
+
+            &__1 {
+                top: 0;
+                left: 0;
+                width: calc(100% - #{$block-size_sm * 3});
+            }
+
+            &__2 {
+                top: $block-size_sm;
+                left: $block-size_sm;
+                width: calc(100% - #{$block-size_sm * 2});
+            }
+
+            &__3 {
+                top: $block-size_sm * 2;
+                left: $block-size_sm;
+                width: calc(100% - #{$block-size_sm});
+            }
+
+            &__4 {
+                top: $block-size_sm * 3;
+                left: $block-size_sm * 2;
+                width: calc(100% - #{$block-size_sm * 2});
+            }
+        }
+    }
+}
+
+@media #{$media-sm} {
+    // 会社概要
+    .com__title {
+        margin: get_vw_sp(110) auto $block-size_sm * 2 get_vw_sp(10);
+
+        .ja {
+            font-size: get_vw_sp(14);
+        }
+    }
+
+    // 概要
+    .com__info-table {
+        margin: 0 auto get_vw_sp(40) get_vw_sp(10);
+        width: 100%;
+        $min-height: get_vw_sp(20);
+        grid-template-columns: get_vw_sp(100) get_vw_sp(180);
+        grid-template-rows: minmax($min-height, auto);
+        grid-column-gap: $block-size_sm * 2;
+        grid-row-gap: $block-size_sm;
+
+        // 左列
+        .info-name {
+            font-size: get_vw_sp(12);
+            letter-spacing: get_vw_sp(2);
+            line-height: $min-height;
+            padding: 0 0 0 get_vw_sp(10);
+
+            // 背景
+            &::before {
+                width: get_vw_sp(100);
+                height: get_vw_sp(20);
+            }
+        }
+
+        .info-value {
+            font-size: get_vw_sp(12);
+            letter-spacing: get_vw_sp(2);
+            padding: get_vw_sp(10) get_vw_sp(7);
+
+            // 役職 右寄せ
+            .ta-right {
+                display: inline-block;
+                text-align: right;
+                width: 100%;
+            }
+
+            .txt-sm {
+                font-size: get_vw_sp(10);
+                letter-spacing: get_vw_sp(1.7);
+            }
+        }
+    }
+
+    // 沿革
+    .com__his-title {
+        margin: 0 auto 0 get_vw_sp(30);
+    }
+
+    .com__his-table {
+        margin: 0 auto get_vw_sp(40);
+        width: get_vw_sp(260);
+        padding: $block-size_sm $block-size_sm get_vw_sp(35);
+
+        // 1row
+        .history {
+            flex-direction: column;
+
+            $min-height: get_vw_sp(78);
+            min-height: $min-height;
+            line-height: 1;
+
+            // 年
+            &__year {
+                margin: get_vw_sp(12) auto get_vw_sp(10) 0;
+                font-size: get_vw_sp(14);
+                line-height: 1;
+                letter-spacing: get_vw_sp(2);
+            }
+
+            // 内容
+            &__txt {
+                font-size: get_vw_sp(12);
+                letter-spacing: get_vw_sp(1.8);
+                line-height: 1.4;
+
+                &.multi-line {
+                    padding: 0 0 get_vw_sp(15);
+                    line-height: 1.7;
+                }
+            }
+        }
+    }
+}

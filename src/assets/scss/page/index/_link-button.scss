@@ -1,0 +1,64 @@
+@mixin link-button {
+    // width,svgのマージは各々指定。
+    color: $color-red;
+    background-color: $color-white;
+    transition: $transition-hover;
+    height: get_vw(40);
+    line-height: get_vw(40);
+
+    &:hover {
+        background-color: $color-black;
+        color: $color-white;
+
+        &::v-deep > svg .cls-1 {
+            fill: currentColor;
+        }
+    }
+
+    &::v-deep > svg {
+        width: get_vw(22);
+        height: get_vw(10);
+
+        .cls-1 {
+            fill: $color-red;
+        }
+    }
+
+    // 英語
+    .en {
+        font-weight: 900;
+        letter-spacing: get_vw(2.9);
+        margin: 0 get_vw(7) 0 0;
+        font-size: get_vw(16);
+    }
+
+    // 英語
+    .ja {
+        font-weight: 900;
+        letter-spacing: get_vw(0.4);
+        font-size: get_vw(10);
+    }
+
+    @media #{$media-sm} {
+        height: get_vw_sp(20);
+        line-height: get_vw_sp(20);
+
+        &::v-deep > svg {
+            width: get_vw_sp(22);
+            height: get_vw_sp(10);
+        }
+
+        // 英語
+        .en {
+            letter-spacing: get_vw_sp(2.5);
+            margin: 0 get_vw_sp(7) 0 0;
+            font-size: get_vw_sp(14);
+        }
+
+        // 英語
+        .ja {
+            letter-spacing: get_vw_sp(0.4);
+            font-size: get_vw_sp(10);
+        }
+    }
+}

@@ -4,16 +4,16 @@
 .page-service {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
         width: get_vw(600);
     }
 
-    .service__desc {
+    ::v-deep .service__desc {
         @include under_desc;
     }
 
-    .service {
+    ::v-deep .service {
         position: relative;
         width: get_vw(800);
         margin: get_vw(60) auto get_vw(80);
@@ -297,7 +297,7 @@
         }
     }
 
-    .si-zigyou {
+    ::v-deep .si-zigyou {
         position: relative;
         width: get_vw(800);
         margin: 0 auto get_vw(40);
@@ -395,7 +395,7 @@
     }
 
     @media #{$media-sm} {
-        .service {
+        ::v-deep .service {
             width: get_vw_sp(260);
             margin: get_vw_sp(40) auto;
             padding: $block-size_sm * 2 $block-size_sm;
@@ -469,7 +469,7 @@
             }
         }
 
-        .si-zigyou {
+        ::v-deep .si-zigyou {
             width: get_vw_sp(260);
             margin: 0 auto get_vw_sp(40);
             padding: $block-size_sm * 2 $block-size_sm;

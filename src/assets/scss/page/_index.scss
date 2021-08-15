@@ -26,7 +26,7 @@
     }
 
     // 各セクション
-    .index-section {
+    ::v-deep .index-section {
         position: absolute;
         top: 0;
         left: 0;
@@ -156,7 +156,7 @@
 
     @media #{$media-sm} {
         // 各セクション
-        .index-section {
+        ::v-deep .index-section {
             width: 100%;
             height: 100%;
 
@@ -1932,7 +1932,7 @@
     }
 
     // top右側要素
-    &__right {
+    ::v-deep &__right {
         width: get_vw(461);
         height: get_vw(640);
         overflow: hidden;
@@ -2359,7 +2359,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
 
-    .aboutus-img {
+    ::v-deep .aboutus-img {
         position: absolute;
         top: $block-size * 6;
         left: $block-size * 6;
@@ -2417,7 +2417,7 @@
         }
     }
 
-    .aboutus-desc {
+    ::v-deep .aboutus-desc {
         position: absolute;
         top: get_vw(340);
         right: $block-size * 5;
@@ -2451,16 +2451,16 @@
         }
     }
 
-    .link-top {
+    ::v-deep .link-top {
         width: get_vw(200);
     }
 
-    .link-service {
+    ::v-deep .link-service {
         width: get_vw(240);
     }
 
     @media #{$media-sm} {
-        .aboutus-img {
+        ::v-deep .aboutus-img {
             top: $block-size_sm * 6;
             left: $block-size_sm;
             width: calc(100% - #{$block-size_sm * 2});
@@ -2495,7 +2495,7 @@
             }
         }
 
-        .aboutus-desc {
+        ::v-deep .aboutus-desc {
             top: initial;
             bottom: get_vw_sp(110);
             right: calc(#{$block-size_sm * 2} + #{get_vw_sp(2)});
@@ -2516,17 +2516,17 @@
             }
         }
 
-        .link-top {
+        ::v-deep .link-top {
             width: get_vw_sp(170);
         }
 
-        .link-service {
+        ::v-deep .link-service {
             width: get_vw_sp(210);
         }
     }
 
     @media #{$media-mh} {
-        .aboutus-img {
+        ::v-deep .aboutus-img {
             width: get_vw(640);
             height: get_vw(260);
 
@@ -2541,7 +2541,7 @@
             }
         }
 
-        .aboutus-desc {
+        ::v-deep .aboutus-desc {
             top: initial;
             bottom: get_vw(100);
             height: get_vw(140);
@@ -3064,11 +3064,11 @@
         }
     }
 
-    .link-service {
+    ::v-deep .link-service {
         width: get_vw(240);
     }
 
-    .link-top {
+    ::v-deep .link-top {
         width: get_vw(200);
     }
 

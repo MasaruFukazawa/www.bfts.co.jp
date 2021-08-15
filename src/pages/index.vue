@@ -334,309 +334,47 @@
                     <span class="ja">サービス紹介</span>
                     <ArrowRight />
                 </a>
-
                 <div class="service-wrapper" id="service-wrapper">
                     <div class="service dummy-block dummy-block-top"></div>
                     <div class="service dummy-block dummy-block-top"></div>
-                    <nuxt-link class="service tyoitore" to="/biz/choitore">
+
+                    <nuxt-link
+                        v-for="service in top_page_data.top_services"
+                        :key="service.id"
+                        :class="service.top_service_class"
+                        :to="service.top_service_url"
+                        :style="[{ backgroundImage: `url(${service.thumbnail_image})` }, { backgroundPosition: '27% 50%' }]">
                         <p class="bg-white"></p>
-                        <h3>チョイトレ</h3>
-                        <div class="service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                                <defs></defs>
-                                <title>アセット 3</title>
-                                <g id="レイヤー_2" data-name="レイヤー 2">
-                                    <g id="design">
-                                        <rect class="cls-1" width="40" height="40"></rect>
-                                        <path
-                                            class="cls-2"
-                                            d="M13.3,13.29H9.63a.91.91,0,0,0-.9.9V25.81a.91.91,0,0,0,.9.9H13.3a.9.9,0,0,0,.9-.9V14.19A.9.9,0,0,0,13.3,13.29Z"
-                                        ></path>
-                                        <path
-                                            class="cls-2"
-                                            d="M6.9,16.12H5.75a.75.75,0,0,0-.75.75v6.26a.75.75,0,0,0,.75.75H6.9a.75.75,0,0,0,.75-.75V16.87A.75.75,0,0,0,6.9,16.12Z"
-                                        ></path>
-                                        <rect
-                                            class="cls-2"
-                                            x="15.41"
-                                            y="18.41"
-                                            width="9.18"
-                                            height="3.18"
-                                        ></rect>
-                                        <path
-                                            class="cls-2"
-                                            d="M30.37,13.29H26.7a.9.9,0,0,0-.9.9V25.81a.9.9,0,0,0,.9.9h3.67a.91.91,0,0,0,.9-.9V14.19A.91.91,0,0,0,30.37,13.29Z"
-                                        ></path>
-                                        <path
-                                            class="cls-2"
-                                            d="M34.25,16.12H33.1a.75.75,0,0,0-.75.75v6.26a.75.75,0,0,0,.75.75h1.15a.75.75,0,0,0,.75-.75V16.87A.75.75,0,0,0,34.25,16.12Z"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
+                        <h3>{{ service.title }}</h3>
+                        <div class="service__icon" v-html="service.service_icon"></div>
                         <div class="service__more">MORE</div>
-                    </nuxt-link>
-                    <nuxt-link class="service nagoya" to="/nagoya">
-                        <p class="bg-white"></p>
-                        <h3>名古屋支店</h3>
-                        <div class="service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                                <defs></defs>
-                                <title>アセット 4</title>
-                                <g id="レイヤー_2" data-name="レイヤー 2">
-                                    <g id="design">
-                                        <rect class="cls-1" width="40" height="40"></rect>
-                                        <path
-                                            class="cls-2"
-                                            d="M31.55,11.5A2.51,2.51,0,0,0,29,14a2.56,2.56,0,0,0,.33,1.22l-6.05,7a2.66,2.66,0,0,0-.9-.17,2.59,2.59,0,0,0-.63.09L19.33,18.6a2.44,2.44,0,0,0,.47-1.45,2.51,2.51,0,0,0-5,0A2.53,2.53,0,0,0,15,18.21L9.51,23.72a2.53,2.53,0,0,0-1.06-.24,2.52,2.52,0,1,0,2.27,1.45l5.51-5.51a2.5,2.5,0,0,0,1.06.24,2.59,2.59,0,0,0,.63-.09l2.46,3.54a2.51,2.51,0,1,0,4.55,1.45,2.48,2.48,0,0,0-.32-1.21l6.05-7a2.43,2.43,0,0,0,.89.17,2.51,2.51,0,1,0,0-5Z"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="service__more">MORE</div>
-                    </nuxt-link>
-                    <nuxt-link class="service torepura" to="/biz/torepura">
-                        <p class="bg-white"></p>
-                        <h3>トレプラ</h3>
-                        <div class="service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                                <defs></defs>
-                                <title>アセット 1</title>
-                                <g id="レイヤー_2" data-name="レイヤー 2">
-                                    <g id="design">
-                                        <rect class="cls-1" width="40" height="40"></rect>
-                                        <path
-                                            class="cls-2"
-                                            d="M19.48,27.66a13.62,13.62,0,0,0-5.12-1.07,12.17,12.17,0,0,0-3.32.55,14.72,14.72,0,0,0-1.46.51l-.07,0a.23.23,0,0,1-.16-.06.25.25,0,0,1-.12-.22V14.26a.78.78,0,0,1,.16-.46,2.07,2.07,0,0,1,.59-.46c.15-.06.72-.29,1.49-.52a10.93,10.93,0,0,1,2.89-.49,11.66,11.66,0,0,1,3.88.68,9.5,9.5,0,0,1,1.11.45l.13.07Z"
-                                        ></path>
-                                        <path
-                                            class="cls-2"
-                                            d="M30.77,27.39a.25.25,0,0,1-.12.22h0a.23.23,0,0,1-.16.06l-.07,0A14.72,14.72,0,0,0,29,27.14a12.17,12.17,0,0,0-3.32-.55,13.62,13.62,0,0,0-5.12,1.07V13.53a11.7,11.7,0,0,1,5.12-1.2,10.62,10.62,0,0,1,3,.52c.44.13.8.26,1.06.35l.3.12.05,0a2.07,2.07,0,0,1,.59.46.78.78,0,0,1,.16.46V27.39Z"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="service__more">MORE</div>
-                    </nuxt-link>
-                    <nuxt-link class="service si" to="/system">
-                        <p class="bg-white"></p>
-                        <h3>システムインテグ<br />レーション事業</h3>
-                        <div class="service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                                <defs></defs>
-                                <title>アセット 2</title>
-                                <g id="レイヤー_2" data-name="レイヤー 2">
-                                    <g id="design">
-                                        <rect class="cls-1" width="40" height="40"></rect>
-                                        <path
-                                            class="cls-2"
-                                            d="M29.57,11.5H10.43a.89.89,0,0,0-.88.88V27.62a.89.89,0,0,0,.88.88H29.57a.89.89,0,0,0,.88-.88V12.38A.89.89,0,0,0,29.57,11.5Zm-14,9a.89.89,0,0,1-.88.89H12.37a.89.89,0,0,1-.88-.89V19.46a.89.89,0,0,1,.88-.89h2.32a.89.89,0,0,1,.88.89Zm6.47,5a.88.88,0,0,1-.88.88H18.84a.88.88,0,0,1-.88-.88V24.47a.89.89,0,0,1,.88-.88h2.32a.89.89,0,0,1,.88.88Zm0-5a.89.89,0,0,1-.88.89H18.84a.89.89,0,0,1-.88-.89V19.46a.89.89,0,0,1,.88-.89h2.32a.89.89,0,0,1,.88.89Zm0-5a.89.89,0,0,1-.88.88H18.84a.89.89,0,0,1-.88-.88V14.44a.88.88,0,0,1,.88-.88h2.32a.88.88,0,0,1,.88.88Zm6.47,5a.89.89,0,0,1-.88.89H25.31a.89.89,0,0,1-.88-.89V19.46a.89.89,0,0,1,.88-.89h2.32a.89.89,0,0,1,.88.89Z"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="service__more">MORE</div>
-                    </nuxt-link>
-                    <nuxt-link class="service ginotore" to="/biz/ginotore">
-                        <p class="bg-white"></p>
-                        <h3>ギノトレ</h3>
-                        <div class="service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
-                                <defs></defs>
-                                <title>icon_ginotore</title>
-                                <g id="レイヤー_2" data-name="レイヤー 2">
-                                    <g id="design">
-                                        <rect class="cls-1" width="60" height="60" />
-                                        <rect
-                                            class="cls-2"
-                                            x="25.07"
-                                            y="35.18"
-                                            width="9.86"
-                                            height="12.28"
-                                        />
-                                        <rect
-                                            class="cls-2"
-                                            x="39.41"
-                                            y="30.49"
-                                            width="9.86"
-                                            height="16.97"
-                                        />
-                                        <rect
-                                            class="cls-2"
-                                            x="10.73"
-                                            y="37.77"
-                                            width="9.86"
-                                            height="9.69"
-                                        />
-                                        <polygon
-                                            class="cls-2"
-                                            points="23.15 23.06 31.26 30.36 42.9 19.86 45.56 22.26 47.36 12.54 36.58 14.16 39.24 16.56 31.26 23.75 23.15 16.45 10.73 27.64 14.4 30.95 23.15 23.06"
-                                        />
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="service__more">MORE</div>
-                    </nuxt-link>
-                    <nuxt-link class="service zinzai" to="/peopledevelopment">
-                        <p class="bg-white"></p>
-                        <h3>人材育成制度</h3>
-                        <div class="service__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                                <defs></defs>
-                                <title>アセット 5</title>
-                                <g id="レイヤー_2" data-name="レイヤー 2">
-                                    <g id="design">
-                                        <rect class="cls-1" width="40" height="40"></rect>
-                                        <path
-                                            class="cls-2"
-                                            d="M29.32,12.18l-1.5-1.5a2.32,2.32,0,0,0-3.29,0l-1.4,1.4,4.79,4.79,1.4-1.4A2.32,2.32,0,0,0,29.32,12.18Z"
-                                        ></path>
-                                        <polygon
-                                            class="cls-2"
-                                            points="10 25.21 10 30 14.79 30 26.61 18.18 21.82 13.39 10 25.21"
-                                        ></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="service__more">MORE</div>
-                    </nuxt-link>
-                    <nuxt-link class="service media" to="/media">
-                        <p class="bg-white"></p>
-                        <h3>メディア発信</h3>
-                        <div class="service__icon">
-                            <svg
-                                version="1.1"
-                                id="レイヤー_1"
-                                xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                x="0px"
-                                y="0px"
-                                viewBox="0 0 40 40"
-                                style="enable-background: new 0 0 40 40"
-                                xml:space="preserve"
-                            >
-                                <rect class="cls-1" width="40" height="40" />
-                                <g id="レイヤー_2_1_">
-                                    <g id="design">
-                                        <g
-                                            id="Social-_x2F_-28---Social_x2C_-speaker_x2C_-advertising_x2C_-megaphone_x2C_-loud_x2C_-marketing-icon"
-                                        >
-                                            <path
-                                                class="cls-2"
-                                                d="M26.1,27.9c-0.1,0-0.2,0-0.4,0l-12.5-1.2l-2.6,0.7c-2,0.5-4-0.7-4.5-2.7l-0.9-3.4c-0.5-2,0.7-4,2.7-4.5
-				l2.6-0.7L20.7,9c0.3-0.2,0.7-0.3,1-0.1c0.3,0.1,0.6,0.4,0.7,0.7l4.4,16.9c0.1,0.3,0,0.7-0.2,1C26.5,27.7,26.3,27.9,26.1,27.9z"
-                                            />
-                                            <path
-                                                class="cls-2"
-                                                d="M13.3,33.7c-0.6,0-1.1-0.3-1.4-0.9l-4.6-9.3c-0.4-0.8-0.1-1.7,0.7-2.1c0.8-0.4,1.7-0.1,2.1,0.7l4.6,9.3
-				c0.4,0.8,0.1,1.7-0.7,2.1C13.8,33.6,13.5,33.7,13.3,33.7z"
-                                            />
-                                        </g>
-                                    </g>
-                                </g>
-                                <path
-                                    class="cls-3"
-                                    d="M27.4,15.4c0,0,1.6,0.5,2,2.3c0.4,1.8-0.7,3-0.7,3"
-                                />
-                                <path
-                                    class="cls-3"
-                                    d="M29.4,12.8c0,0,2.7,0.8,3.4,4.1c0.7,3.2-1.3,5.4-1.3,5.4"
-                                />
-                            </svg>
-                        </div>
-                        <div class="service__more">MORE</div>
-                    </nuxt-link>
+		    </nuxt-link>
                     <div class="service dummy-block dummy-block--bottom dummy-block--bottom-right"></div>
                     <div class="service dummy-block dummy-block--bottom dummy-block--bottom-left"></div>
                     <div class="service dummy-block dummy-block--bottom dummy-block--bottom-right"></div>
                 </div>
             </div>
         </section>
-        <section class="index__aboutus index-section js-fullscreen-section">
-            <div class="aboutus-img">
-                <div class="aboutus-img__img"></div>
-                <h2>
-                    <span class="en">ABOUT US</span>
-                    <span class="ja">私たちについて</span>
-                </h2>
-
-                <div class="aboutus-img__mottos">
-                    <div class="aboutus-img__mottos__bg"></div>
-                    <div class="aboutus-img__mottos__motto">
-                        「情報インフラで社会を元気に」をモットーに、<br />
-                        人々の環境を整える会社です。<br />
-                        生活を便利にするためのプラットフォームづくりと人材育成に取り組んでいます。
-                    </div>
-                </div>
-            </div>
-
-            <div class="aboutus-desc">
-                <div class="aboutus-desc__bg"></div>
-                <div class="aboutus-desc__txt">
-                    私たちは多くのシステムを無意識に使っており、それらは鉄道・銀行・携帯のように社会を支えるインフラとなっています。創業以来、ＢＦＴは「より価値の高いシステムを提供しつづけること」を使命とし、システムづくりで社会に貢献してきました。<br />
-                    創業17年を経て「人とシステムをつくる会社」に使命を変えました。システムづくりに加え、システムにかかわる人材の育成にも力を注ぎ、さらに豊かな社会の実現を目指します。
-                </div>
-            </div>
-
-            <a class="link-top inside-link inside-link-left link-goprev" href="#">
-                <ArrowLeft />
-                <span class="en">TOP</span>
-                <span class="ja">トップページ</span>
-            </a>
-            <a class="link-service inside-link inside-link-right link-gonext" href="#">
-                <span class="en">SERVICE</span>
-                <span class="ja">サービス紹介</span>
-                <ArrowRight />
-            </a>
-        </section>
+        <section class="index__aboutus index-section js-fullscreen-section" v-html="top_page_data.aboutus"></section>
         <section class="index__service index-section js-fullscreen-section">
             <h2>
                 <span class="en">SERVICE</span>
                 <span class="ja">サービス紹介</span>
             </h2>
-
             <div class="services services-list">
-                <div class="services__service">
+              <div class="services__service" v-for="services in top_page_data.services">
                     <div class="service__img">
                         <div class="service__img__bg"></div>
                         <div class="service__img__img">
-                            <img src="~assets/img/top/bg_sec01_dot.jpg" alt="BFT" />
+                            <img v-bind:src="services.service_introduction_image" v-bind:alt="services.title" />
                         </div>
-
-                        <h3>ＢＦＴ道場</h3>
+                        <h3>{{ services.title }}</h3>
                     </div>
                     <div class="service__desc">
                         <div class="service__desc__bg"></div>
-                        <div class="service__desc__txt">
-                            現場で活躍できるエンジニア育成を目指し、ＢＦＴが自社のノウハウから独自開発した実践型IT技術研修です。
-                        </div>
+                        <div class="service__desc__txt">{{ services.description }}</div>
                     </div>
-                    <nuxt-link class="service__button" to="/biz">
-                        MORE
-                        <ArrowRight />
-                    </nuxt-link>
-                </div>
-                <div class="services__service">
-                    <div class="service__img">
-                        <div class="service__img__bg"></div>
-                        <div class="service__img__img">
-                            <img src="~assets/img/top/42303239_dot.jpg" alt="BFT" />
-                        </div>
-                        <h3>システムインテグレーション事業</h3>
-                    </div>
-                    <div class="service__desc">
-                        <div class="service__desc__bg"></div>
-                        <div class="service__desc__txt">
-                            スタートアップ時のコンパクトなシステムから、競争優位を保つクリティカルなシステムまで、ご要望にお応えします。
-                        </div>
-                    </div>
-                    <nuxt-link class="service__button" to="/biz#si-zigyou">
+                    <nuxt-link class="service__button" :to="services.service_introduction_url">
                         MORE
                         <ArrowRight />
                     </nuxt-link>
@@ -661,21 +399,19 @@
             </h2>
 
             <div class="news-list">
-                <div v-for="post in posts" class="news" :key="post.id">
+                <div v-for="post in top_page_data.posts" class="news" :key="post.id">
                     <div class="news__info">
                         <div v-if="post.date" class="news__info__day">
-                            {{ change_date_format(post.date) }}
+                            {{ post.date }}
                         </div>
                         <div
-                            v-if="post.terms.post_tag"
+                            v-if="post.terms"
                             class="news__info__tag"
-                            v-html="
-                                (post.terms.post_tag && post.terms.post_tag[0].name) || '#お知らせ'
-                            "
+                            v-html="(post.terms) || '#お知らせ'"
                         ></div>
                     </div>
-                    <div class="news__title" v-html="post.title.rendered"></div>
-                    <div class="news__text" v-html="str_trim(post.content.rendered)"></div>
+                    <div class="news__title" v-html="post.title"></div>
+                    <div class="news__text" v-html="str_trim(post.content)"></div>
                     <nuxt-link class="news__more" to="/news">MORE</nuxt-link>
                 </div>
             </div>
@@ -718,7 +454,7 @@
 import Vue from 'vue';
 import FullscreenSlider from '~/assets/js/fullscreen-slider/';
 import Hover from '~/assets/js/hover/';
-import { WpApi } from '~/assets/js/wp-api/';
+import { WpApi, TopPageWpApi } from '~/assets/js/wp-api/';
 import Loading from '~/components/common/TheLoading';
 import ArrowRight from '~/components/common/ArrowRight.vue';
 import ArrowLeft from '~/components/common/ArrowLeft.vue';
@@ -885,15 +621,15 @@ export default Vue.extend({
         this.init();
     },
     async asyncData(context) {
-        const newsWpApi = new WpApi({
+
+        const topPageWpApi = new TopPageWpApi({
             baseUrl: context.env.apiBaseUrl,
-            params: {
-                page: 1,
-                per_page: 3,
-            },
         });
-        const posts = newsWpApi.getPosts();
-        return posts;
+
+        const top_page_data = topPageWpApi.getData();
+
+        return top_page_data
+
     },
 });
 </script>

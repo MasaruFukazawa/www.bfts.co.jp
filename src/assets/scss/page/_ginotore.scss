@@ -5,7 +5,7 @@
 .page-ginotore {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
 
         .heading__img {
@@ -32,7 +32,7 @@
         }
     }
 
-    .ginotore__desc {
+    ::v-deep .ginotore__desc {
         @include under_desc(true);
 
         .desc__txt {

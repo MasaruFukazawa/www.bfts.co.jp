@@ -345,7 +345,7 @@
                         :to="service.top_service_url"
                         :style="[{ backgroundImage: `url(${service.thumbnail_image})` }, { backgroundPosition: '27% 50%' }]">
                         <p class="bg-white"></p>
-                        <h3>{{ service.title }}</h3>
+                        <h3 v-html="service.title"></h3>
                         <div class="service__icon" v-html="service.service_icon"></div>
                         <div class="service__more">MORE</div>
 		    </nuxt-link>

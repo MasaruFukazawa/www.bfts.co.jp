@@ -5,7 +5,7 @@
 .page-torepura {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
 
         .heading__img {
@@ -32,7 +32,7 @@
         }
     }
 
-    .torepura__desc {
+    ::v-deep .torepura__desc {
         @include under_desc(true);
 
         .desc__txt {

@@ -4,11 +4,11 @@
 .page-greeting {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
     }
 
-    .greeting__desc {
+    ::v-deep .greeting__desc {
         @include under_desc(true);
         width: get_vw(400);
 
@@ -48,7 +48,7 @@
     }
 
     // 代表あいさつ全体
-    .greeting__greeting {
+    ::v-deep .greeting__greeting {
         display: flex;
         flex-direction: column;
         width: get_vw(800);
@@ -107,7 +107,7 @@
             margin: get_vw_sp(50) auto get_vw_sp(40);
 
             // 代表あいさつ
-            > h2 {
+            ::v-deep > h2 {
                 $height: get_vw_sp(20);
                 height: $height;
                 line-height: $height;
@@ -118,7 +118,7 @@
             }
 
             // 文のラッパークラス
-            &__wrap {
+            ::v-deep &__wrap {
                 padding: $block-size_sm;
 
                 > h3 {

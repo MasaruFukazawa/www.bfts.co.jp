@@ -4,7 +4,7 @@
 .page-media {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
 
         .heading__img {
@@ -20,7 +20,7 @@
         }
     }
 
-    .description {
+    ::v-deep .description {
         @include under_desc(false);
 
         &:not(:first-of-type) {

@@ -4,7 +4,7 @@
 .page-nagoya {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
 
         .heading__img {
@@ -13,11 +13,11 @@
         }
     }
 
-    .nagoya__desc {
+    ::v-deep .nagoya__desc {
         @include under_desc(true);
     }
 
-    .nagoya__about {
+    ::v-deep .nagoya__about {
         position: relative;
         width: get_vw(800);
         margin: 0 auto get_vw(80);
@@ -198,7 +198,7 @@
         }
     }
 
-    .nagoya__access {
+    ::v-deep .nagoya__access {
         margin-bottom: get_vw(35);
         padding-bottom: get_vw(40);
     }

@@ -48,7 +48,6 @@ export default {
         const page_data = bizChildPageWpApi.getData();
 
         return page_data
-
     },
 };
 </script>

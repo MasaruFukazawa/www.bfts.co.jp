@@ -115,3 +115,58 @@ export class BizChildPageWpApi {
         }
     }
 }
+
+
+export class WpPageApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}, pageId: number) {
+        this.options = { ...defaultOptions, ...options };
+        this.pageId = pageId;
+    }
+
+    async getData() {
+        try {
+            const { data: page_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/page?page_id=${this.pageId}`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            return { page_data };
+        } catch (e) {
+            return { error: e };
+        }
+    }
+}
+
+
+export class SystemPageApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}) {
+        this.options = { ...defaultOptions, ...options };
+    }
+
+    async getData() {
+        try {
+            const { data: page_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/system`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            return { page_data };
+        } catch (e) {
+            return { error: e };
+        }
+    }
+}

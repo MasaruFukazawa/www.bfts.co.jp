@@ -5,7 +5,7 @@
 .page-system {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
 
         .heading__img {
@@ -32,7 +32,7 @@
         }
     }
 
-    .system__desc {
+    ::v-deep .system__desc {
         @include under_desc(true);
 
         .desc__txt {
@@ -55,7 +55,7 @@
         }
     }
 
-    .system__sysdev {
+    ::v-deep .system__sysdev {
         // 赤背景の方向
         @include system_menu(right, url('~assets/img/service/si.jpg'));
 
@@ -132,7 +132,7 @@
         }
     }
 
-    .system__infra {
+    ::v-deep .system__infra {
         @include system_menu(left, url('~assets/img/service/infra.jpg'));
     }
 }

@@ -5,16 +5,16 @@
     min-height: 100vh;
 }
 
-.heading-en {
+::v-deep .heading-en {
     @include heading;
 }
 
-.pd__desc {
+::v-deep .pd__desc {
     @include under_desc;
     margin-bottom: get_vw(100);
 }
 
-.pd__heading-h2 {
+::v-deep .pd__heading-h2 {
     @include heading-h2;
     margin: 0 auto get_vw(40) get_vw(200);
 }
@@ -24,7 +24,7 @@
     margin: 0 0 get_vw(80);
 
     // 各プログラム
-    &__cur {
+    ::v-deep &__cur {
         position: relative;
         background-color: $color-white;
         padding: $block-size;
@@ -131,7 +131,7 @@
     }
 
     // プログラム
-    .pd__curs {
+    ::v-deep .pd__curs {
         margin: 0 0 get_vw_sp(40);
 
         // 各プログラム

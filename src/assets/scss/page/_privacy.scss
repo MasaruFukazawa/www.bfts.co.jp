@@ -1,15 +1,15 @@
 @import '~assets/scss/components/module/heading';
 @import '~assets/scss/components/module/under_common';
 
-.page-privacy {
+::v-deep .page-privacy {
     min-height: 100vh;
 }
 
-.heading-en {
+::v-deep .heading-en {
     @include heading;
 }
 
-.privacy__desc {
+::v-deep .privacy__desc {
     @include under_desc(true);
 
     > h1.large-ja {
@@ -33,7 +33,7 @@
     }
 }
 
-.privacy__h2 {
+::v-deep .privacy__h2 {
     @include heading-h2;
     margin: $block-size * 2 auto $block-size get_vw(120);
 
@@ -50,7 +50,7 @@
     }
 }
 
-.privacy__txt {
+::v-deep .privacy__txt {
     background-color: $color-white;
     font-size: get_vw(14);
     padding: $block-size;

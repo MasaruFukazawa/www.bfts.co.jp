@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.bfts.co.jp/sitemap.xml.gz

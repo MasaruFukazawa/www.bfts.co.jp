@@ -199,7 +199,9 @@ const config: NuxtConfig = {
                 },
             },
         },
+/*
         html: {
+
             minify: {
                 collapseBooleanAttributes: true,
                 decodeEntities: true,
@@ -215,6 +217,7 @@ const config: NuxtConfig = {
                 collapseWhitespace: true,
             },
         },
+*/
     },
 };
 

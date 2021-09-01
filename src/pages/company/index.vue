@@ -5,18 +5,15 @@
         <div v-html="page_data.content"></div>
     </div>
 </template>
-
 <script>
 import meta from '~/assets/mixins/meta';
 import BgTop from '~/components/common/TheUnderRedBg_Top.vue';
-import AccessMap from '~/components/common/TheAccessMap.vue';
 import { WpPageApi } from '~/assets/js/wp-api/';
 
 export default {
     mixins: [meta],
     components: {
         BgTop,
-        AccessMap,
     },
     data: function () {
         return {
@@ -69,4 +66,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/scss/page/_company.scss';
+</style>
+
+<style lang="scss">
+@import '~/assets/scss/components/_access-map.scss';
 </style>

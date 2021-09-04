@@ -170,3 +170,36 @@ export class SystemPageApi {
         }
     }
 }
+
+
+export class HeaderMenuApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}) {
+        this.options = { ...defaultOptions, ...options };
+    }
+
+    async getData() {
+        try {
+
+            const { data: header_menu_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/header-menu`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            console.log(header_menu_data);
+
+            return { header_menu_data };
+
+        } catch (e) {
+            return { error: e };
+        }
+    }
+}
+

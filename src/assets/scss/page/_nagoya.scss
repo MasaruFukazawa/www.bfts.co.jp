@@ -19,7 +19,7 @@
 
         @media #{$media-sm} {
             .heading__img {
-                background-size: get_vw_sp(150) auto;
+                background-size: auto;
             }
 
             &.under-en-title {

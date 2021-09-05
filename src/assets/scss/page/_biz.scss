@@ -6,7 +6,6 @@
 
     ::v-deep .heading-en {
         @include heading;
-        width: get_vw(600);
 
         .heading__img {
            background-position: 100% 40%;
@@ -21,7 +20,7 @@
 
         @media #{$media-sm} {
             .heading__img {
-                background-size: get_vw_sp(150) auto;
+                background-size: auto;
             }
 
             &.under-en-title {
@@ -32,7 +31,7 @@
     }
 
     ::v-deep .service__desc {
-        @include under_desc;
+	@include under_desc(true);
     }
 
     ::v-deep .service {

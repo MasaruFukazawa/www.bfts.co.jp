@@ -1,10 +1,10 @@
 <template>
     <div class="page-recruit">
         <BgTop></BgTop>
-        <h1 class="heading-en under-en-title">
-            <span class="en" v-html="page_data.en_title"></span>
-            <span class="ja" v-html="page_data.title"></span>
-        </h1>
+        <div class="heading-en under-en-title">
+            <span v-html="page_data.title"></span>
+            <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.thumbnail_image})` }]"></div>
+        </div>
          <div v-html="page_data.content"></div>
     </div>
 </template>

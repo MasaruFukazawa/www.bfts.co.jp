@@ -6,53 +6,13 @@
             <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.thumbnail_image})` }]"></div>
         </div>
         <div v-html="page_data.content"></div>
-<!--
-        <section class="sec-price">
-            <h2 class="sec-price__title">
-                <span class="ja">費用</span>
-            </h2>
-
-            <div class="sec-price__in">
-                <div class="line-black three">
-                    <p>スタートアップ研修</p>
-                    <p>1回5名様まで</p>
-                    <p>50,000円</p>
-                </div>
-                <div class="line-black three">
-                    <p>システム構築研修</p>
-                    <p>1週間</p>
-                    <p>75,000円/人</p>
-                </div>
-                <div class="line-black three">
-                    <p>Linux研修</p>
-                    <p>4週間</p>
-                    <p>300,000円/人</p>
-                </div>
-                <div class="line-black three">
-                    <p>Windows研修</p>
-                    <p>3週間</p>
-                    <p>225,000円/人</p>
-                </div>
-                <div class="line-black three">
-                    <p>ネットワーク研修</p>
-                    <p>2週間</p>
-                    <p>150,000円/人</p>
-                </div>
-            </div>
-
-            <div class="notice">
-                ※詳しくは<nuxt-link to="/contact">こちら</nuxt-link>
-                からご連絡ください。
-            </div>
-        </section>
--->
     </div>
 </template>
 
 <script>
 import meta from '~/assets/mixins/meta';
 import BgTop from '~/components/common/TheUnderRedBg_Top.vue';
-import { BizChildPageWpApi } from '~/assets/js/wp-api/';
+import { WpPageApi } from '~/assets/js/wp-api/';
 
 export default {
     mixins: [meta],
@@ -73,14 +33,13 @@ export default {
     created: function () {},
     async asyncData(context) {
 
-        const bizChildPageWpApi = new BizChildPageWpApi({
+        const wpPageApi = new WpPageApi({
             baseUrl: context.env.apiBaseUrl,
         }, 251);
 
-        const page_data = bizChildPageWpApi.getData();
+        const page_data = wpPageApi.getData();
 
         return page_data
-
     },
 };
 </script>

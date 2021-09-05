@@ -61,7 +61,7 @@ export class TopPageWpApi {
 }
 
 
-export class BizPageWpApi {
+export class BizPageApi {
 
     options: typeof defaultOptions;
     pageId: number

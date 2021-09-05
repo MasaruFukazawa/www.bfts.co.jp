@@ -1,10 +1,11 @@
 <template>
     <div class="page-service">
         <BgTop></BgTop>
-        <div class="heading-en under-en-title">Education&amp;System Integration</div>
-
-        <div class="service__desc" v-html="biz_page_data.biz"></div>
-
+        <div class="heading-en under-en-title">
+	  <span v-html="biz_page_data.biz.title"></span>
+          <div class="heading__img" :style="[{ backgroundImage: `url(${biz_page_data.biz.thumbnail_image})` }]"></div>
+         </div>
+        <div class="service__desc" v-html="biz_page_data.biz.content"></div>
         <div class="service">
             <div class="side-red"></div>
             <h2 class="service__title">
@@ -32,7 +33,6 @@
                 <div class="bg-right__10"></div>
             </div>
         </div>
-
         <div class="si-zigyou" id="si-zigyou">
             <div class="side-red"></div>
             <h2 class="si-zigyou__title">
@@ -49,7 +49,6 @@
                     <div class="menu__desc" v-html="service.description"></div>
                 </div>
             </div>
-
             <nuxt-link to="/system" class="si-zigyou__more"> MORE </nuxt-link>
         </div>
     </div>
@@ -58,7 +57,7 @@
 <script>
 import meta from '~/assets/mixins/meta';
 import BgTop from '~/components/common/TheUnderRedBg_Top.vue';
-import { BizPageWpApi } from '~/assets/js/wp-api/';
+import { BizPageApi } from '~/assets/js/wp-api/';
 
 export default {
     mixins: [meta],
@@ -103,14 +102,13 @@ export default {
     },
     async asyncData(context) {
 
-        const bizPageWpApi = new BizPageWpApi({
+        const bizPageWpApi = new BizPageApi({
             baseUrl: context.env.apiBaseUrl,
         });
 
         const biz_page_data = bizPageWpApi.getData();
 
         return biz_page_data
-
     },
 };
 </script>

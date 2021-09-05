@@ -2,8 +2,8 @@
     <div class="page-nagoya">
         <BgTop></BgTop>
         <div class="heading-en under-en-title">
-            {{ page_data.title }}
-            <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.thumbnail_image})` }]"></div>
+          <span v-html="page_data.title"></span>
+          <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.thumbnail_image})` }]"></div>
         </div>
         <div v-html="page_data.content"></div>
     </div>

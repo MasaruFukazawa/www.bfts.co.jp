@@ -2,8 +2,8 @@
     <div class="page-system">
         <BgTop></BgTop>
         <div class="heading-en under-en-title">
-            <span v-html="page_data.system.en_title"></span>
-            <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.system.thumbnail_image})` }]"></div>
+          <span v-html="page_data.system.en_title"></span>
+          <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.system.thumbnail_image})` }]"></div>
         </div>
         <div v-html="page_data.system.content"></div>
         <div v-html="page_data.development.content"></div>

@@ -9,7 +9,6 @@
         @include heading;
 
         .heading__img {
-            background-image: url('~assets/img/service/torepura.jpg');
             background-position: 100% 40%;
             background-size: get_vw(340) auto;
         }

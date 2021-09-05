@@ -6,21 +6,13 @@
             <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.thumbnail_image})` }]"></div>
         </div>
         <div v-html="page_data.content"></div>
-        <!-- <a
-			href="https://bft-dojo.resv.jp"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="reserve-link"
-		>
-			ご予約はこちらから
-		</a> -->
     </div>
 </template>
 
 <script>
 import meta from '~/assets/mixins/meta';
 import BgTop from '~/components/common/TheUnderRedBg_Top.vue';
-import { BizChildPageWpApi } from '~/assets/js/wp-api/';
+import { WpPageApi } from '~/assets/js/wp-api/';
   
 export default {
     mixins: [meta],
@@ -41,11 +33,11 @@ export default {
     created: function () {},
     async asyncData(context) {
 
-        const bizChildPageWpApi = new BizChildPageWpApi({
+        const wpPageApi = new WpPageApi({
             baseUrl: context.env.apiBaseUrl,
         }, 249);
 
-        const page_data = bizChildPageWpApi.getData();
+        const page_data = wpPageApi.getData();
 
         return page_data
     },

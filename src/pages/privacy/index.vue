@@ -1,9 +1,12 @@
 <template>
-    <div class="page-privacy">
-        <BgTop></BgTop>
-        <div class="heading-en under-en-title">{{ page_data.title }}</div>
-         <div v-html="page_data.content"></div>
+  <div class="page-privacy">
+    <BgTop></BgTop>
+    <div class="heading-en under-en-title">
+       <span v-html="page_data.title"></span>
+       <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.thumbnail_image})` }]"></div>
     </div>
+    <div v-html="page_data.content"></div>
+  </div>
 </template>
 
 <script>

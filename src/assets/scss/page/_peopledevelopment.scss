@@ -1,16 +1,16 @@
 @import '~assets/scss/components/module/heading';
 @import '~assets/scss/components/module/under_common';
 
-.page-pd {
+::v-deep .page-pd {
     min-height: 100vh;
-    width: get_vw(600);
 }
 
 ::v-deep .heading-en {
     @include heading;
 
     .heading__img {
-        background-position: 0 80%;
+        background-position: 100% 40%;
+        background-size: get_vw(340) auto;
     }
 
     &.under-en-title {
@@ -32,8 +32,8 @@
 }
 
 ::v-deep .pd__desc {
-    @include under_desc(true);
-    //margin-bottom: get_vw(100);
+    @include under_desc;
+    margin-bottom: get_vw(100);
 }
 
 ::v-deep .pd__heading-h2 {
@@ -42,11 +42,11 @@
 }
 
 // プログラム
-.pd__curs {
+::v-deep .pd__curs {
     margin: 0 0 get_vw(80);
 
     // 各プログラム
-    ::v-deep &__cur {
+    &__cur {
         position: relative;
         background-color: $color-white;
         padding: $block-size;
@@ -144,11 +144,11 @@
 }
 
 @media #{$media-sm} {
-    .pd__desc {
+    ::v-deep .pd__desc {
         margin-bottom: get_vw_sp(60);
     }
 
-    .pd__heading-h2 {
+    ::v-deep .pd__heading-h2 {
         margin: 0 auto get_vw_sp(20) get_vw_sp(30);
     }
 

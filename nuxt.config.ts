@@ -1,5 +1,6 @@
 import type { NuxtConfig } from '@nuxt/types';
 
+import axios from 'axios';
 import Sass from 'sass';
 import Fiber from 'fibers';
 
@@ -26,6 +27,28 @@ const config: NuxtConfig = {
      */
     generate: {
         fallback: true,
+        routes (callback) {
+
+            Promise.all([
+                axios.get(`${envSet.apiBaseUrl}/wp-json/custom/v0/pages`)
+            ])
+            .then (axios.spread( ( pages ) => {
+
+                const route_pages = pages.data.map((page: any) => {
+
+                    return {
+                        route : `${page.url}`,
+                        component : 'src/pages/_id.vue',
+                        payload : {
+                            page_data : page,
+                        }
+                    }
+
+                })
+
+		callback(null, route_pages)
+            }))
+        }
     },
 
     render: {
@@ -199,9 +222,7 @@ const config: NuxtConfig = {
                 },
             },
         },
-/*
         html: {
-
             minify: {
                 collapseBooleanAttributes: true,
                 decodeEntities: true,
@@ -217,7 +238,6 @@ const config: NuxtConfig = {
                 collapseWhitespace: true,
             },
         },
-*/
     },
 };
 

@@ -38,7 +38,6 @@ const config: NuxtConfig = {
 
                     return {
                         route : `${page.url}`,
-                        component : 'src/pages/_id.vue',
                         payload : {
                             page_data : page,
                         }

@@ -15,7 +15,8 @@
         &.under-en-title {
             height: get_vw(80);
             text-align: right;
-            padding: 0 get_vw(20) 0 get_vw(70);
+            //padding: 0 get_vw(20) 0 get_vw(70);
+            padding: 0 get_vw(20) 0 auto;
         }
 
         @media #{$media-sm} {
@@ -25,7 +26,8 @@
 
             &.under-en-title {
                 height: get_vw_sp(40);
-                padding: 0 get_vw_sp(7) 0 get_vw_sp(46);
+                //padding: 0 get_vw_sp(7) 0 get_vw_sp(46);
+                padding: 0 get_vw(20) 0 auto;
             }
         }
     }

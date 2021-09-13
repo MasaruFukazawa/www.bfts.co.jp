@@ -1,5 +1,5 @@
 // なぜやるのか
-::v-deep .sec-why {
+.sec-why {
     $left-space: get_vw(200);
     position: relative;
     width: get_vw(760);
@@ -230,7 +230,7 @@
 }
 
 // カリキュラム
-::v-deep .sec-cur {
+.sec-cur {
     $right-space: get_vw(200);
     position: relative;
     width: get_vw(760);

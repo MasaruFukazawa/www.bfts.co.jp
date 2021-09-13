@@ -2,7 +2,7 @@
     <div class="page-system">
         <BgTop></BgTop>
         <div class="heading-en under-en-title">
-          <span v-html="page_data.system.en_title"></span>
+          <span v-html="page_data.system.title"></span>
           <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.system.thumbnail_image})` }]"></div>
         </div>
         <div v-html="page_data.system.content"></div>
@@ -44,6 +44,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~/assets/scss/page/_system.scss';
 </style>

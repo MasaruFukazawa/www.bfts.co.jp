@@ -32,7 +32,7 @@
 }
 
 // 会社概要
-::v-deep .com__title {
+.com__title {
     @include heading-h2;
     margin: get_vw(180) auto $block-size get_vw(120);
     display: inline-flex;
@@ -43,7 +43,7 @@
 }
 
 // 概要
-::v-deep .com__info-table {
+.com__info-table {
     width: get_vw(840);
     margin: 0 auto get_vw(80) get_vw(120);
     display: grid;
@@ -108,12 +108,12 @@
 }
 
 // 沿革
-::v-deep .com__his-title {
+.com__his-title {
     @include heading-h2;
     margin: 0 auto 0 get_vw(200);
 }
 
-::v-deep .com__his-table {
+.com__his-table {
     position: relative;
     margin: 0 auto get_vw(80);
     width: get_vw(800);
@@ -225,7 +225,7 @@
 @media #{$media-sm} {
 
     // 会社概要
-    ::v-deep .com__title {
+    .com__title {
         margin: get_vw_sp(130) auto $block-size_sm * 2 get_vw_sp(10);
 
         .ja {
@@ -234,7 +234,7 @@
     }
 
     // 概要
-    ::v-deep .com__info-table {
+    .com__info-table {
         margin: 0 auto get_vw_sp(40) get_vw_sp(10);
         width: 100%;
         $min-height: get_vw_sp(20);
@@ -277,11 +277,11 @@
     }
 
     // 沿革
-    ::v-deep .com__his-title {
+    .com__his-title {
         margin: 0 auto 0 get_vw_sp(30);
     }
 
-    ::v-deep .com__his-table {
+    .com__his-table {
         margin: 0 auto get_vw_sp(40);
         width: get_vw_sp(260);
         padding: $block-size_sm $block-size_sm get_vw_sp(35);

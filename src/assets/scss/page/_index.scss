@@ -26,7 +26,7 @@
     }
 
     // 各セクション
-    ::v-deep .index-section {
+    .index-section {
         position: absolute;
         top: 0;
         left: 0;
@@ -156,7 +156,7 @@
 
     @media #{$media-sm} {
         // 各セクション
-        ::v-deep .index-section {
+        .index-section {
             width: 100%;
             height: 100%;
 
@@ -1932,7 +1932,7 @@
     }
 
     // top右側要素
-    ::v-deep &__right {
+    &__right {
         width: get_vw(461);
         height: get_vw(640);
         overflow: hidden;
@@ -2013,8 +2013,8 @@
                     font-weight: 900;
 
                     @include ie-only {
-						background-image: none;
-						background-color: transparent;
+                        background-image: none;
+                        background-color: transparent;
                     }
                 }
 
@@ -2094,8 +2094,10 @@
 
                     h3 {
                         height: get_vw(40);
+                        width: get_vw(170);
                         line-height: get_vw(20);
                         // font-size: get_vw(12);
+			//word-break: normal;
                     }
 
                     .bg-white {
@@ -2288,6 +2290,7 @@
 
                         h3 {
                             height: get_vw_sp(40);
+                            width: get_vw_sp(120);
                             line-height: 1.2;
                         }
 
@@ -2671,7 +2674,7 @@
                 padding: 0 0 0 get_vw(31);
                 transition: all 0.1s ease;
 
-                &::v-deep > svg {
+                > svg {
                     width: get_vw(22);
                     height: get_vw(10);
                     position: absolute;
@@ -2767,7 +2770,7 @@
                     letter-spacing: get_vw_sp(2);
                     padding: 0 0 0 get_vw_sp(25);
 
-                    &::v-deep > svg {
+                    > svg {
                         width: get_vw_sp(22);
                         height: get_vw_sp(10);
                         right: get_vw_sp(15);
@@ -3064,11 +3067,11 @@
         }
     }
 
-    ::v-deep .link-service {
+    .link-service {
         width: get_vw(240);
     }
 
-    ::v-deep .link-top {
+    .link-top {
         width: get_vw(200);
     }
 

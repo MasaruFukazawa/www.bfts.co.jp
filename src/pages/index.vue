@@ -355,7 +355,19 @@
                 </div>
             </div>
         </section>
-        <section class="index__aboutus index-section js-fullscreen-section" v-html="top_page_data.aboutus"></section>
+        <section class="index__aboutus index-section js-fullscreen-section">
+            <div v-html="top_page_data.aboutus"></div>
+            <a class="link-top inside-link inside-link-left link-goprev" href="#">
+                <ArrowLeft />
+                <span class="en">TOP</span>
+                <span class="ja">トップページ</span>
+            </a>
+            <a class="link-service inside-link inside-link-right link-gonext" href="#">
+                <span class="en">SERVICE</span>
+                <span class="ja">サービス紹介</span>
+                <ArrowRight />
+            </a>
+        </section>
         <section class="index__service index-section js-fullscreen-section">
             <h2>
                 <span class="en">SERVICE</span>

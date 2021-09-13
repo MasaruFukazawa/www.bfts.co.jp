@@ -5,7 +5,7 @@
 .page-choitore {
     min-height: 100vh;
 
-    ::v-deep .heading-en {
+    .heading-en {
         @include heading;
 
         .heading__img {
@@ -31,7 +31,7 @@
         }
     }
 
-    ::v-deep .choitore__desc {
+    .choitore__desc {
         @include under_desc(true);
 
         .desc__txt {

@@ -4,7 +4,7 @@
 .page-service {
     min-height: 100vh;
 
-    ::v-deep .heading-en {
+    .heading-en {
         @include heading;
 
         .heading__img {
@@ -30,11 +30,11 @@
         }
     }
 
-    ::v-deep .service__desc {
+    .service__desc {
 	@include under_desc(true);
     }
 
-    ::v-deep .service {
+    .service {
         position: relative;
         width: get_vw(800);
         margin: get_vw(60) auto get_vw(80);
@@ -318,7 +318,7 @@
         }
     }
 
-    ::v-deep .si-zigyou {
+    .si-zigyou {
         position: relative;
         width: get_vw(800);
         margin: 0 auto get_vw(40);
@@ -416,7 +416,7 @@
     }
 
     @media #{$media-sm} {
-        ::v-deep .service {
+        .service {
             width: get_vw_sp(260);
             margin: get_vw_sp(40) auto;
             padding: $block-size_sm * 2 $block-size_sm;
@@ -490,7 +490,7 @@
             }
         }
 
-        ::v-deep .si-zigyou {
+        .si-zigyou {
             width: get_vw_sp(260);
             margin: 0 auto get_vw_sp(40);
             padding: $block-size_sm * 2 $block-size_sm;

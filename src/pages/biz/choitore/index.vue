@@ -44,6 +44,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~/assets/scss/page/_choitore.scss';
 </style>

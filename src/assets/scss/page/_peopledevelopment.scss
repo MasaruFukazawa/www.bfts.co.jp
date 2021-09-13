@@ -1,11 +1,11 @@
 @import '~assets/scss/components/module/heading';
 @import '~assets/scss/components/module/under_common';
 
-::v-deep .page-pd {
+.page-pd {
     min-height: 100vh;
 }
 
-::v-deep .heading-en {
+.heading-en {
     @include heading;
 
     .heading__img {
@@ -31,18 +31,18 @@
     }
 }
 
-::v-deep .pd__desc {
+.pd__desc {
     @include under_desc;
     margin-bottom: get_vw(100);
 }
 
-::v-deep .pd__heading-h2 {
+.pd__heading-h2 {
     @include heading-h2;
     margin: 0 auto get_vw(40) get_vw(200);
 }
 
 // プログラム
-::v-deep .pd__curs {
+.pd__curs {
     margin: 0 0 get_vw(80);
 
     // 各プログラム
@@ -144,16 +144,16 @@
 }
 
 @media #{$media-sm} {
-    ::v-deep .pd__desc {
+    .pd__desc {
         margin-bottom: get_vw_sp(60);
     }
 
-    ::v-deep .pd__heading-h2 {
+    .pd__heading-h2 {
         margin: 0 auto get_vw_sp(20) get_vw_sp(30);
     }
 
     // プログラム
-    ::v-deep .pd__curs {
+    .pd__curs {
         margin: 0 0 get_vw_sp(40);
 
         // 各プログラム

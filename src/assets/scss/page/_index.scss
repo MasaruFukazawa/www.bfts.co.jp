@@ -2027,7 +2027,7 @@
                     height: get_vw(20);
                 }
 
-                .service__icon {
+                ::v-deep .service__icon {
                     position: absolute;
                     bottom: 0;
                     left: 0;
@@ -2659,7 +2659,7 @@
             }
 
             // MOREボタン
-            .service__button {
+            ::v-deep .service__button {
                 position: relative;
                 display: block;
                 width: get_vw(140);
@@ -2762,7 +2762,7 @@
                 }
 
                 // MOREボタン
-                .service__button {
+                ::v-deep .service__button {
                     width: get_vw_sp(120);
                     height: get_vw_sp(20);
                     font-size: get_vw_sp(14);
@@ -2798,7 +2798,7 @@
                         }
                     }
 
-                    .service__button {
+                    ::v-deep .service__button {
                         margin: 0 auto 0 0;
                     }
                 }
@@ -2843,7 +2843,7 @@
                 }
 
                 // MOREボタン
-                .service__button {
+                ::v-deep .service__button {
                     width: get_vw_sp(80);
                     height: get_vw_sp(10);
                     font-size: get_vw_sp(10);
@@ -2900,7 +2900,7 @@
                 }
 
                 // MOREボタン
-                .service__button {
+                ::v-deep .service__button {
                     width: get_vw(140);
                     height: get_vw(40);
                     font-size: get_vw(18);

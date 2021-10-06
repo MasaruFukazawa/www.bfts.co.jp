@@ -4,21 +4,23 @@ import { normalizeURL, decode } from '@nuxt/ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _e524b1fe = () => interopDefault(import('../src/pages/biz/index.vue' /* webpackChunkName: "pages/biz/index" */))
-const _54ab286b = () => interopDefault(import('../src/pages/company/index.vue' /* webpackChunkName: "pages/company/index" */))
-const _0e37bf64 = () => interopDefault(import('../src/pages/contact/index.vue' /* webpackChunkName: "pages/contact/index" */))
-const _33c01961 = () => interopDefault(import('../src/pages/greeting/index.vue' /* webpackChunkName: "pages/greeting/index" */))
-const _72d42a0b = () => interopDefault(import('../src/pages/nagoya/index.vue' /* webpackChunkName: "pages/nagoya/index" */))
-const _1c864c0a = () => interopDefault(import('../src/pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
-const _5650f68c = () => interopDefault(import('../src/pages/peopledevelopment/index.vue' /* webpackChunkName: "pages/peopledevelopment/index" */))
-const _bdb80494 = () => interopDefault(import('../src/pages/privacy/index.vue' /* webpackChunkName: "pages/privacy/index" */))
-const _1362b5ec = () => interopDefault(import('../src/pages/recruit/index.vue' /* webpackChunkName: "pages/recruit/index" */))
-const _31e901d2 = () => interopDefault(import('../src/pages/system/index.vue' /* webpackChunkName: "pages/system/index" */))
-const _d2c340de = () => interopDefault(import('../src/pages/biz/choitore/index.vue' /* webpackChunkName: "pages/biz/choitore/index" */))
-const _332265b5 = () => interopDefault(import('../src/pages/biz/ginotore/index.vue' /* webpackChunkName: "pages/biz/ginotore/index" */))
-const _3bdf7b56 = () => interopDefault(import('../src/pages/biz/rpa/index.vue' /* webpackChunkName: "pages/biz/rpa/index" */))
-const _5b78c874 = () => interopDefault(import('../src/pages/biz/torepura/index.vue' /* webpackChunkName: "pages/biz/torepura/index" */))
-const _51b8bb06 = () => interopDefault(import('../src/pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _6e39fd4a = () => interopDefault(import('../src/pages/biz/index.vue' /* webpackChunkName: "pages/biz/index" */))
+const _a13d9b98 = () => interopDefault(import('../src/pages/company/index.vue' /* webpackChunkName: "pages/company/index" */))
+const _539a2a17 = () => interopDefault(import('../src/pages/contact/index.vue' /* webpackChunkName: "pages/contact/index" */))
+const _2fcb48b8 = () => interopDefault(import('../src/pages/greeting/index.vue' /* webpackChunkName: "pages/greeting/index" */))
+const _5e8597db = () => interopDefault(import('../src/pages/media/index.vue' /* webpackChunkName: "pages/media/index" */))
+const _75c14322 = () => interopDefault(import('../src/pages/nagoya/index.vue' /* webpackChunkName: "pages/nagoya/index" */))
+const _2a7b4cd2 = () => interopDefault(import('../src/pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
+const _9432b17a = () => interopDefault(import('../src/pages/peopledevelopment/index.vue' /* webpackChunkName: "pages/peopledevelopment/index" */))
+const _41542371 = () => interopDefault(import('../src/pages/policy/index.vue' /* webpackChunkName: "pages/policy/index" */))
+const _084bf102 = () => interopDefault(import('../src/pages/privacy/index.vue' /* webpackChunkName: "pages/privacy/index" */))
+const _6e18bfb5 = () => interopDefault(import('../src/pages/recruit/index.vue' /* webpackChunkName: "pages/recruit/index" */))
+const _2c0ecfa4 = () => interopDefault(import('../src/pages/system/index.vue' /* webpackChunkName: "pages/system/index" */))
+const _30440b68 = () => interopDefault(import('../src/pages/biz/choitore/index.vue' /* webpackChunkName: "pages/biz/choitore/index" */))
+const _666fdce8 = () => interopDefault(import('../src/pages/biz/ginotore/index.vue' /* webpackChunkName: "pages/biz/ginotore/index" */))
+const _3cc64c1e = () => interopDefault(import('../src/pages/biz/rpa/index.vue' /* webpackChunkName: "pages/biz/rpa/index" */))
+const _6be9479d = () => interopDefault(import('../src/pages/biz/torepura/index.vue' /* webpackChunkName: "pages/biz/torepura/index" */))
+const _1a208546 = () => interopDefault(import('../src/pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -38,63 +40,71 @@ export const routerOptions = {
 
   routes: [{
     path: "/biz",
-    component: _e524b1fe,
+    component: _6e39fd4a,
     name: "biz"
   }, {
     path: "/company",
-    component: _54ab286b,
+    component: _a13d9b98,
     name: "company"
   }, {
     path: "/contact",
-    component: _0e37bf64,
+    component: _539a2a17,
     name: "contact"
   }, {
     path: "/greeting",
-    component: _33c01961,
+    component: _2fcb48b8,
     name: "greeting"
   }, {
+    path: "/media",
+    component: _5e8597db,
+    name: "media"
+  }, {
     path: "/nagoya",
-    component: _72d42a0b,
+    component: _75c14322,
     name: "nagoya"
   }, {
     path: "/news",
-    component: _1c864c0a,
+    component: _2a7b4cd2,
     name: "news"
   }, {
     path: "/peopledevelopment",
-    component: _5650f68c,
+    component: _9432b17a,
     name: "peopledevelopment"
   }, {
+    path: "/policy",
+    component: _41542371,
+    name: "policy"
+  }, {
     path: "/privacy",
-    component: _bdb80494,
+    component: _084bf102,
     name: "privacy"
   }, {
     path: "/recruit",
-    component: _1362b5ec,
+    component: _6e18bfb5,
     name: "recruit"
   }, {
     path: "/system",
-    component: _31e901d2,
+    component: _2c0ecfa4,
     name: "system"
   }, {
     path: "/biz/choitore",
-    component: _d2c340de,
+    component: _30440b68,
     name: "biz-choitore"
   }, {
     path: "/biz/ginotore",
-    component: _332265b5,
+    component: _666fdce8,
     name: "biz-ginotore"
   }, {
     path: "/biz/rpa",
-    component: _3bdf7b56,
+    component: _3cc64c1e,
     name: "biz-rpa"
   }, {
     path: "/biz/torepura",
-    component: _5b78c874,
+    component: _6be9479d,
     name: "biz-torepura"
   }, {
     path: "/",
-    component: _51b8bb06,
+    component: _1a208546,
     name: "index"
   }],
 

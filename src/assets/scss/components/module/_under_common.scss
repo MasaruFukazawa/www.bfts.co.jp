@@ -92,11 +92,13 @@
     @media #{$media-sm} {
         width: get_vw_sp(260);
 
-        @if $is-head-img==true {
-            margin: get_vw_sp(130) auto get_vw_sp(30) get_vw_sp(10);
-        } @else {
-            margin: get_vw_sp(110) auto get_vw_sp(30) get_vw_sp(10);
-        }
+        margin: get_vw_sp(150) auto get_vw_sp(30) get_vw_sp(10);
+	
+        //@if $is-head-img==true {
+        //    margin: get_vw_sp(130) auto get_vw_sp(30) get_vw_sp(10);
+        //} @else {
+        //    margin: get_vw_sp(110) auto get_vw_sp(30) get_vw_sp(10);
+        //}
 
         > h1 {
             $sp-height: get_vw_sp(20);

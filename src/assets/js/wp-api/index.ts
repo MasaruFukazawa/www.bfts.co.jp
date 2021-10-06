@@ -30,3 +30,176 @@ export class WpApi {
         }
     }
 }
+
+
+export class TopPageWpApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}, pageId: number) {
+        this.options = { ...defaultOptions, ...options };
+        this.pageId = pageId;
+    }
+
+    async getData() {
+        try {
+            const { data: top_page_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/top`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            return { top_page_data };
+        } catch (e) {
+            return { error: e };
+        }
+    }
+
+}
+
+
+export class BizPageApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}, pageId: number) {
+        this.options = { ...defaultOptions, ...options };
+        this.pageId = pageId;
+    }
+
+    async getData() {
+        try {
+            const { data: biz_page_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/biz`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            return { biz_page_data };
+        } catch (e) {
+            return { error: e };
+        }
+    }
+
+}
+
+export class BizChildPageWpApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}, pageId: number) {
+        this.options = { ...defaultOptions, ...options };
+        this.pageId = pageId;
+    }
+
+    async getData() {
+        try {
+            const { data: page_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/biz/child?page_id=${this.pageId}`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            return { page_data };
+        } catch (e) {
+            return { error: e };
+        }
+    }
+}
+
+
+export class WpPageApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}, pageId: number) {
+        this.options = { ...defaultOptions, ...options };
+        this.pageId = pageId;
+    }
+
+    async getData() {
+        try {
+            const { data: page_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/page?page_id=${this.pageId}`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            return { page_data };
+        } catch (e) {
+            return { error: e };
+        }
+    }
+}
+
+
+export class SystemPageApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}) {
+        this.options = { ...defaultOptions, ...options };
+    }
+
+    async getData() {
+        try {
+            const { data: page_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/system`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            return { page_data };
+        } catch (e) {
+            return { error: e };
+        }
+    }
+}
+
+
+export class HeaderMenuApi {
+
+    options: typeof defaultOptions;
+    pageId: number
+
+    constructor(options: Partial<typeof defaultOptions> = {}) {
+        this.options = { ...defaultOptions, ...options };
+    }
+
+    async getData() {
+        try {
+
+            const { data: header_menu_data } = await axios.get(
+                `${this.options.baseUrl}/wp-json/custom/v0/header-menu`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            console.log(header_menu_data);
+
+            return { header_menu_data };
+
+        } catch (e) {
+            return { error: e };
+        }
+    }
+}
+

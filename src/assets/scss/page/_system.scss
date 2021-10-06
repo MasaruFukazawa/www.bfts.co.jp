@@ -9,7 +9,6 @@
         @include heading;
 
         .heading__img {
-            background-image: url('~assets/img/service/si.jpg');
             background-position: 100% 54%;
             background-size: get_vw(340) auto;
         }
@@ -17,7 +16,9 @@
         &.under-en-title {
             height: get_vw(80);
             text-align: right;
-            padding: 0 get_vw(20) 0 get_vw(70);
+            //padding: 0 get_vw(20) 0 get_vw(70);
+            padding: 0 get_vw(20) 0 auto;
+            font-size: get_vw(18);
         }
 
         @media #{$media-sm} {
@@ -27,7 +28,9 @@
 
             &.under-en-title {
                 height: get_vw_sp(40);
-                padding: 0 get_vw_sp(4) 0 get_vw_sp(7);
+                //padding: 0 get_vw_sp(4) 0 get_vw_sp(7);
+                padding: 0 get_vw(20) 0 auto;
+                font-size: get_vw(18);
             }
         }
     }

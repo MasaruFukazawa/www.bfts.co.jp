@@ -1,133 +1,19 @@
 <template>
     <div class="page-recruit">
         <BgTop></BgTop>
-        <h1 class="heading-en under-en-title">
-            <span class="en">Recruit</span>
-            <span class="ja">採用情報</span>
-        </h1>
-
-        <section class="job-type">
-            <div class="job-type__select">
-                <h2
-                    class="job-name"
-                    :class="{ active: isSelectEngineer }"
-                    @click="isSelectEngineer = true"
-                >
-                    エンジニア職
-                </h2>
-                <h2
-                    class="job-name"
-                    :class="{ active: !isSelectEngineer }"
-                    @click="isSelectEngineer = false"
-                >
-                    営業職
-                </h2>
-            </div>
-
-            <!-- エンジニア職 -->
-            <div class="job-type__about" v-show="isSelectEngineer">
-                <h4>仕事のスタート</h4>
-                <p>
-                    エンジニア職には、インフラエンジニア、開発エンジニア、教育エンジニアの仕事があります。いずれのエンジニア職もスタートは「ＢＦＴ道場」を用いた研修からで、2~3ヵ月間はトレーナーの下でシステムエンジニアの基礎能力を身に付けてもらいます。無事に研修を終えると、システムづくりの現場で、インフラエンジニアはインフラ基盤の構築やテストの工程から経験してもらい、開発エンジニアはプログラム製造やテストの工程から経験してもらいます。
-                </p>
-                <h4>キャリアアップ</h4>
-                <p>
-                    2･3年目で下流の設計工程であれば、自分で推進できるようになります。5年目ぐらいになると部下の指導や小規模なプロジェクトのリーダを任されます。1年に1度キャリアアップ面談の機会があり、その面談でどんなキャリアパスを希望しているか上司に伝えることができます。その希望に沿って研修の受講や、参画するプロジェクトが決定されます。
-                </p>
-                <h4>仕事の面白み</h4>
-                <p>
-                    （1）大規模で有名なプロジェクト、最新技術を用いたプロジェクト、上流工程での要件検討やビジネス企画検討など、エンジニアリング能力を向上させる機会が多くあります。<br />
-                    （2）培ったノウハウから研修プログラムを開発し、その講師となって指導したり、技術サイトや技術書籍を執筆したり、経験したことを社会にアウトプットする機会が多くあります。<br />
-                    （3）新規事業の企画推進や既存事業のサービス開発など、エンジニア職での経験を活かし、エンジニア職以外の職を選択することもできます。<br />
-                </p>
-            </div>
-
-            <!-- 営業職 -->
-            <div class="job-type__about" v-show="!isSelectEngineer">
-                <h4>仕事のスタート</h4>
-                <p class="about-txt">
-                    営業職を希望する方も「ＢＦＴ道場」のエンジニア研修の受講からスタートします。その研修でエンジニアの仕事を理解した後に、座学（仕事の流れや契約関連）、テレアポ、先輩社員と共に顧客訪問・提案など、営業の基礎を学んでもらいます。これらの研修後、個人の成長に合わせて、入社初年度から既存のお客様も担当していきます。
-                </p>
-                <h4>キャリアアップ</h4>
-                <p>
-                    まずは担当のお客様と良好な関係を築き、システム構築の相談を受け、最適な提案（構築体制の提案等）を行うことで受注を目指します。受注後は、システム構築を行うエンジニアのフォローを行い、エンジニアと共にシステム構築プロジェクトを完遂、成功に導きます。2･3年目にはエンジニアと協力し、チームで重要顧客に向けた提案を検討したり、部門内で既存顧客へのアプローチ戦略を立てたりする仕事ができます。
-                </p>
-                <h4>仕事の面白み</h4>
-                <p>
-                    （1）大規模なプロジェクトや上流工程からのプロジェクトの受注に向けて、エンジニアと協力し提案する機会が多くあります。<br />
-                    （2）売上を立てるだけでなく、納品まで伴走し、お客様とともにプロジェクトの成功を共有することができます。<br />
-                    （3）新規事業の企画推進や既存事業のサービス開発など、営業職での経験を活かし、営業職以外の職を選択することもできます。
-                </p>
-            </div>
-        </section>
-
-        <dl class="job-detail">
-            <dt>事業所</dt>
-            <dd>
-                東京本社<br />
-                JR&nbsp;東京駅&nbsp;徒歩2分<br />
-                東京メトロ&nbsp;東京駅&nbsp;徒歩2分<br />
-                東京メトロ&nbsp;大手町駅&nbsp;徒歩1分<br />
-                <br />
-                名古屋支店<br />
-                名古屋市営地下鉄&nbsp;丸の内駅&nbsp;徒歩1分
-            </dd>
-            <dt>勤務時間</dt>
-            <dd>9:00 〜 18:00</dd>
-            <dt>給与</dt>
-            <dd>
-                学士：262,520円〜<br />
-                修士：282,200円〜<br />
-                博士：301,880円〜<br />
-                40時間相当のみなし残業手当を含む
-            </dd>
-            <dt>賞与</dt>
-            <dd>
-                年3回<br />
-                定額賞与　3月、9月<br />
-                業績連動賞与　10月
-            </dd>
-            <dt>福利厚生</dt>
-            <dd>
-                各種研修制度、資格取得支援、定期健康診断、ストレスチェック制度、産業医面談、出産・育児・介護休暇制度、慶弔見舞金制度、保育料支援制度、確定拠出年金制度、引越し支援制度
-            </dd>
-            <dt>昇給</dt>
-            <dd>年1回（10月）</dd>
-            <dt>休日休暇</dt>
-            <dd>
-                週休2日（土日）、祝日、GW、年末年始休暇、結婚休暇、出産休暇、<br />
-                慶弔休暇、表彰休暇、誕生月休暇、年次有給休暇等
-            </dd>
-            <dt>選考プロセス</dt>
-            <dd>
-                エントリー
-                <br class="sp" />（媒体・エージェント・<nuxt-link to="/contact"
-                    >お問い合せ</nuxt-link
-                >等）<br />
-                ↓<br />
-                書類選考、適性検査<br />
-                ↓<br />
-                会社説明 ※<br />
-                ↓<br />
-                面接 ※<br />
-                ↓<br />
-                内定<br />
-                ※ 会社説明と同日の面接が可能、また地方の方はWebでの面接も可能<br />
-            </dd>
-            <dt>経験者採用</dt>
-            <dd>
-                給与と研修以外は基本上記の要項と同じです。<br />
-                給与と研修はこれまでの経験に応じて決定します。<br />
-                スキルチェンジの転職の場合は、未経験者と同様の研修を受けてもらう場合があります。
-            </dd>
-        </dl>
+        <div class="heading-en under-en-title">
+            <span v-html="page_data.title"></span>
+            <div class="heading__img" :style="[{ backgroundImage: `url(${page_data.thumbnail_image})` }]"></div>
+        </div>
+         <div v-html="page_data.content"></div>
     </div>
 </template>
 
 <script>
 import meta from '~/assets/mixins/meta';
 import BgTop from '~/components/common/TheUnderRedBg_Top.vue';
-
+import { WpPageApi } from '~/assets/js/wp-api/';
+ 
 export default {
     mixins: [meta],
     components: {
@@ -145,9 +31,18 @@ export default {
             isSelectEngineer: true,
         };
     },
+    async asyncData(context) {
+
+      const wpPageApi = new WpPageApi({
+          baseUrl: context.env.apiBaseUrl,
+      }, 297);
+
+      const page_data = wpPageApi.getData();
+
+      return page_data
+    },
 };
 </script>
-
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~/assets/scss/page/_recruit.scss';
 </style>

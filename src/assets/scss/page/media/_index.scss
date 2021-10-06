@@ -4,23 +4,32 @@
 .page-media {
     min-height: 100vh;
 
-    .heading-en {
+    ::v-deep .heading-en {
         @include heading;
 
         .heading__img {
-            background-image: url('~assets/img/service/choitore.jpg');
             background-position: 100% 40%;
             background-size: get_vw(340) auto;
         }
 
+        &.under-en-title {
+            height: get_vw(80);
+            text-align: right;
+            padding: 0 get_vw(20) 0 get_vw(70);
+        }
+	
         @media #{$media-sm} {
             .heading__img {
                 background-size: get_vw_sp(150) auto;
             }
+            &.under-en-title {
+                height: get_vw_sp(40);
+                padding: 0 get_vw_sp(7) 0 get_vw_sp(46);
+            }
         }
     }
 
-    .description {
+    ::v-deep .description {
         @include under_desc(false);
 
         &:not(:first-of-type) {

@@ -7,6 +7,28 @@
 
 .heading-en {
     @include heading;
+
+    .heading__img {
+        background-position: 100% 40%;
+        background-size: get_vw(340) auto;
+    }
+
+    &.under-en-title {
+        height: get_vw(80);
+        text-align: right;
+        padding: 0 get_vw(20) 0 get_vw(70);
+    }
+
+    @media #{$media-sm} {
+        .heading__img {
+            background-size: get_vw_sp(150) auto;
+        }
+
+        &.under-en-title {
+            height: get_vw_sp(40);
+            padding: 0 get_vw_sp(7) 0 get_vw_sp(46);
+        }
+    }
 }
 
 // 会社概要
@@ -201,9 +223,10 @@
 }
 
 @media #{$media-sm} {
+
     // 会社概要
     .com__title {
-        margin: get_vw_sp(110) auto $block-size_sm * 2 get_vw_sp(10);
+        margin: get_vw_sp(130) auto $block-size_sm * 2 get_vw_sp(10);
 
         .ja {
             font-size: get_vw_sp(14);

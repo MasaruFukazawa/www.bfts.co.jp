@@ -12,9 +12,9 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_googleanalytics_31d370f0 from 'nuxt_plugin_googleanalytics_31d370f0' // Source: ./google-analytics.js (mode: 'client')
-import nuxt_plugin_nuxtuseragent_3a0410bf from 'nuxt_plugin_nuxtuseragent_3a0410bf' // Source: ./nuxt-user-agent.js (mode: 'all')
-import nuxt_plugin_axios_f568fd14 from 'nuxt_plugin_axios_f568fd14' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_googleanalytics_10e358f9 from 'nuxt_plugin_googleanalytics_10e358f9' // Source: ./google-analytics.js (mode: 'client')
+import nuxt_plugin_nuxtuseragent_72c28396 from 'nuxt_plugin_nuxtuseragent_72c28396' // Source: ./nuxt-user-agent.js (mode: 'all')
+import nuxt_plugin_axios_12fc450d from 'nuxt_plugin_axios_12fc450d' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_polyfills_7dce8c4e from 'nuxt_plugin_polyfills_7dce8c4e' // Source: ../src/plugins/polyfills (mode: 'client')
 import nuxt_plugin_veevalidate_1a0c1998 from 'nuxt_plugin_veevalidate_1a0c1998' // Source: ../src/plugins/vee-validate.js (mode: 'all')
 
@@ -176,16 +176,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_googleanalytics_31d370f0 === 'function') {
-    await nuxt_plugin_googleanalytics_31d370f0(app.context, inject)
+  if (process.client && typeof nuxt_plugin_googleanalytics_10e358f9 === 'function') {
+    await nuxt_plugin_googleanalytics_10e358f9(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxtuseragent_3a0410bf === 'function') {
-    await nuxt_plugin_nuxtuseragent_3a0410bf(app.context, inject)
+  if (typeof nuxt_plugin_nuxtuseragent_72c28396 === 'function') {
+    await nuxt_plugin_nuxtuseragent_72c28396(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_f568fd14 === 'function') {
-    await nuxt_plugin_axios_f568fd14(app.context, inject)
+  if (typeof nuxt_plugin_axios_12fc450d === 'function') {
+    await nuxt_plugin_axios_12fc450d(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_polyfills_7dce8c4e === 'function') {

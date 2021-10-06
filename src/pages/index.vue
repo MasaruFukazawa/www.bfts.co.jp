@@ -374,19 +374,41 @@
                 <span class="ja">サービス紹介</span>
             </h2>
             <div class="services services-list">
-              <div class="services__service" v-for="services in top_page_data.services">
+                <div class="services__service">
                     <div class="service__img">
                         <div class="service__img__bg"></div>
                         <div class="service__img__img">
-                            <img v-bind:src="services.service_introduction_image" v-bind:alt="services.title" />
+                            <img src="~assets/img/top/bg_sec01_dot.jpg" alt="BFT" />
                         </div>
-                        <h3>{{ services.title }}</h3>
+
+                        <h3>ＢＦＴ道場</h3>
                     </div>
                     <div class="service__desc">
                         <div class="service__desc__bg"></div>
-                        <div class="service__desc__txt">{{ services.description }}</div>
+                        <div class="service__desc__txt">
+                            現場で活躍できるエンジニア育成を目指し、ＢＦＴが自社のノウハウから独自開発した実践型IT技術研修です。
+                        </div>
                     </div>
-                    <nuxt-link class="service__button" :to="services.service_introduction_url">
+                    <nuxt-link class="service__button" to="/biz">
+                        MORE
+                        <ArrowRight />
+                    </nuxt-link>
+                </div>
+                <div class="services__service">
+                    <div class="service__img">
+                        <div class="service__img__bg"></div>
+                        <div class="service__img__img">
+                            <img src="~assets/img/top/42303239_dot.jpg" alt="BFT" />
+                        </div>
+                        <h3>システムインテグレーション事業</h3>
+                    </div>
+                    <div class="service__desc">
+                        <div class="service__desc__bg"></div>
+                        <div class="service__desc__txt">
+                            スタートアップ時のコンパクトなシステムから、競争優位を保つクリティカルなシステムまで、ご要望にお応えします。
+                        </div>
+                    </div>
+                    <nuxt-link class="service__button" to="/biz#si-zigyou">
                         MORE
                         <ArrowRight />
                     </nuxt-link>

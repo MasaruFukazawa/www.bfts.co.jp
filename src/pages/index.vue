@@ -346,7 +346,7 @@
                         :style="[{ backgroundImage: `url(${service.thumbnail_image})` }, { backgroundPosition: '27% 50%' }]">
                         <p class="bg-white"></p>
                         <h3 v-html="service.title"></h3>
-                        <div class="service__icon" v-html="service.service_icon"></div>
+                        <div class="service__icon" :style="[{ backgroundImage: `url(${service.biz_service_icon})` }]"></div>
                         <div class="service__more">MORE</div>
 		    </nuxt-link>
                     <div class="service dummy-block dummy-block--bottom dummy-block--bottom-right"></div>
